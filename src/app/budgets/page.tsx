@@ -1,5 +1,5 @@
-import Title from "@/components/title/title";
+import MainContent from "@/components/main-content";
 
 export default function Page() {
-  return <Title text="Budgets" />;
+  return <MainContent text="Budgets"></MainContent>;
 }

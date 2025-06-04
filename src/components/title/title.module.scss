@@ -1,7 +1,0 @@
-@use "../../styles/variables" as *;
-@use "../../styles/mixins" as *;
-
-.title {
-  color: $grey-900;
-  @include text-preset-1;
-}

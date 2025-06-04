@@ -1,0 +1,17 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.title {
+  color: $grey-900;
+  text-transform: capitalize;
+  @include text-preset-1;
+  margin: 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-400;
+  padding: clamp($spacing-300, 4.285vw, $spacing-400)
+    clamp($spacing-200, 2.857vw, $spacing-500);
+}
