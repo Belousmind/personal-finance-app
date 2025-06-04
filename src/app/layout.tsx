@@ -1,3 +1,5 @@
+import styles from './styles.module.scss'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -5,7 +7,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={styles.body}>{children}</body>
     </html>
   );
 }

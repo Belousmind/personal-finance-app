@@ -1,3 +1,5 @@
-export default function Home() {
-  return <h1>hello world!</h1>;
+import Title from "@/components/title/title";
+
+export default function Page() {
+  return <Title text="Overview" />;
 }
