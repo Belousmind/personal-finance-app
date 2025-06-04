@@ -25,12 +25,13 @@
 
 .secondary {
   background-color: $beige-100;
+  border: 1px solid $beige-100;
   color: $grey-900;
 
   @media (hover: hover) {
     &:hover {
       background-color: $white;
-      border: 1px solid $beige-500;
+      border-color: $beige-500;
     }
   }
 }

@@ -3,4 +3,7 @@
 .body {
   background-color: $grey-100;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
