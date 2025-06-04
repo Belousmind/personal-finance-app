@@ -1,0 +1,53 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.button {
+  @include flex-center;
+  @include text-preset-4-bold;
+  border-radius: $spacing-100;
+  width: 100%;
+  text-transform: capitalize;
+  transition: 0.2s ease-out;
+  border: none;
+  padding: $spacing-200;
+  cursor: pointer;
+}
+
+.primary {
+  background-color: $grey-900;
+  color: $white;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: $grey-500;
+    }
+  }
+}
+
+.secondary {
+  background-color: $beige-100;
+  color: $grey-900;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: $white;
+      border: 1px solid $beige-500;
+    }
+  }
+}
+
+.destroy {
+  background-color: $red;
+  color: $white;
+
+  @media (hover: hover) {
+    &:hover {
+      background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.2) 0%,
+          rgba(255, 255, 255, 0.2) 100%
+        ),
+        $red;
+    }
+  }
+}

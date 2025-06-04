@@ -33,6 +33,13 @@
   @include text;
 }
 
+@mixin text-preset-4-bold {
+  font-size: $text-size-4;
+  font-weight: $font-weight-700;
+  line-height: $line-height-150;
+  @include text;
+}
+
 @mixin text-preset-5 {
   font-size: $text-size-5;
   font-weight: $font-weight-400;
@@ -45,4 +52,10 @@
   font-weight: $font-weight-700;
   line-height: $line-height-150;
   @include text;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
