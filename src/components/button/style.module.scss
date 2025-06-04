@@ -4,13 +4,12 @@
 .button {
   @include flex-center;
   @include text-preset-4-bold;
+  @include transition-base;
   border-radius: $spacing-100;
   width: 100%;
   text-transform: capitalize;
-  transition: 0.2s ease-out;
   border: none;
   padding: $spacing-200;
-  cursor: pointer;
 }
 
 .primary {

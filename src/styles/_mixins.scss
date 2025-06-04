@@ -59,3 +59,26 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin transition-base {
+  transition: 0.2s ease-out;
+  cursor: pointer;
+}
+
+@mixin pagination-button {
+  @include text-preset-4;
+  @include flex-center;
+  @include transition-base;
+  gap: $spacing-200;
+  padding: $spacing-200;
+  color: $grey-900;
+  border-radius: $spacing-100;
+  border: 1px solid $beige-500;
+  background: $white;
+  height: 40px;
+}

@@ -1,0 +1,52 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.pagination {
+  @include flex-align-center;
+  justify-content: space-between;
+  gap: $spacing-50;
+  margin-top: $spacing-300;
+}
+
+.pagination-list {
+  @include flex-align-center;
+  gap: $spacing-100;
+}
+
+.arrow-button {
+  @include pagination-button;
+
+  svg {
+    transition: 0.2s ease-out;
+    color: $grey-500;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: $beige-500;
+      color: $white;
+      svg {
+        color: $white;
+      }
+    }
+  }
+}
+
+.button {
+  @include pagination-button;
+  width: 40px;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: $beige-500;
+      border-color: $beige-500;
+      color: $white;
+    }
+  }
+}
+
+.active {
+  background-color: $grey-900;
+  border-color: $grey-900;
+  color: $white;
+}

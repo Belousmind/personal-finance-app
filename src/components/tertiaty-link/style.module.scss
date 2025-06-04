@@ -8,8 +8,8 @@
   color: $beige-500;
   text-decoration: none;
   text-transform: capitalize;
-  transition: 0.2s ease-out;
-  
+  @include transition-base;
+
   @media (hover: hover) {
     &:hover {
       color: $grey-900;
