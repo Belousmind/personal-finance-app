@@ -1,0 +1,18 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.link {
+  @include text-preset-4;
+  @include flex-center;
+  gap: $spacing-150;
+  color: $beige-500;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: 0.2s ease-out;
+  
+  @media (hover: hover) {
+    &:hover {
+      color: $grey-900;
+    }
+  }
+}
