@@ -1,0 +1,67 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.link {
+  @include text-preset-5-bold;
+  @include transition-base;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: $grey-300;
+  padding: $spacing-100 0 $spacing-150 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-50;
+
+  max-width: 212px;
+
+
+
+  @media screen and (min-width: 900px) {
+    @include text-preset-3;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: $spacing-200;
+    padding: $spacing-200 $spacing-400;
+
+    @media (hover: hover) {
+      &:hover {
+        color: $grey-100;
+      }
+    }
+  }
+}
+
+.active {
+  background-color: $beige-100;
+  color: $grey-900;
+  border-radius: $spacing-100 $spacing-100 0 0;
+  border-bottom: 4px solid $green;
+
+  svg {
+    color: $green;
+  }
+
+  @media screen and (min-width: 900px) {
+    border-radius: 0 $spacing-150 $spacing-150 0;
+    border-bottom: 0;
+    border-left: 4px solid $green;
+    // margin-left: $spacing-100;
+
+    @media (hover: hover) {
+      &:hover {
+        color: $grey-900;
+      }
+    }
+  }
+}
+
+.label {
+  display: none;
+
+  @media screen and (min-width: 560px) {
+    display: block;
+  }
+}

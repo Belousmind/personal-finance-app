@@ -1,0 +1,86 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.menu {
+  background-color: $grey-900;
+  border-radius: $spacing-100 $spacing-100 0 0;
+
+  @media screen and (min-width: 900px) {
+    display: flex;
+    flex-direction: column;
+
+    padding-bottom: $spacing-300;
+
+    gap: $spacing-300;
+    border-radius: 0 $spacing-200 $spacing-200 0;
+    width: 300px;
+  }
+}
+
+.closed {
+  width: 88px;
+  a span {
+    display: none;
+  }
+  svg path:not(:first-child) {
+    display: none;
+  }
+  button {
+    span {
+      display: none;
+    }
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.nav {
+  padding: $spacing-100 clamp($spacing-200, 3.5vw, $spacing-500) 0
+    clamp($spacing-200, 3.5vw, $spacing-500);
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: $spacing-50;
+
+  @media screen and (min-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+}
+
+.logo {
+  display: none;
+
+  @media screen and (min-width: 900px) {
+    display: block;
+    padding: $spacing-500 $spacing-400;
+  }
+}
+
+.button {
+  display: none;
+
+  @media screen and (min-width: 900px) {
+    @include flex-align-center;
+    @include text-preset-3;
+    @include transition-base;
+    justify-content: flex-start;
+    color: $grey-300;
+    gap: $spacing-200;
+    padding: $spacing-200 $spacing-400;
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    margin-top: auto;
+
+
+    @media (hover: hover) {
+      &:hover {
+        color: $grey-100;
+      }
+    }
+  }
+}

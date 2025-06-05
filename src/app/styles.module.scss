@@ -1,9 +1,14 @@
 @use "../styles/variables" as *;
 
 .body {
+  @media screen and (min-width: 900px) {
+    flex-direction: row;
+  }
+
   background-color: $grey-100;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-direction: column-reverse;
+  margin: 0;
+  height: 100vh;
 }
