@@ -11,6 +11,7 @@
 .main {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: $spacing-400;
   padding: clamp($spacing-300, 4.285vw, $spacing-400)
     clamp($spacing-200, 2.857vw, $spacing-500);

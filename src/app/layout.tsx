@@ -1,5 +1,6 @@
-import styles from "./styles.module.scss";
+// import styles from "./styles.module.scss";
 import SideBar from "@/components/sidebar";
+import './global.scss'
 
 export default function RootLayout({
   children,
@@ -8,7 +9,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={styles.body}>
+      <body >
         <SideBar />
         {children}
       </body>

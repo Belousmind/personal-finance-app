@@ -1,2 +1,42 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
+.stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-150;
+  
+  @media screen and (min-width: 600px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-300;
+  }
+}
 
+.card {
+  @include flex-column;
+  gap: $spacing-150;
+  padding: $spacing-300;
+  background-color: $white;
+  color: $grey-500;
+  border-radius: $spacing-150;
+}
+
+.card:first-child {
+  background-color: $grey-900;
+  color: $white;
+
+  .sum {
+    color: $white;
+  }
+}
+
+.title {
+  @include text-preset-4;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.sum {
+  @include text-preset-1;
+  color: $grey-900;
+}
