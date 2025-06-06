@@ -1,0 +1,28 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: $spacing-200;
+  grid-column: span 2;
+}
+
+.colorCircle {
+  width: $spacing-200;
+  height: $spacing-200;
+  border-radius: 50%;
+}
+
+.title {
+  @include text-preset-2;
+  color: $grey-900;
+}
+
+.button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: $grey-300;
+}
