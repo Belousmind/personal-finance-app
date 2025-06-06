@@ -93,3 +93,8 @@
   height: clamp($spacing-400, 6.4vw, $spacing-500);
   border-radius: 50%;
 }
+
+@mixin white-background {
+  background-color: $white;
+  border-radius: $spacing-150;
+}

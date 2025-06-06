@@ -2,12 +2,11 @@
 @use "../../../styles/mixins" as *;
 
 .container {
+  @include white-background;
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
-  background-color: $white;
-  border-radius: $spacing-150;
-  padding: $spacing-400;
+  padding: clamp($spacing-250, 4.17vw, $spacing-400);
 
   a {
     justify-self: end;

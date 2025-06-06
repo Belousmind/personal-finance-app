@@ -41,7 +41,7 @@ type TransactionProps = {
   date: string;
 };
 
-function Transaction({
+export function Transaction({
   imgSrc,
   name,
   amount,
