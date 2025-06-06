@@ -1,8 +1,28 @@
-@use "../../../styles/variables" as *;
-@use "../../../styles/mixins" as *;
+@use "../../../../styles/variables" as *;
+@use "../../../../styles/mixins" as *;
 
-.transactionList {
-  width: 100%;
+.latestSpeding {
+  border-radius: $spacing-150;
+  background: $beige-100;
+  display: grid;
+  grid-template-columns: auto auto;
+  row-gap: $spacing-250;
+  align-items: center;
+
+  padding: $spacing-200;
+  a {
+    justify-self: end;
+  }
+}
+
+.title {
+  @include text-preset-3;
+  color: $grey-900;
+  justify-self: start;
+}
+
+.list {
+  grid-column: span 2;
 }
 
 .transaction {
@@ -10,7 +30,7 @@
   color: $grey-500;
   margin-top: $spacing-200;
   padding-bottom: $spacing-200;
-  border-bottom: 1px solid $grey-100;
+  border-bottom: 1px solid rgba($grey-500, 0.15);
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-rows: auto auto;
@@ -36,7 +56,7 @@
 }
 
 .transactionName {
-  @include text-preset-4-bold;
+  @include text-preset-5-bold;
   color: $grey-900;
   grid-column: 2;
   grid-row: span 2;
@@ -44,12 +64,8 @@
   justify-self: flex-start;
 }
 
-.transactionCategory {
-  display: none;
-}
-
 .transactionAmount {
-  @include text-preset-4-bold;
+  @include text-preset-5-bold;
   color: $grey-900;
   justify-self: end;
 }

@@ -1,5 +1,5 @@
 import OverviewContainer from "../overview-container";
-import SavingSmall from "../saving-small";
+import SavingSmall from "../../saving-small";
 import styles from "./style.module.scss";
 
 import data from "../../../../data.json";

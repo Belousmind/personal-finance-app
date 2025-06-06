@@ -1,6 +1,6 @@
 import OverviewContainer from "../overview-container";
 import Chart from "@/components/pie-chart";
-import SavingSmall from "../saving-small";
+import SavingSmall from "../../saving-small";
 
 import styles from "./style.module.scss";
 
