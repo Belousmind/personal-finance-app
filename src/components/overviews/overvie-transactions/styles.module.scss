@@ -1,0 +1,65 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.transactionList {
+  width: 100%;
+}
+
+.transaction {
+  @include text-preset-5;
+  color: $grey-500;
+  margin-top: $spacing-200;
+  padding-bottom: $spacing-200;
+  border-bottom: 1px solid $grey-100;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
+  row-gap: $spacing-100;
+}
+
+.transaction:first-child {
+  margin-top: 0;
+}
+
+.transaction:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.transactionImage {
+  @include image-icon;
+  margin-right: $spacing-200;
+  grid-column: 1;
+  grid-row: span 2;
+  align-self: center;
+  justify-self: flex-start;
+}
+
+.transactionName {
+  @include text-preset-4-bold;
+  color: $grey-900;
+  grid-column: 2;
+  grid-row: span 2;
+  align-self: center;
+  justify-self: flex-start;
+}
+
+.transactionCategory {
+  display: none;
+}
+
+.transactionAmount {
+  @include text-preset-4-bold;
+  color: $grey-900;
+  justify-self: end;
+}
+
+.positive {
+  color: $green;
+}
+
+.transactionDate {
+  grid-column: 3;
+
+  justify-self: end;
+}

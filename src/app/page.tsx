@@ -1,13 +1,12 @@
 import MainContent from "@/components/main-content";
 import BalanceSummary from "@/components/balance-summary";
-import Chart from "@/components/pie-chart";
-
+import Overviews from "@/components/overviews";
 
 export default function Page() {
   return (
     <MainContent text="overview">
       <BalanceSummary />
-      <Chart />
+      <Overviews />
     </MainContent>
   );
 }

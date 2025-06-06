@@ -1,0 +1,28 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.potCard {
+  display: grid;
+  grid-template-columns: $spacing-50 auto;
+  grid-template-rows: auto auto;
+  column-gap: $spacing-200;
+  row-gap: $spacing-50;
+}
+
+.potColor {
+  border-radius: $spacing-100;
+  width: $spacing-50;
+  height: 100%;
+  grid-column: 1;
+  grid-row: span 2;
+}
+
+.potLabel {
+  @include text-preset-5;
+  color: $grey-500;
+}
+
+.potValue {
+  @include text-preset-4-bold;
+  color: $grey-900;
+}

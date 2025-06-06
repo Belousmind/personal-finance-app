@@ -1,0 +1,14 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.budgetsOverview {
+  @include flex-align-center;
+  justify-content: space-between;
+  margin: $spacing-100 0;
+  width: 100%;
+}
+
+.budgetsList {
+  @include flex-column;
+  gap: $spacing-200;
+}

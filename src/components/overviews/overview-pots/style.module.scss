@@ -1,0 +1,41 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.potsOverview {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.total-saved {
+  border-radius: $spacing-150;
+  background: $beige-100;
+  padding: $spacing-200;
+  @include text-preset-4;
+  color: $grey-500;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: repeat(2, auto);
+
+  column-gap: $spacing-200;
+  row-gap: $spacing-150;
+  max-width: 215px;
+  width: 100%;
+  img {
+    grid-column: 1;
+    grid-row: span 2;
+    align-self: center;
+  }
+}
+
+.sum {
+  @include text-preset-1;
+  color: $grey-900;
+}
+
+.potsCards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: $spacing-200;
+}

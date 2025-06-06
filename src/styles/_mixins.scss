@@ -88,3 +88,8 @@
   height: 40px;
 }
 
+@mixin image-icon {
+  width: clamp($spacing-400, 6.4vw, $spacing-500);
+  height: clamp($spacing-400, 6.4vw, $spacing-500);
+  border-radius: 50%;
+}
