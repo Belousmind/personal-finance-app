@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+import Modal from "@/components/modal";
+
 import MainContent from "@/components/main-content";
 import ColorTitle from "@/components/color-title";
 import Button from "@/components/button";
@@ -7,6 +12,7 @@ import { formatUSD } from "@/utils/format-сurrency";
 import styles from "./style.module.scss";
 
 import data from "../../../data.json";
+import { Span } from "next/dist/trace";
 
 const { pots } = data;
 
@@ -36,6 +42,8 @@ type PotProps = {
 };
 
 function Pot({ title, theme, amount, target }: PotProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const precent = getPercentage(amount, target);
 
   return (
@@ -55,8 +63,20 @@ function Pot({ title, theme, amount, target }: PotProps) {
         <span className={styles.potTarget}>Target of {formatUSD(target)}</span>
       </div>
 
-      <Button text="+ Add Money" variant="secondary" />
+      <Button
+        text="+ Add Money"
+        variant="secondary"
+        onClick={() => setIsModalOpen(true)}
+      />
       <Button text="Withdraw" variant="secondary" />
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Add New Pot"
+      >{
+        <span></span>
+      }</Modal>
     </div>
   );
 }

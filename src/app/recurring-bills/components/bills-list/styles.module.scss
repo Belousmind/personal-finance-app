@@ -8,6 +8,8 @@
 }
 
 .searchPanel {
+  @include flex-align-center;
+  justify-content: space-between;
   margin-bottom: $spacing-300;
 }
 
