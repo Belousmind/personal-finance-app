@@ -1,44 +1,39 @@
+"use client";
+
+import { useAppSelector } from "@/store/hooks";
+
 import styles from "./style.module.scss";
 
-import data from "../../../data.json";
-
-const formatTitle = (key: string) => {
-  switch (key) {
-    case "current":
-      return "Current Balance";
-    case "income":
-      return "Income";
-    case "expenses":
-      return "Expenses";
-    default:
-      return key;
-  }
-};
-
 export default function BalanceSummary() {
+  
+  const { current, income, expenses } = useAppSelector(
+    (state) => state.balance
+  );
+
+  const balanceList = [
+    { label: "Current Balance", amount: current },
+    { label: "Income", amount: income },
+    { label: "Expenses", amount: expenses },
+  ];
   return (
     <div className={styles.stats}>
-      {Object.entries(data.balance).map(([key, value]) => (
-        <SummaryCard
-          key={key}
-          title={formatTitle(key)}
-          sum={value.toFixed(2)}
-        />
+      {balanceList.map((item) => (
+        <SummaryCard key={item.label} {...item} />
       ))}
     </div>
   );
 }
 
 type SummaryCardProps = {
-  title: string;
-  sum: string;
+  label: string;
+  amount: number;
 };
 
-function SummaryCard({ title, sum }: SummaryCardProps) {
+function SummaryCard({ label, amount }: SummaryCardProps) {
   return (
     <div className={styles.card}>
-      <span className={styles.title}>{title}</span>
-      <span className={styles.sum}>${sum}</span>
+      <span className={styles.title}>{label}</span>
+      <span className={styles.sum}>${amount.toFixed(2)}</span>
     </div>
   );
 }

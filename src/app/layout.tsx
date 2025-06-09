@@ -1,6 +1,6 @@
-// import styles from "./styles.module.scss";
 import SideBar from "@/components/sidebar";
-import './global.scss'
+import "./global.scss";
+import Providers from "@/providers";
 
 export default function RootLayout({
   children,
@@ -9,10 +9,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body >
-        <SideBar />
-        {children}
-      </body>
+      <Providers>
+        <body>
+          <SideBar />
+          {children}
+        </body>
+      </Providers>
     </html>
   );
 }
