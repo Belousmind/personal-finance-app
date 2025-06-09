@@ -1,0 +1,35 @@
+@use "../../../../styles/variables" as *;
+@use "../../../../styles/mixins" as *;
+
+.budgetSection {
+  display: grid;
+  gap: $spacing-300;
+
+  @media screen and (min-width: 1100px) {
+    grid-template-columns: 1fr 1.5fr;
+    align-items: start;
+  }
+}
+
+.budgetSummary {
+  @include white-background;
+  padding: clamp($spacing-250, 4.17vw, $spacing-400);
+
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr;
+  gap: $spacing-400;
+
+  @media screen and (min-width: 760px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (min-width: 1100px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.budgetContainer {
+  @include flex-column;
+  gap: $spacing-300;
+}
