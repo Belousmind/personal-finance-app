@@ -1,13 +1,15 @@
+"use client";
 import Chart from "@/components/pie-chart";
 import SpendingSummary from "../spending-summary";
 import Budget from "../budget";
 
 import styles from "./style.module.scss";
-
-import data from "../../../../../data.json";
-const { budgets } = data;
+import { useAppSelector } from "@/store/hooks";
 
 export default function BudgetSection() {
+  
+  const budgets = useAppSelector((state) => state.budgets);
+
   return (
     <section className={styles.budgetSection}>
       <div className={styles.budgetSummary}>

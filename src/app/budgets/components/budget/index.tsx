@@ -1,16 +1,36 @@
 import ColorTitle from "@/components/color-title";
 import SavingSmall from "@/components/saving-small";
 import LatestSpeding from "../latest-speding";
+import getPercentage from "@/utils/get-percentage";
 
 import styles from "./style.module.scss";
+
+type Transaction = {
+ avatar: string;
+  name: string;
+  amount: number;
+  date: string;
+};
 
 type BudgetProps = {
   category: string;
   theme: string;
   maximum: number;
+  total: number;
+  remaining: number;
+  transactions: Transaction[];
 };
 
-export default function Budget({ category, theme, maximum }: BudgetProps) {
+export default function Budget({
+  category,
+  theme,
+  maximum,
+  total,
+  remaining,
+  transactions,
+}: BudgetProps) {
+  const precent = getPercentage(Math.abs(total), maximum);
+
   return (
     <div className={styles.budget}>
       <ColorTitle title={category} color={theme} />
@@ -22,19 +42,17 @@ export default function Budget({ category, theme, maximum }: BudgetProps) {
         <div className={styles.budgetBar}>
           <div
             className={styles.budgetBarPrecent}
-            // width: precent
-            style={{ backgroundColor: theme }}
+            style={{
+              backgroundColor: theme,
+              width: `${Math.min(precent, 100)}%`,
+            }}
           ></div>
         </div>
-        <SavingSmall title="Spent" color={theme} sum="10.00" />
-        <SavingSmall
-          title="Remaining"
-          color="#F8F4F0"
-          sum={maximum.toFixed(2)}
-        />
+        <SavingSmall name="Spent" theme={theme} total={total} />
+        <SavingSmall name="Remaining" theme="#F8F4F0" total={remaining} />
       </div>
 
-      <LatestSpeding />
+      <LatestSpeding transactions={transactions} />
     </div>
   );
 }

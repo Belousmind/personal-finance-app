@@ -1,14 +1,14 @@
+"use client";
+import { useAppSelector } from "@/store/hooks";
 import OverviewContainer from "../overview-container";
 import Chart from "@/components/pie-chart";
 import SavingSmall from "../../saving-small";
 
 import styles from "./style.module.scss";
 
-import data from "../../../../data.json";
-
-const { budgets } = data;
-
 export default function OvervieBudgets() {
+  const budgets = useAppSelector((state) => state.budgets);
+
   return (
     <OverviewContainer title="Budgets" href="/budgets">
       <div className={styles.budgetsOverview}>
@@ -17,9 +17,8 @@ export default function OvervieBudgets() {
           {budgets.map((budget) => (
             <SavingSmall
               key={budget.category}
-              color={budget.theme}
-              title={budget.category}
-              sum={budget.maximum.toFixed(2)}
+              name={budget.category}
+              {...budget}
             />
           ))}
         </div>

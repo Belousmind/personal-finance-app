@@ -1,20 +1,20 @@
 "use client";
 import { useRef, useEffect } from "react";
+import { useAppSelector } from "@/store/hooks";
 import styles from "./style.module.scss";
-import data from "../../../data.json";
-
-const { budgets } = data;
-
-const chartData = budgets.map((item) => ({
-  value: item.maximum,
-  color: item.theme,
-}));
 
 const width = 240;
 const height = 240;
 
 function PieChart() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const budgets = useAppSelector((state) => state.budgets);
+
+  const chartData = budgets.map((item) => ({
+    value: item.total,
+    color: item.theme,
+  }));
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -65,18 +65,23 @@ function PieChart() {
     );
     ctx.fillStyle = "white";
     ctx.fill();
-  }, [data, width, height]);
+  }, [budgets, width, height]);
 
   return <canvas ref={canvasRef} width={width} height={height} />;
 }
 
 export default function Chart() {
+  const budgets = useAppSelector((state) => state.budgets);
+
+  const limit = budgets.reduce((acc, b) => acc + b.maximum, 0);
+  const spend = budgets.reduce((acc, b) => acc + b.total, 0);
+
   return (
     <div className={styles.chart}>
       <PieChart />
-      <div className={styles["chart-info"]}>
-        <span>$338</span>
-        <span className={styles.limit}>of $975 limit</span>
+      <div className={styles.chartInfo}>
+        <span>${Math.abs(spend).toFixed(0)}</span>
+        <span className={styles.limit}>of ${limit.toFixed(0)} limit</span>
       </div>
     </div>
   );

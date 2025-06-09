@@ -49,10 +49,13 @@ function Pot({ name, theme, total, target }: PotProps) {
         <div className={styles.potBar}>
           <div
             className={styles.potBarPrecent}
-            style={{ backgroundColor: theme, width: precent }}
+            style={{
+              backgroundColor: theme,
+              width: `${Math.min(precent, 100)}%`,
+            }}
           ></div>
         </div>
-        <span className={styles.potPrecent}>{precent}</span>
+        <span className={styles.potPrecent}>{precent.toFixed(1)}%</span>
         <span className={styles.potTarget}>Target of {formatUSD(target)}</span>
       </div>
 

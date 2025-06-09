@@ -4,14 +4,15 @@ type SpendingItemProps = {
   theme: string;
   category: string;
   maximum: number;
-  // пока что необязательный, но будет нужен 
-  amount?: string;
+
+  total: number;
 };
 
 export default function SpendingItem({
   theme,
   category,
   maximum,
+  total,
 }: SpendingItemProps) {
   return (
     <div className={styles.spending}>
@@ -20,7 +21,9 @@ export default function SpendingItem({
         style={{ backgroundColor: theme }}
       ></div>
       <span className={styles.spendingTitle}>{category}</span>
-      <span className={styles.spendingAmount}>${20.0}</span>
+      <span className={styles.spendingAmount}>
+        ${Math.abs(total).toFixed(2)}
+      </span>
       <span className={styles.spendingMaximum}>of ${maximum.toFixed(2)}</span>
     </div>
   );

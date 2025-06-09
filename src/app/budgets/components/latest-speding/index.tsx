@@ -1,15 +1,19 @@
 import TertiatyLink from "@/components/tertiaty-link";
-
 import formattedDate from "@/utils/format-date";
-
 import styles from "./style.module.scss";
-import clsx from "clsx";
 
-import data from "../../../../../data.json";
+type Transaction = {
+  avatar: string;
+  name: string;
+  amount: number;
+  date: string;
+};
 
-const { transactions } = data;
+type LatestSpendingProps = {
+  transactions: Transaction[];
+};
 
-export default function LatestSpeding() {
+export default function LatestSpeding({ transactions }: LatestSpendingProps) {
   return (
     <div className={styles.latestSpeding}>
       <span className={styles.title}>Latest Spending</span>
@@ -17,13 +21,7 @@ export default function LatestSpeding() {
       <div className={styles.list}>
         {transactions.map((transaction, index) =>
           index < 3 ? (
-            <LatestSpedingTransaction
-              key={transaction.name}
-              imgSrc={transaction.avatar}
-              title={transaction.name}
-              date={transaction.date}
-              amount={transaction.amount}
-            />
+            <LatestSpedingTransaction key={transaction.date} {...transaction} />
           ) : null
         )}
       </div>
@@ -31,31 +29,13 @@ export default function LatestSpeding() {
   );
 }
 
-type LatestSpedingTransactionProps = {
-  imgSrc: string;
-  title: string;
-  amount: number;
-  date: string;
-};
-
-function LatestSpedingTransaction({
-  imgSrc,
-  title,
-  amount,
-  date,
-}: LatestSpedingTransactionProps) {
+function LatestSpedingTransaction({ avatar, name, amount, date }: Transaction) {
   return (
     <div className={styles.transaction}>
-      <img src={imgSrc} alt={title} className={styles.transactionImage} />
-      <span className={styles.transactionName}>{title}</span>
-      <span
-        className={clsx(styles.transactionAmount, {
-          [styles.positive]: Number(amount) > 0,
-        })}
-      >
-        {Number(amount) > 0
-          ? `+$${Number(amount).toFixed(2)}`
-          : `-$${Math.abs(Number(amount)).toFixed(2)}`}
+      <img src={avatar} alt={name} className={styles.transactionImage} />
+      <span className={styles.transactionName}>{name}</span>
+      <span className={styles.transactionAmount}>
+        {`-$${Math.abs(Number(amount)).toFixed(2)}`}
       </span>
       <span className={styles.transactionDate}>{formattedDate(date)}</span>
     </div>

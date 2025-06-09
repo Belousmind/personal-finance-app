@@ -11,9 +11,7 @@ export default function SavingSmall({ theme, name, total }: SavingSmallProps) {
     <div className={styles.potCard}>
       <div className={styles.potColor} style={{ backgroundColor: theme }} />
       <span className={styles.potLabel}>{name}</span>
-      <span className={styles.potValue}>
-        ${typeof total === "number" ? total.toFixed(2) : "0.00"}
-      </span>
+      <span className={styles.potValue}>${Math.abs(total).toFixed(2)}</span>
     </div>
   );
 }
