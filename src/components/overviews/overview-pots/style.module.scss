@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.total-saved {
+.potsTotalSaved {
   border-radius: $spacing-150;
   background: $beige-100;
   padding: $spacing-200;
@@ -28,7 +28,7 @@
   }
 }
 
-.sum {
+.savedSum {
   @include text-preset-1;
   color: $grey-900;
 }

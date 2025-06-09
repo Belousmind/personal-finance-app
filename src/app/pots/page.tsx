@@ -12,7 +12,6 @@ import { formatUSD } from "@/utils/format-сurrency";
 import styles from "./style.module.scss";
 
 import data from "../../../data.json";
-import { Span } from "next/dist/trace";
 
 const { pots } = data;
 
@@ -21,13 +20,7 @@ export default function Page() {
     <MainContent text="Pots">
       <div className={styles.potsContainer}>
         {pots.map((pot) => (
-          <Pot
-            key={pot.name}
-            title={pot.name}
-            theme={pot.theme}
-            amount={pot.total}
-            target={pot.target}
-          />
+          <Pot key={pot.name} {...pot} />
         ))}
       </div>
     </MainContent>
@@ -35,24 +28,24 @@ export default function Page() {
 }
 
 type PotProps = {
-  title: string;
+  name: string;
   theme: string;
-  amount: number;
+  total: number;
   target: number;
 };
 
-function Pot({ title, theme, amount, target }: PotProps) {
+function Pot({ name, theme, total, target }: PotProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const precent = getPercentage(amount, target);
+  const precent = getPercentage(total, target);
 
   return (
     <div className={styles.pot}>
-      <ColorTitle title={title} color={theme} />
+      <ColorTitle title={name} color={theme} />
 
       <div className={styles.potChart}>
         <span className={styles.potTotal}>Total Saved</span>
-        <span className={styles.potAmount}>${amount.toFixed()}</span>
+        <span className={styles.potAmount}>${total.toFixed()}</span>
         <div className={styles.potBar}>
           <div
             className={styles.potBarPrecent}
@@ -74,9 +67,9 @@ function Pot({ title, theme, amount, target }: PotProps) {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         title="Add New Pot"
-      >{
-        <span></span>
-      }</Modal>
+      >
+        {<span></span>}
+      </Modal>
     </div>
   );
 }
