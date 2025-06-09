@@ -12,3 +12,16 @@ export default function formattedDate(isoDate: string) {
   });
   return formatted;
 }
+
+export function formatMonthlyLabel(isoDate: string): string {
+  const date = new Date(isoDate);
+  if (isNaN(date.getTime())) return "";
+
+  const day = date.getDate();
+
+  const suffixes = ["th", "st", "nd", "rd"];
+  const v = day % 100;
+  const suffix = suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0];
+
+  return `Monthly - ${day}${suffix}`;
+}

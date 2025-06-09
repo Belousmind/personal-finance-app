@@ -1,0 +1,7 @@
+@use "../../../../styles/variables" as *;
+@use "../../../../styles/mixins" as *;
+
+.billsSection {
+  @include flex-column;
+  gap: $spacing-200;
+}

@@ -1,0 +1,94 @@
+@use "../../../../styles/variables" as *;
+@use "../../../../styles/mixins" as *;
+
+.billsList {
+  @include flex-column;
+  @include white-background;
+  padding: clamp($spacing-250, 4.17vw, $spacing-400);
+}
+
+.searchPanel {
+  margin-bottom: $spacing-300;
+}
+
+.billTableHeader {
+  display: none;
+
+  @media screen and (min-width: 600px) {
+    @include text-preset-5;
+    color: $grey-500;
+    text-transform: capitalize;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: $spacing-400;
+    padding: $spacing-150 0;
+    border-bottom: 1px solid $grey-100;
+    margin-bottom: $spacing-300;
+  }
+}
+
+.headerAmount {
+  justify-self: flex-end;
+}
+
+.billItem {
+  @include text-preset-4-bold;
+  color: $grey-900;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+
+  @media screen and (min-width: 600px) {
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    column-gap: $spacing-400;
+  }
+
+  margin-top: $spacing-200;
+  padding-bottom: $spacing-200;
+  border-bottom: 1px solid $grey-100;
+}
+
+.billItem:first-child {
+  margin-top: 0;
+}
+
+.billItem:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.iconAndTitle {
+  @include flex-align-center;
+  gap: $spacing-200;
+
+  grid-row: 1;
+  grid-column: span 2;
+
+  @media screen and (min-width: 600px) {
+    grid-column: 1;
+  }
+}
+
+.billIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.billDueDate {
+  @include flex-align-center;
+  @include text-preset-5;
+  gap: $spacing-100;
+  color: $green;
+}
+
+.billAmount {
+  justify-self: flex-end;
+}
+
+.dueSoon {
+  color: $red;
+}
