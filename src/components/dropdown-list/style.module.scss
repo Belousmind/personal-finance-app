@@ -1,0 +1,48 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.listboxButton {
+  @include flex-align-center;
+  justify-content: space-between;
+  gap: $spacing-200;
+  @include text-preset-4;
+  color: $grey-900;
+  border: 1px solid $beige-500;
+  background-color: $white;
+  border-radius: $spacing-100;
+  padding: $spacing-150 $spacing-250;
+  --button-width: 100%;
+  outline: none;
+  @include transition-base;
+}
+
+.listboxOptions {
+  width: var(--button-width);
+  outline: none;
+  background-color: $white;
+  border-radius: $spacing-100;
+  padding: $spacing-150 $spacing-250;
+  margin-top: $spacing-100;
+ 
+}
+
+.listboxOption {
+  @include text-preset-4;
+  color: $grey-900;
+  cursor: pointer;
+  padding: $spacing-150 0;
+  border-bottom: 1px solid $grey-100;
+}
+
+.listboxOption:first-child {
+  padding-top: 0;
+}
+
+.listboxOption:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.selected {
+  font-weight: 700;
+}
