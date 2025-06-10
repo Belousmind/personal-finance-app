@@ -1,27 +1,24 @@
+"use client";
 import styles from "./styles.module.scss";
 
-// `${count} ($${formatted})`;
+import { useSelector } from "react-redux";
+import { selectRecurringSummary } from "@/store/recurringBills/selectors";
 
 export default function Summary() {
+  
+  const summary = useSelector(selectRecurringSummary);
 
   return (
     <div className={styles.summaryWrapper}>
       <span className={styles.summaryTitle}>Summary</span>
-
-      <span className={styles.summaryItem}>
-        Paid Bills
-        {/* <span className={styles.itemSum}>{paidBillsText}</span> */}
-      </span>
-
-      <span className={styles.summaryItem}>
-        Total Upcoming
-        {/* <span className={styles.itemSum}>{upcomingText}</span> */}
-      </span>
-
-      <span className={styles.summaryItem}>
-        Due Soon
-        {/* <span className={styles.itemSum}>{dueSoonText}</span> */}
-      </span>
+      {summary.map((item) => (
+        <span key={item.label} className={styles.summaryItem}>
+          {item.label}
+          <span className={styles.itemSum}>
+            {item.amount} (${Math.abs(item.sum).toFixed(2)})
+          </span>
+        </span>
+      ))}
     </div>
   );
 }

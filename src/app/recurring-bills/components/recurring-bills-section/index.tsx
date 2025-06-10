@@ -7,7 +7,7 @@ import styles from './style.module.scss'
 export default function RecurringBillsSection() {
   return (
     <section className={styles.billsSection}>
-      <TotallBills total={384.98} />
+      <TotallBills />
       <Summary />
       <BillsList />
     </section>

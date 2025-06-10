@@ -1,13 +1,17 @@
+"use client";
+
 import styles from "./styles.module.scss";
 import clsx from "clsx";
-
+import { useAppSelector } from "@/store/hooks";
 import InputField from "@/components/fileds/input-field";
-
-import { recurringBillsWithStatus } from "@/lib/transactions";
-
 import { formatMonthlyLabel } from "@/utils/format-date";
 
 export default function BillsList() {
+  
+  const recurringBillsWithStatus = useAppSelector(
+    (state) => state.recurringBills.transactions
+  );
+
   return (
     <div className={styles.billsList}>
       <BillsSearchPanel />
@@ -69,8 +73,8 @@ function BillItem({
         })}
       >
         {formatMonthlyLabel(date)}
-        {soon && <SvgRed />}
-        {paid && <SvgGreen />}
+        {soon && <IconAlert />}
+        {paid && <IconSuccess />}
       </span>
       <span
         className={clsx(styles.billAmount, {
@@ -83,7 +87,7 @@ function BillItem({
   );
 }
 
-function SvgRed() {
+function IconAlert() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +104,7 @@ function SvgRed() {
   );
 }
 
-function SvgGreen() {
+function IconSuccess() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

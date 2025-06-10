@@ -2,6 +2,9 @@ import { AppDispatch } from "./store";
 import { setBalance } from "./balance/balanceSlice";
 import { setPots } from "./pots/potsSlice";
 import { setBudgets } from "./budgets/budgetsSlice";
+import { setRecurringBills } from "./recurringBills/recurringBillsSlice";
+
+import { isRecurring, getStatus } from "@/lib/transactions";
 
 import data from "../../data.json";
 
@@ -14,4 +17,10 @@ export const initApp = () => (dispatch: AppDispatch) => {
       transactions: data.transactions,
     })
   );
+
+  if (typeof window !== "undefined") {
+    const recurring = isRecurring(data.transactions);
+    const status = getStatus(new Date(), recurring);
+    dispatch(setRecurringBills(status));
+  }
 };

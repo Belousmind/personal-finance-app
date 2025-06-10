@@ -1,8 +1,4 @@
-import data from "../../data.json";
-
-const { transactions } = data;
-
-type Transaction = {
+export type Transaction = {
   avatar: string;
   name: string;
   category: string;
@@ -11,18 +7,15 @@ type Transaction = {
   recurring: boolean;
 };
 
-// нужно посчитать количество каждого типа транзакции и их суммы
-// создать фильтры и поиск 
-
 type Summary = {
   paid: boolean;
   upcoming: boolean;
   soon: boolean;
 };
 
-type TransactionWithSummary = Transaction & Summary;
+export type TransactionWithSummary = Transaction & Summary;
 
-function isRecurring(arr: Transaction[]) {
+export function isRecurring(arr: Transaction[]) {
   const recurringTransactions: Transaction[] = [];
 
   const name = new Set<string>();
@@ -37,10 +30,8 @@ function isRecurring(arr: Transaction[]) {
   return recurringTransactions;
 }
 
-export const recurringTransactions = isRecurring(transactions);
-
-export function getStatus(arr: Transaction[]): TransactionWithSummary[] {
-  const date = new Date();
+export function getStatus(date: Date, arr: Transaction[]): TransactionWithSummary[] {
+  
   const today = date.getDate();
 
   return arr.map((transaction) => {
@@ -68,5 +59,3 @@ export function getStatus(arr: Transaction[]): TransactionWithSummary[] {
     };
   });
 }
-
-export const recurringBillsWithStatus = getStatus(recurringTransactions);
