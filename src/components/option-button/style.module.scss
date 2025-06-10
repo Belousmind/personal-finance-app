@@ -1,0 +1,40 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: $grey-300;
+  cursor: pointer;
+}
+
+.optionsList {
+  @include flex-column;
+  outline: none;
+
+  padding: $spacing-150 $spacing-250;
+  background-color: $white;
+  border-radius: $spacing-100;
+  color: $grey-900;
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.25);
+}
+
+.optionButton {
+  @include text-preset-4;
+  border: none;
+  outline: none;
+  text-align: left;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.optionButton:first-child {
+  padding-bottom: $spacing-150;
+  border-bottom: 1px solid $grey-100;
+}
+
+.optionButton:last-child {
+  padding-top: $spacing-150;
+  color: $red;
+}
