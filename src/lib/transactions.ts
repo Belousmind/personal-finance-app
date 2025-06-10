@@ -1,7 +1,5 @@
 import data from "../../data.json";
 
-
-
 const { transactions } = data;
 
 type Transaction = {
