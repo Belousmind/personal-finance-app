@@ -18,11 +18,12 @@ const { pots } = data;
 export default function Page() {
   return (
     <MainContent text="Pots">
-      <div className={styles.potsContainer}>
+      <Button text="+ Add New Pot" />
+      <section className={styles.potsContainer}>
         {pots.map((pot) => (
           <Pot key={pot.name} {...pot} />
         ))}
-      </div>
+      </section>
     </MainContent>
   );
 }

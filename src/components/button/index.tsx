@@ -2,7 +2,7 @@ import styles from "./style.module.scss";
 
 type ButtonProps = {
   text: string;
-  variant: "primary" | "secondary" | "destroy";
+  variant?: "primary" | "secondary" | "destroy";
   onClick?: () => void;
 };
 
