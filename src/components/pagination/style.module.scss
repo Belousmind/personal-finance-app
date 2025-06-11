@@ -16,6 +16,10 @@
 .arrow-button {
   @include pagination-button;
 
+  span {
+    display: none;
+  }
+
   svg {
     transition: 0.2s ease-out;
     color: $grey-500;
@@ -28,6 +32,12 @@
       svg {
         color: $white;
       }
+    }
+  }
+
+  @media screen and (min-width: 500px) {
+    span {
+      display: inline;
     }
   }
 }
