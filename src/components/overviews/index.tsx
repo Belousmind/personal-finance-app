@@ -6,14 +6,26 @@ import OvervieBudgets from "./overvie-budgets";
 import OvervieTransactions from "./overvie-transactions";
 import OvervieRecurringBills from "./overvie-recurring-bills";
 
-export default function Overviews() {
+export default function OverviewSection() {
+  return (
+    <section className={styles.overviewSection}>
+      <BalanceSummary />
+      <Overviews />
+    </section>
+  );
+}
+
+function Overviews() {
   return (
     <section className={styles.overview}>
-      <BalanceSummary />
-      <OverviewPots />
-      <OvervieBudgets />
-      <OvervieTransactions />
-      <OvervieRecurringBills />
+      <div className={styles.leftColumn}>
+        <OverviewPots />
+        <OvervieTransactions />
+      </div>
+      <div className={styles.rightColumn}>
+        <OvervieBudgets />
+        <OvervieRecurringBills />
+      </div>
     </section>
   );
 }

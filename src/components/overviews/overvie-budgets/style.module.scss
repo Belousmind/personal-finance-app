@@ -3,7 +3,10 @@
 
 .budgetsOverview {
   @include flex-align-center;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $spacing-200;
+
   margin: $spacing-100 0;
   width: 100%;
 }

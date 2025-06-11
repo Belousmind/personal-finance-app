@@ -1,7 +1,30 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
+.overviewSection {
+  @include flex-column;
+  gap: $spacing-400;
+}
+
 .overview {
   @include flex-column;
-  gap: $spacing-150;
+  gap: clamp($spacing-200, 3.125vw, $spacing-300);
+
+  @media screen and (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: minmax(56%, auto) minmax(40%, auto);
+  }
+}
+
+.leftColumn {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap: clamp($spacing-200, 3.125vw, $spacing-300);
+}
+
+.rightColumn {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp($spacing-200, 3.125vw, $spacing-300);
 }

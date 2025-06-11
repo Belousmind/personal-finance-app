@@ -3,7 +3,10 @@
 
 .potsOverview {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: $spacing-250;
   width: 100%;
 }
 
