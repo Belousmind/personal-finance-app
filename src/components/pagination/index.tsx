@@ -2,17 +2,42 @@ import PaginationArrowButton from "./pagination-arrow-button";
 import PaginationButton from "./pagination-button";
 import styles from "./style.module.scss";
 
-export default function Pagination() {
+type PaginationProps = {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+};
+
+export default function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: PaginationProps) {
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
   return (
     <div className={styles.pagination}>
-      <PaginationArrowButton direction="prev" />
+      <PaginationArrowButton
+        direction="prev"
+        disabled={currentPage === 1}
+        onClick={() => onPageChange(currentPage - 1)}
+      />
       <div className={styles["pagination-list"]}>
-        <PaginationButton text="1" />
-        <PaginationButton text="2" />
-        <PaginationButton text="3" />
+        {pages.map((page) => (
+          <PaginationButton
+            key={page}
+            text={String(page)}
+            isActive={page === currentPage}
+            onClick={() => onPageChange(page)}
+          />
+        ))}
       </div>
 
-      <PaginationArrowButton direction="next" />
+      <PaginationArrowButton
+        direction="next"
+        disabled={currentPage === totalPages}
+        onClick={() => onPageChange(currentPage + 1)}
+      />
     </div>
   );
 }

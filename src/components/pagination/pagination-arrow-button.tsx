@@ -8,12 +8,17 @@ type PaginationArrowButtonProps = {
 
 export default function PaginationArrowButton({
   direction,
-  disabled = false,
+  onClick,
+  disabled,
 }: PaginationArrowButtonProps) {
   const isPrev = direction === "prev";
 
   return (
-    <button className={styles['arrow-button']}>
+    <button
+      className={styles["arrow-button"]}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {isPrev && <ArrowLeftIcon />}
       <span>{isPrev ? "Prev" : "Next"}</span>
       {!isPrev && <ArrowRightIcon />}

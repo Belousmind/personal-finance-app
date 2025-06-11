@@ -7,6 +7,8 @@ type InputFieldProps = {
   helpText?: string;
   withPrefix?: boolean;
   withIcon?: boolean;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function InputField({
@@ -16,6 +18,8 @@ export default function InputField({
   helpText = "",
   withIcon = false,
   withPrefix = false,
+  value,
+  onChange,
 }: InputFieldProps) {
   return (
     <div className={styles["input-field"]}>
@@ -26,7 +30,13 @@ export default function InputField({
       )}
       <div className={styles["input-wrapper"]}>
         {withPrefix && <span className={styles.prefix}>$</span>}
-        <input type={type} className={styles.input} placeholder={placeholder} />
+        <input
+          type={type}
+          className={styles.input}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
         {withIcon && <SerachIcon />}
       </div>
       {helpText && <span>{helpText}</span>}

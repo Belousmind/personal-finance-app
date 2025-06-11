@@ -1,4 +1,4 @@
-export type Transaction = {
+export type TransactionType = {
   avatar: string;
   name: string;
   category: string;
@@ -13,10 +13,10 @@ type Summary = {
   soon: boolean;
 };
 
-export type TransactionWithSummary = Transaction & Summary;
+export type TransactionWithSummary = TransactionType & Summary;
 
-export function isRecurring(arr: Transaction[]) {
-  const recurringTransactions: Transaction[] = [];
+export function isRecurring(arr: TransactionType[]) {
+  const recurringTransactions: TransactionType[] = [];
 
   const name = new Set<string>();
 
@@ -30,7 +30,7 @@ export function isRecurring(arr: Transaction[]) {
   return recurringTransactions;
 }
 
-export function getStatus(date: Date, arr: Transaction[]): TransactionWithSummary[] {
+export function getStatus(date: Date, arr: TransactionType[]): TransactionWithSummary[] {
   
   const today = date.getDate();
 

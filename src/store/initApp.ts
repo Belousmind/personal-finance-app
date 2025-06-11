@@ -3,6 +3,7 @@ import { setBalance } from "./balance/balanceSlice";
 import { setPots } from "./pots/potsSlice";
 import { setBudgets } from "./budgets/budgetsSlice";
 import { setRecurringBills } from "./recurringBills/recurringBillsSlice";
+import { setTransactons } from "./transactions/transactionsSlice";
 
 import { isRecurring, getStatus } from "@/lib/transactions";
 
@@ -17,6 +18,7 @@ export const initApp = () => (dispatch: AppDispatch) => {
       transactions: data.transactions,
     })
   );
+  dispatch(setTransactons(data.transactions));
 
   if (typeof window !== "undefined") {
     const recurring = isRecurring(data.transactions);

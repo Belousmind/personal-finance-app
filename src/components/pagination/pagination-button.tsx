@@ -1,18 +1,18 @@
 import styles from "./style.module.scss";
 import { clsx } from "clsx";
 
-type PaginationButtonProps = {
+type Props = {
   text: string;
+  onClick: () => void;
   isActive?: boolean;
-  onClick?: () => void;
 };
 
-export default function PaginationButton({
-  text,
-  isActive = false,
-}: PaginationButtonProps) {
+export default function PaginationButton({ text, onClick, isActive }: Props) {
   return (
-    <button className={clsx(styles.button, isActive && styles.active)}>
+    <button
+      className={clsx(styles.button, isActive && styles.active)}
+      onClick={onClick}
+    >
       {text}
     </button>
   );

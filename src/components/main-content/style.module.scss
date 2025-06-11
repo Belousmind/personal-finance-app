@@ -9,7 +9,9 @@
 }
 
 .main {
+  min-height: 100dvh;
   display: grid;
+  grid-template-rows: auto 1fr;
   grid-template-columns: 1fr auto;
   width: 100%;
   gap: $spacing-400;
