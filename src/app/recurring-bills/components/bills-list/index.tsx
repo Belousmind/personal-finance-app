@@ -2,32 +2,34 @@
 
 import styles from "./styles.module.scss";
 import clsx from "clsx";
-import { useAppSelector } from "@/store/hooks";
-import InputField from "@/components/fileds/input-field";
+
 import { formatMonthlyLabel } from "@/utils/format-date";
 
+import useReccuringBills from "./useRecurringBills";
+import FiltersPanel from "@/components/filters-panel";
+
 export default function BillsList() {
-  
-  const recurringBillsWithStatus = useAppSelector(
-    (state) => state.recurringBills.transactions
-  );
+  const {
+    searchQuery,
+    selectedSort,
+    setSearchQuery,
+    setSelectedSort,
+    filteredTransactions,
+  } = useReccuringBills();
 
   return (
     <div className={styles.billsList}>
-      <BillsSearchPanel />
+      <FiltersPanel
+        searchQuery={searchQuery}
+        selectedSort={selectedSort}
+        onSearchChange={setSearchQuery}
+        onSortChange={setSelectedSort}
+      />
       <BillTableTitle />
 
-      {recurringBillsWithStatus.map((transaction) => (
+      {filteredTransactions.map((transaction) => (
         <BillItem key={transaction.date} {...transaction} />
       ))}
-    </div>
-  );
-}
-
-function BillsSearchPanel() {
-  return (
-    <div className={styles.searchPanel}>
-      <InputField placeholder="Search bills" withIcon={true} />
     </div>
   );
 }
