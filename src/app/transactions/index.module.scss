@@ -9,10 +9,26 @@
 }
 
 .TableHeader {
-  display: flex;
-  align-items: center;
-  gap: $spacing-400;
-  @include text-preset-5;
-  color: $grey-500;
-  padding: $spacing-200;
+  display: none;
+
+  @media screen and (min-width: 680px) {
+    display: flex;
+    align-items: center;
+    gap: $spacing-400;
+    @include text-preset-5;
+    color: $grey-500;
+    padding: $spacing-200;
+  }
+}
+
+.serachPanel {
+  @include flex-align-center;
+  justify-content: space-between;
+  gap: $spacing-300;
+}
+
+.filtres {
+  @include flex-align-center;
+  justify-content: space-between;
+  gap: $spacing-300;
 }

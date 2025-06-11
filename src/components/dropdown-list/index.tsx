@@ -10,26 +10,8 @@ import { useState } from "react";
 import clsx from "clsx";
 import styles from "./style.module.scss";
 
-type ListProps = {
-  label: string;
-  value: string;
-};
 
-const categoriesList = [
-  { label: "All Transactions", value: "all" },
-  { label: "Entertainment", value: "entertainment" },
-  { label: "Bills", value: "bills" },
-  { label: "Groceries", value: "groceries" },
-  { label: "Dining Out", value: "dining-out" },
-  { label: "Transportation", value: "transportation" },
-  { label: "Personal Care", value: "personal-care" },
-  { label: "Education", value: "education" },
-  { label: "Lifestyle", value: "lifestyle" },
-  { label: "Shopping", value: "shopping" },
-  { label: "General", value: "general" },
-];
-
-const valuesList = [
+const colorsList = [
   { label: "Green", value: "#277c78" },
   { label: "Yellow", value: "#f2cdac" },
   { label: "Cyan", value: "#82c9d7" },
@@ -46,54 +28,57 @@ const valuesList = [
   { label: "Orange", value: "#be6c49" },
 ];
 
-const sortingList = [
-  { label: "Latest", value: "latest" },
-  { label: "Oldest", value: "oldest" },
-  { label: "A to Z", value: "a-z" },
-  { label: "Z to A", value: "z-a" },
-  { label: "Highest", value: "highest" },
-  { label: "Lowest", value: "lowest" },
-];
 
-export default function DropDownList() {
-  const [selectedItem, setSelectedItem] = useState(sortingList[0]);
+type DropDownListProps = {
+  label: string;
+  list: {label: string, value: string}[];
+  iconSrc: string;
+};
+
+export function DropDownList({ label, list, iconSrc }: DropDownListProps) {
+  const [selectedItem, setSelectedItem] = useState(list[0]);
 
   return (
-    <Listbox value={selectedItem} onChange={setSelectedItem}>
-      <ListboxButton className={styles.listboxButton}>
-        {selectedItem.label} <TSvg />
-      </ListboxButton>
-      <ListboxOptions className={styles.listboxOptions} anchor="bottom">
-        {sortingList.map((item) => (
-          <ListboxOption
-            key={item.label}
-            value={item}
-            className={clsx(
-              styles.listboxOption,
-              selectedItem.label === item.label && styles.selected
-            )}
-          >
-            {item.label}
-          </ListboxOption>
-        ))}
-      </ListboxOptions>
-    </Listbox>
-  );
-}
-
-function TSvg() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="17"
-      viewBox="0 0 16 17"
-      fill="none"
-    >
-      <path
-        d="M13.3538 6.85375L8.35378 11.8538C8.30734 11.9002 8.2522 11.9371 8.1915 11.9623C8.1308 11.9874 8.06574 12.0004 8.00003 12.0004C7.93432 12.0004 7.86926 11.9874 7.80856 11.9623C7.74786 11.9371 7.69271 11.9002 7.64628 11.8538L2.64628 6.85375C2.57627 6.78382 2.52859 6.6947 2.50926 6.59765C2.48994 6.50061 2.49984 6.40002 2.53772 6.3086C2.57559 6.21719 2.63974 6.13908 2.72204 6.08414C2.80433 6.0292 2.90108 5.99992 3.00003 6L13 6C13.099 5.99992 13.1957 6.0292 13.278 6.08414C13.3603 6.13908 13.4245 6.21719 13.4623 6.3086C13.5002 6.40002 13.5101 6.50061 13.4908 6.59765C13.4715 6.6947 13.4238 6.78382 13.3538 6.85375Z"
-        fill="#201F24"
-      />
-    </svg>
+    <div className={styles.dropDown}>
+      <span className={styles.label}>{label}</span>
+      <Listbox value={selectedItem} onChange={setSelectedItem}>
+        <ListboxButton className={styles.listboxButton}>
+          <span>
+            {selectedItem.label}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="17"
+              viewBox="0 0 16 17"
+              fill="none"
+            >
+              <path
+                d="M13.3537 6.85375L8.35366 11.8538C8.30722 11.9002 8.25207 11.9371 8.19138 11.9623C8.13068 11.9874 8.06561 12.0004 7.99991 12.0004C7.9342 12.0004 7.86913 11.9874 7.80844 11.9623C7.74774 11.9371 7.69259 11.9002 7.64616 11.8538L2.64616 6.85375C2.57615 6.78382 2.52847 6.6947 2.50914 6.59765C2.48982 6.50061 2.49972 6.40002 2.53759 6.3086C2.57547 6.21719 2.63962 6.13908 2.72191 6.08414C2.80421 6.0292 2.90096 5.99992 2.99991 6L12.9999 6C13.0989 5.99992 13.1956 6.0292 13.2779 6.08414C13.3602 6.13908 13.4243 6.21719 13.4622 6.3086C13.5001 6.40002 13.51 6.50061 13.4907 6.59765C13.4713 6.6947 13.4237 6.78382 13.3537 6.85375Z"
+                fill="#201F24"
+              />
+            </svg>
+          </span>
+          <img src={iconSrc} alt="" />
+        </ListboxButton>
+        <ListboxOptions
+          modal={false}
+          className={styles.listboxOptions}
+          anchor="bottom"
+        >
+          {list.map((item) => (
+            <ListboxOption
+              key={item.label}
+              value={item}
+              className={clsx(
+                styles.listboxOption,
+                selectedItem.label === item.label && styles.selected
+              )}
+            >
+              {item.label}
+            </ListboxOption>
+          ))}
+        </ListboxOptions>
+      </Listbox>
+    </div>
   );
 }

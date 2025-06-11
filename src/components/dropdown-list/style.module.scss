@@ -5,25 +5,54 @@
   @include flex-align-center;
   justify-content: space-between;
   gap: $spacing-200;
-  @include text-preset-4;
-  color: $grey-900;
-  border: 1px solid $beige-500;
-  background-color: $white;
+
+  border: none;
   border-radius: $spacing-100;
-  padding: $spacing-150 $spacing-250;
-  --button-width: 100%;
+
+  background-color: $white;
+
+  // --button-width: 100%;
   outline: none;
+
   @include transition-base;
+
+  span {
+    display: none;
+  }
+
+  img {
+    width: $spacing-250;
+    height: $spacing-250;
+  }
+
+  @media screen and (min-width: 680px) {
+    // clamp($spacing-150, 2.94vw, $spacing-250)
+    padding: $spacing-150 $spacing-250;
+    border: 1px solid $beige-500;
+
+    img {
+      display: none;
+    }
+
+    span {
+      display: inline-block;
+      @include text-preset-4;
+      color: $grey-900;
+      @include flex-align-center;
+      gap: $spacing-200;
+    }
+  }
 }
 
 .listboxOptions {
-  width: var(--button-width);
+  // width: var(--button-width);
   outline: none;
   background-color: $white;
   border-radius: $spacing-100;
   padding: $spacing-150 $spacing-250;
   margin-top: $spacing-100;
- 
+
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.25);
 }
 
 .listboxOption {
@@ -45,4 +74,19 @@
 
 .selected {
   font-weight: 700;
+}
+
+.dropDown {
+  @include flex-align-center;
+  gap: $spacing-100;
+}
+
+.label {
+  display: none;
+
+  @media screen and (min-width: 680px) {
+    display: inline-block;
+    @include text-preset-4;
+    color: $grey-500;
+  }
 }
