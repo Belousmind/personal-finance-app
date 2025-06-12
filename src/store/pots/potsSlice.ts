@@ -28,8 +28,12 @@ const potsSlice = createSlice({
         0
       );
     },
+    removePot: (state, action: PayloadAction<string>) => {
+      state.pots = state.pots.filter((pot) => pot.name !== action.payload);
+      state.totalSaved = state.pots.reduce((acc, pot) => acc + pot.total, 0);
+    },
   },
 });
 
-export const { setPots } = potsSlice.actions;
+export const { setPots, removePot } = potsSlice.actions;
 export default potsSlice.reducer;

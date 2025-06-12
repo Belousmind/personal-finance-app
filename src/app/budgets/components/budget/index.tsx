@@ -33,7 +33,7 @@ export default function Budget({
 
   return (
     <div className={styles.budget}>
-      <ColorTitle title={category} color={theme} />
+      <ColorTitle category={category} color={theme} label='budget'/>
 
       <div className={styles.budgetStats}>
         <span className={styles.budgetMaximum}>

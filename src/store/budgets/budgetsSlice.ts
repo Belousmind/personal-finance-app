@@ -52,8 +52,11 @@ const budgetSlice = createSlice({
         };
       });
     },
+    removeBudget: (state, action: PayloadAction<string>) => {
+      return state.filter((budget) => budget.category !== action.payload);
+    },
   },
 });
 
-export const { setBudgets } = budgetSlice.actions;
+export const { setBudgets, removeBudget } = budgetSlice.actions;
 export default budgetSlice.reducer;

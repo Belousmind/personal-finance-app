@@ -1,22 +1,48 @@
+"use client";
+
 import styles from "./style.module.scss";
+import { useState } from "react";
 
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import ModalDeleteConfirmation from "@/components/modal/modal-delete-confirmation";
 
-export default function OptionButton() {
+type Props = {
+  label: string;
+  category: string;
+};
+
+export default function OptionButton({ label, category }: Props) {
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
   return (
-    <Menu >
-      <MenuButton className={styles.button}>
-        <OptionsIcon />
-      </MenuButton>
-      <MenuItems modal={false} anchor="bottom" className={styles.optionsList}>
-        <MenuItem>
-          <button className={styles.optionButton}>Edit Budget</button>
-        </MenuItem>
-        <MenuItem>
-          <button className={styles.optionButton}>Delete Budget</button>
-        </MenuItem>
-      </MenuItems>
-    </Menu>
+    <>
+      <Menu>
+        <MenuButton className={styles.button}>
+          <OptionsIcon />
+        </MenuButton>
+        <MenuItems modal={false} anchor="bottom" className={styles.optionsList}>
+          <MenuItem>
+            <button className={styles.optionButton}>Edit {label}</button>
+          </MenuItem>
+          <MenuItem>
+            <button
+              className={styles.optionButton}
+              onClick={() => {
+                setIsDeleteModalOpen(true);
+              }}
+            >
+              Delete {label}
+            </button>
+          </MenuItem>
+        </MenuItems>
+      </Menu>
+      <ModalDeleteConfirmation
+        label={label}
+        category={category}
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+      />
+    </>
   );
 }
 
