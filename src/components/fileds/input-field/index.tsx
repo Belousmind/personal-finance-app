@@ -7,7 +7,7 @@ type InputFieldProps = {
   helpText?: string;
   withPrefix?: boolean;
   withIcon?: boolean;
-  value?: string;
+  value?: string | number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 

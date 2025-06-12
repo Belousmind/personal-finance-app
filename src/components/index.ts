@@ -7,7 +7,7 @@ export { default as MainContent } from './main-content';
 export { default as Modal } from './modal';
 export { default as Overviews } from './overviews';
 export { default as Pagination } from './pagination';
-export { default as PieChart } from './pie-chart';
+export { default as Chart } from './pie-chart';
 export { default as SavingSmall } from './saving-small';
 export { default as Sidebar } from './sidebar';
 export { default as TertiaryLink } from './tertiaty-link';

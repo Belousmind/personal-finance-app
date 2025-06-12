@@ -56,6 +56,8 @@
 }
 
 .listboxOption {
+  @include flex-align-center;
+  gap: $spacing-150;
   @include text-preset-4;
   color: $grey-900;
   cursor: pointer;
@@ -81,6 +83,16 @@
   gap: $spacing-100;
 }
 
+.vDropDown {
+  @include flex-column;
+  gap: $spacing-50;
+}
+
+.vLabel {
+  @include text-preset-5-bold;
+  color: $grey-500;
+}
+
 .label {
   display: none;
 
@@ -91,7 +103,25 @@
   }
 }
 
+.optionText {
+  @include flex-align-center;
+  justify-content: space-between;
+}
+
 .colorTag {
+  border-radius: 50%;
   width: 16px;
   height: 16px;
+}
+
+.optionStatus {
+  @include text-preset-5;
+}
+
+.used {
+  color: $grey-500;
+
+  .colorTag {
+    opacity: 0.1;
+  }
 }

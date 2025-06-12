@@ -1,3 +1,5 @@
+import { useAppSelector } from "@/store/hooks";
+
 export const categoriesList = [
   { label: "All Transactions", value: "All Transactions" },
   { label: "Entertainment", value: "Entertainment" },
@@ -21,6 +23,28 @@ export const sortingList = [
   { label: "Lowest", value: "lowest" },
 ];
 
+function isOccupiedColor(
+  arr: { theme: string }[],
+  colorsList: { label: string; value: string }[]
+) {
+  return colorsList.map((color) => ({
+    ...color,
+    occupied: arr.some(
+      (item) => item.theme.toLowerCase() === color.value.toLowerCase()
+    ),
+  }));
+}
+
+export function useAvailableColors() {
+  const budgets = useAppSelector((state) => state.budgets);
+  const pots = useAppSelector((state) => state.pots.pots);
+
+  const budgetColors = isOccupiedColor(budgets, colorsList);
+  const potColors = isOccupiedColor(pots, colorsList);
+
+  return { budgetColors, potColors };
+}
+
 export const colorsList = [
   { label: "Green", value: "#277c78" },
   { label: "Yellow", value: "#f2cdac" },
@@ -37,3 +61,4 @@ export const colorsList = [
   { label: "Gold", value: "#cab361" },
   { label: "Orange", value: "#be6c49" },
 ];
+
