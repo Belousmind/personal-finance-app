@@ -1,42 +1,109 @@
 "use client";
-import DropDownList from "@/components/dropdown-list";
-import InputField from "@/components/fileds/input-field";
-import { useAvailableColors } from "@/lib/filters";
 
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { potSchema, PotFormData } from "@/lib/schema/pot-schema";
+
+import InputField from "@/components/fileds/input-field";
+import DropDownList from "@/components/dropdown-list";
 import Button from "@/components/button";
 
-import { useState } from "react";
+import { useAvailableColors } from "@/lib/filters";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { addPot, editPot } from "@/store/pots/potsSlice";
 
-export default function PotForm() {
+type PotFormProps = {
+  initialName?: string;
+  mode?: "create" | "edit";
+  onClose: () => void;
+};
+
+export default function PotForm({
+  initialName,
+  mode = "create",
+  onClose,
+}: PotFormProps) {
+  const dispatch = useAppDispatch();
   const { budgetColors } = useAvailableColors();
+  const pots = useAppSelector((state) => state.pots.pots);
 
-  const [selectedBudgetColor, setSelectedBudgetColor] = useState<{
-    label: string;
-    value: string;
-    occupied?: boolean;
-  }>(budgetColors[0]);
+  const editingPot = pots.find((p) => p.name === initialName);
+
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<PotFormData>({
+    resolver: zodResolver(potSchema),
+    defaultValues: {
+      name: editingPot?.name || "",
+      target: editingPot?.target || 0,
+      theme: editingPot?.theme || budgetColors[0]?.value || "",
+    },
+  });
+
+  const onSubmit = (data: PotFormData) => {
+    if (mode === "edit") {
+      dispatch(editPot(data));
+    } else {
+      dispatch(addPot(data));
+    }
+    onClose();
+    reset();
+  };
 
   return (
-    <>
-      <form action="">
-        <InputField
-          title="Pot Name"
-          placeholder="e.g. Rainy Days"
-          helpText="30 characters left"
-        />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Controller
+        name="name"
+        control={control}
+        render={({ field }) => (
+          <InputField
+            title="Pot Name"
+            placeholder="e.g. Rainy Days"
+            helpText="30 characters left"
+            {...field}
+          />
+        )}
+      />
+      {errors.name && <p>{errors.name.message}</p>}
 
-        <InputField title="Target" type="number" placeholder="e.g. 2000" withPrefix />
+      <Controller
+        name="target"
+        control={control}
+        render={({ field }) => (
+          <InputField
+            title="Target"
+            type="number"
+            placeholder="e.g. 2000"
+            withPrefix
+            {...field}
+          />
+        )}
+      />
+      {errors.target && <p>{errors.target.message}</p>}
 
-        <DropDownList
-          label="Theme"
-          list={budgetColors}
-          selected={selectedBudgetColor}
-          onChange={setSelectedBudgetColor}
-          withColor
-          isForm={true}
-        />
-        <Button text="add Pot"/> 
-      </form>
-    </>
+      <Controller
+        name="theme"
+        control={control}
+        render={({ field }) => (
+          <DropDownList
+            label="Theme"
+            list={budgetColors}
+            selected={
+              budgetColors.find((c) => c.value === field.value) ||
+              budgetColors[0]
+            }
+            onChange={(item) => field.onChange(item.value)}
+            withColor
+            isForm
+          />
+        )}
+      />
+      {errors.theme && <p>{errors.theme.message}</p>}
+
+      <Button text={mode === "edit" ? "Save Changes" : "Add Pot"} />
+    </form>
   );
 }

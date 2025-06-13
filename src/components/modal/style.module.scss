@@ -13,6 +13,13 @@
   place-items: center;
 }
 
+.dialogContainer {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
 .dialogPanel {
   @include flex-column;
   gap: $spacing-250;

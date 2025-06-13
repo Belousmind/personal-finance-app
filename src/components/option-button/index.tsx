@@ -5,7 +5,8 @@ import { useState } from "react";
 
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import ModalDeleteConfirmation from "@/components/modal/modal-delete-confirmation";
-import ModalBudget from "../modal/moda-budget";
+import ModalBudget from "../modal/modal-budget";
+import ModalPot from "@/components/modal/modal-pot";
 
 type Props = {
   label: string;
@@ -45,12 +46,24 @@ export default function OptionButton({ label, category }: Props) {
           </MenuItem>
         </MenuItems>
       </Menu>
-      <ModalBudget
-        initialData={category}
-        mode="edit"
-        isOpen={isEditModalOpen}
-        onClose={() => setIsEditModalOpen(false)}
-      />
+      {label === "pot" && (
+        <ModalPot
+          initialData={category}
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          mode="edit"
+        />
+      )}
+
+      {label === "budget" && (
+        <ModalBudget
+          initialData={category}
+          mode="edit"
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+        />
+      )}
+
       <ModalDeleteConfirmation
         label={label}
         category={category}

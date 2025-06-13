@@ -2,7 +2,7 @@
 
 import SpendingSummary from "../spending-summary";
 import Budget from "../budget";
-import ModalBudget from "@/components/modal/moda-budget";
+import ModalBudget from "@/components/modal/modal-budget";
 import { useState } from "react";
 
 import { useAppSelector } from "@/store/hooks";

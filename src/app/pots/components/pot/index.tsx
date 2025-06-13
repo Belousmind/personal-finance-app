@@ -21,7 +21,7 @@ export default function Pot({ name, theme, total, target }: PotProps) {
 
   return (
     <div className={styles.pot}>
-      <ColorTitle category={name} color={theme} label='pot' />
+      <ColorTitle category={name} color={theme} label="pot" />
 
       <div className={styles.potChart}>
         <span className={styles.potTotal}>Total Saved</span>
