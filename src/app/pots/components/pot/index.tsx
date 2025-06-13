@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ColorTitle, Button, Modal } from "@/components";
 import getPercentage from "@/utils/get-percentage";
 import { formatUSD } from "@/utils/format-сurrency";
+import UpdateBalance from "@/components/modal/modal-update-balance";
 
 import styles from "./style.module.scss";
 
@@ -16,8 +17,20 @@ type PotProps = {
 
 export default function Pot({ name, theme, total, target }: PotProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [mode, setMode] = useState<"add" | "withdraw">("add");
 
   const precent = getPercentage(total, target);
+
+  const handleOpen = (selectedMode: "add" | "withdraw") => {
+    setMode(selectedMode);
+    setIsModalOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const pot = { name, theme, total, target };
 
   return (
     <div className={styles.pot}>
@@ -42,17 +55,20 @@ export default function Pot({ name, theme, total, target }: PotProps) {
       <Button
         text="+ Add Money"
         variant="secondary"
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => handleOpen("add")}
       />
-      <Button text="Withdraw" variant="secondary" />
+      <Button
+        text="Withdraw"
+        variant="secondary"
+        onClick={() => handleOpen("withdraw")}
+      />
 
-      <Modal
+      <UpdateBalance
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title="Add New Pot"
-      >
-        {<span></span>}
-      </Modal>
+        onClose={handleClose}
+        pot={pot}
+        mode={mode}
+      />
     </div>
   );
 }
