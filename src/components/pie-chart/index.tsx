@@ -79,7 +79,7 @@ export default function Chart() {
   return (
     <div className={styles.chart}>
       <PieChart />
-      <div className={styles.chartInfo}>
+      <div className={styles["chart-info"]}>
         <span>${Math.abs(spend).toFixed(0)}</span>
         <span className={styles.limit}>of ${limit.toFixed(0)} limit</span>
       </div>

@@ -1,7 +1,8 @@
-import OverviewContainer from "../overview-container";
+import { formattedDate } from "@/utils";
+import { OverviewContainer } from "@/components";
+
 import styles from "./styles.module.scss";
 import clsx from "clsx";
-import formattedDate from "@/utils/format-date";
 
 import data from "../../../../data.json";
 
@@ -15,7 +16,7 @@ export default function OvervieTransactions() {
       gapSize={32}
       text="View All"
     >
-      <div className={styles.transactionList}>
+      <div className={styles["transaction-list"]}>
         {transactions.map((transaction, index) =>
           index < 5 ? (
             <Transaction key={transaction.name} {...transaction} />
@@ -43,11 +44,11 @@ export function Transaction({
 }: TransactionProps) {
   return (
     <div className={styles.transaction}>
-      <img className={styles.transactionImage} src={avatar} alt={name} />
-      <span className={styles.transactionName}>{name}</span>
-      <span className={styles.transactionCategory}>{category}</span>
+      <img className={styles["transaction-image"]} src={avatar} alt={name} />
+      <span className={styles["transaction-name"]}>{name}</span>
+      <span className={styles["transaction-category"]}>{category}</span>
       <span
-        className={clsx(styles.transactionAmount, {
+        className={clsx(styles["transaction-amount"], {
           [styles.positive]: Number(amount) > 0,
         })}
       >
@@ -55,7 +56,7 @@ export function Transaction({
           ? `+$${Number(amount).toFixed(2)}`
           : `-$${Math.abs(Number(amount)).toFixed(2)}`}
       </span>
-      <span className={styles.transactionDate}>{formattedDate(date)}</span>
+      <span className={styles["transaction-date"]}>{formattedDate(date)}</span>
     </div>
   );
 }

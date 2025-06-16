@@ -1,7 +1,7 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.transactionList {
+.transaction-list {
   width: 100%;
 }
 
@@ -27,7 +27,7 @@
   border-bottom: none;
 }
 
-.transactionImage {
+.transaction-image {
   @include image-icon;
 
   grid-row: span 2;
@@ -36,7 +36,7 @@
   margin-right: $spacing-200;
 }
 
-.transactionName {
+.transaction-name {
   @include text-preset-4-bold;
 
   grid-row: span 2;
@@ -45,11 +45,11 @@
   color: $grey-900;
 }
 
-.transactionCategory {
+.transaction-category {
   display: none;
 }
 
-.transactionAmount {
+.transaction-amount {
   @include text-preset-4-bold;
 
   justify-self: end;
@@ -60,7 +60,7 @@
   color: $green;
 }
 
-.transactionDate {
+.transaction-date {
   grid-column: 3;
   justify-self: end;
 }

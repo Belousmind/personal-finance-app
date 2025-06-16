@@ -9,10 +9,10 @@ export default function TotallBills() {
   const totalSum = useSelector(selectSumOfRecurringBills);
 
   return (
-    <div className={styles.billSummary}>
-      {/* <img className={styles.billIcon} src="/" alt="Bill Icon" /> */}
-      <span className={styles.billLabel}>Total bills</span>
-      <span className={styles.billAmount}>
+    <div className={styles["bill-summary"]}>
+      {/* <img className={styles["bill-icon"]} src="/" alt="Bill Icon" /> */}
+      <span className={styles["bill-label"]}>Total bills</span>
+      <span className={styles["bill-amount"]}>
         ${Math.abs(totalSum).toFixed(2)}
       </span>
     </div>

@@ -1,7 +1,7 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.potsOverview {
+.pots-overview {
   display: flex;
   flex-wrap: wrap;
   gap: $spacing-250;
@@ -10,7 +10,7 @@
   width: 100%;
 }
 
-.potsTotalSaved {
+.pots-total-saved {
   display: grid;
   grid-template-rows: repeat(2, auto);
   grid-template-columns: auto 1fr;
@@ -31,17 +31,17 @@
   }
 }
 
-.savedLabel {
+.saved-label {
   align-self: flex-end;
 }
 
-.savedSum {
+.saved-sum {
   @include text-preset-1;
 
   color: $grey-900;
 }
 
-.potsCards {
+.pots-cards {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(2, 1fr);

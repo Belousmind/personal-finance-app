@@ -10,7 +10,7 @@ type Props = {
 export default function TransactionsTable({ transactions }: Props) {
   return (
     <div>
-      <div className={styles.TableHeader}>
+      <div className={styles["table-header"]}>
         <span>Recipient / Sender</span>
         <span>Category</span>
         <span>Transaction Date</span>

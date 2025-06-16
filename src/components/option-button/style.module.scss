@@ -9,11 +9,11 @@
   border: none;
 }
 
-.menuWrapper {
+.menu-wrapper {
   position: relative;
 }
 
-.optionsList {
+.options-list {
   position: absolute;
   top: 100%;
   right: 0;
@@ -28,7 +28,7 @@
   @include flex-column;
 }
 
-.optionButton {
+.option-button {
   text-align: left;
   text-transform: capitalize;
   white-space: nowrap;
@@ -40,12 +40,12 @@
   @include text-preset-4;
 }
 
-.optionButton:first-child {
+.option-button:first-child {
   padding-bottom: $spacing-150;
   border-bottom: 1px solid $grey-100;
 }
 
-.optionButton:last-child {
+.option-button:last-child {
   padding-top: $spacing-150;
   color: $red;
 }

@@ -1,4 +1,4 @@
-import OverviewContainer from "../overview-container";
+import { OverviewContainer } from "@/components";
 import styles from "./style.module.scss";
 
 const RecurringBills = [
@@ -26,7 +26,7 @@ export default function OvervieRecurringBills() {
       href="/recurring-bills"
       gapSize={32}
     >
-      <div className={styles.billsContainer}>
+      <div className={styles["bills-container"]}>
         {RecurringBills.map((bill) => (
           <Bill
             key={bill.name}
@@ -49,11 +49,11 @@ type BillProps = {
 function Bill({ title, sum, color }: BillProps) {
   return (
     <div
-      className={styles.billItem}
+      className={styles["bill-item"]}
       style={{ borderLeft: `4px solid ${color}` }}
     >
-      <span className={styles.billTitle}>{title}</span>
-      <span className={styles.billAmount}>${sum}</span>
+      <span className={styles["bill-title"]}>{title}</span>
+      <span className={styles["bill-amount"]}>${sum}</span>
     </div>
   );
 }

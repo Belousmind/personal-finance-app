@@ -1,21 +1,14 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.billsList {
+.bills-list {
   @include flex-column;
   @include white-background;
 
   padding: clamp($spacing-250, 4.17vw, $spacing-400);
 }
 
-.searchPanel {
-  @include flex-align-center;
-
-  justify-content: space-between;
-  margin-bottom: $spacing-300;
-}
-
-.billTableHeader {
+.bill-table-header {
   display: none;
 
   @media screen and (width >= 600px) {
@@ -32,11 +25,11 @@
   }
 }
 
-.headerAmount {
+.header-amount {
   justify-self: flex-end;
 }
 
-.billItem {
+.bill-item {
   @include text-preset-4-bold;
 
   display: grid;
@@ -55,16 +48,16 @@
   }
 }
 
-.billItem:first-child {
+.bill-item:first-child {
   margin-top: 0;
 }
 
-.billItem:last-child {
+.bill-item:last-child {
   padding-bottom: 0;
   border-bottom: none;
 }
 
-.iconAndTitle {
+.icon-and-title {
   @include flex-align-center;
 
   grid-row: 1;
@@ -76,13 +69,13 @@
   }
 }
 
-.billIcon {
+.bill-icon {
   width: 32px;
   height: 32px;
   border-radius: 50%;
 }
 
-.billDueDate {
+.bill-due-date {
   @include flex-align-center;
   @include text-preset-5;
 
@@ -90,10 +83,10 @@
   color: $green;
 }
 
-.billAmount {
+.bill-amount {
   justify-self: flex-end;
 }
 
-.dueSoon {
+.due-soon {
   color: $red;
 }

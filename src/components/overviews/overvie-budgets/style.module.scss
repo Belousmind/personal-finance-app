@@ -1,18 +1,17 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.budgetsOverview {
+.budgets-overview {
   @include flex-align-center;
 
   gap: $spacing-200;
 
-  // flex-wrap: wrap;
   justify-content: center;
   width: 100%;
   margin: $spacing-100 0;
 }
 
-.budgetsList {
+.budgets-list {
   display: grid;
 
   // grid-template-columns: repeat(2, 1fr);

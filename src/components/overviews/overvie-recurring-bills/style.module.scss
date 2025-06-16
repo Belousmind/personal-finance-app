@@ -1,14 +1,14 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.billsContainer {
+.bills-container {
   @include flex-column;
 
   gap: $spacing-150;
   width: 100%;
 }
 
-.billItem {
+.bill-item {
   @include flex-center;
 
   justify-content: space-between;
@@ -17,13 +17,13 @@
   border-radius: $spacing-100;
 }
 
-.billTitle {
+.bill-title {
   @include text-preset-4;
 
   color: $grey-500;
 }
 
-.billAmount {
+.bill-amount {
   @include text-preset-4-bold;
 
   color: $grey-900;

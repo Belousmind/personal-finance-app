@@ -36,18 +36,18 @@ export default function DropDownList({
   isForm = false,
 }: DropDownListProps) {
   return (
-    <div className={clsx(isForm ? styles.vDropDown : styles.dropDown)}>
-      <span className={clsx(isForm ? styles.vLabel : styles.label)}>
+    <div className={clsx(isForm ? styles["v-dropdown"] : styles.dropdown)}>
+      <span className={clsx(isForm ? styles["v-label"] : styles.label)}>
         {label}
       </span>
       <Listbox value={selected} onChange={onChange}>
-        <div className={styles.listboxWrapper}>
-          <ListboxButton className={styles.listboxButton}>
-            <span className={styles.listboxDisplay}>
-              <span className={styles.selectedLabel}>
+        <div className={styles["listbox-wrapper"]}>
+          <ListboxButton className={styles["listbox-button"]}>
+            <span className={styles["listbox-display"]}>
+              <span className={styles["selected-label"]}>
                 {withColor && (
                   <div
-                    className={styles.colorTag}
+                    className={styles["color-tag"]}
                     style={{ backgroundColor: selected.value }}
                   ></div>
                 )}
@@ -57,28 +57,28 @@ export default function DropDownList({
             </span>
             <img src={iconSrc} alt="icon" />
           </ListboxButton>
-          <ListboxOptions modal={false} className={styles.listboxOptions}>
+          <ListboxOptions modal={false} className={styles["listbox-options"]}>
             {list.map((item) => (
               <ListboxOption
                 key={item.label}
                 disabled={item.occupied && item.value !== selected.value}
                 value={item}
                 className={clsx(
-                  styles.listboxOption,
+                  styles["listbox-option"],
                   selected.label === item.label && styles.selected,
                   item?.occupied && styles.used
                 )}
               >
                 {withColor && (
                   <div
-                    className={styles.colorTag}
+                    className={styles["color-tag"]}
                     style={{ backgroundColor: item.value }}
                   ></div>
                 )}
                 <span>{item.label}</span>
 
                 {item.occupied && (
-                  <span className={styles.optionStatus}>Already used</span>
+                  <span className={styles["option-status"]}>Already used</span>
                 )}
               </ListboxOption>
             ))}

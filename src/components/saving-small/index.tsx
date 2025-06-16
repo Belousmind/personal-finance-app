@@ -8,10 +8,10 @@ type SavingSmallProps = {
 
 export default function SavingSmall({ theme, name, total }: SavingSmallProps) {
   return (
-    <div className={styles.potCard}>
-      <div className={styles.potColor} style={{ backgroundColor: theme }} />
-      <span className={styles.potLabel}>{name}</span>
-      <span className={styles.potValue}>${Math.abs(total).toFixed(2)}</span>
+    <div className={styles["pot-card"]}>
+      <div className={styles["pot-color"]} style={{ backgroundColor: theme }} />
+      <span className={styles["pot-label"]}>{name}</span>
+      <span className={styles["pot-value"]}>${Math.abs(total).toFixed(2)}</span>
     </div>
   );
 }

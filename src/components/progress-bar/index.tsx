@@ -20,15 +20,15 @@ export default function ProgressBar({
   const incomingPercentage = getPercentage(incoming, target);
 
   return (
-    <div className={styles.progressWrapper}>
-      <div className={styles.progressBar}>
+    <div className={styles["progress-wrapper"]}>
+      <div className={styles["progress-bar"]}>
         <div
-          className={styles.currentProgress}
+          className={styles["current-progress"]}
           style={{ width: `${currentPercentage}%` }}
         ></div>
         {!exceeded && (
           <div
-            className={styles.incomingProgress}
+            className={styles["incoming-progress"]}
             style={{
               width: `${incomingPercentage}%`,
               backgroundColor: isWithdraw ? "#c94736" : "#597c7c",
@@ -44,7 +44,7 @@ export default function ProgressBar({
       >
         {!exceeded ? `${incomingPercentage.toFixed(2)}%` : "Limit exceeded"}
       </span>
-      <span className={styles.targetLabel}>
+      <span className={styles["target-label"]}>
         Target of ${target.toLocaleString()}
       </span>
     </div>

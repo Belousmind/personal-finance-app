@@ -23,14 +23,14 @@ export default function FiltersPanel({
   withCategory = true,
 }: Props) {
   return (
-    <div className={styles.serachPanel}>
+    <div className={styles["search-panel"]}>
       <InputField
         placeholder="Search transaction"
         withIcon
         value={searchQuery}
         onChange={(e) => onSearchChange(e.target.value)}
       />
-      <div className={styles.filtres}>
+      <div className={styles.filters}>
         <DropDownList
           label="Sort by"
           list={sortingList}

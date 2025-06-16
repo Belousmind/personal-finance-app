@@ -1,4 +1,4 @@
-import TertiatyLink from "@/components/tertiaty-link";
+import { TertiatyLink } from "@/components";
 import styles from "./style.module.scss";
 
 type OverviewContainerProps = {

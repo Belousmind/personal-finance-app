@@ -18,7 +18,7 @@ export default function BillsList() {
   } = useReccuringBills();
 
   return (
-    <div className={styles.billsList}>
+    <div className={styles["bills-list"]}>
       <FiltersPanel
         searchQuery={searchQuery}
         selectedSort={selectedSort}
@@ -36,10 +36,10 @@ export default function BillsList() {
 
 function BillTableTitle() {
   return (
-    <div className={styles.billTableHeader}>
-      <span className={styles.headerTitle}>Bill Title</span>
-      <span className={styles.headerDueDate}>Due Date</span>
-      <span className={styles.headerAmount}>Amount</span>
+    <div className={styles["bill-table-header"]}>
+      <span className={styles["header-title"]}>Bill Title</span>
+      <span className={styles["header-due-date"]}>Due Date</span>
+      <span className={styles["header-amount"]}>Amount</span>
     </div>
   );
 }
@@ -50,28 +50,20 @@ type BillItemProps = {
   date: string;
   amount: number;
   paid: boolean;
-  upcoming: boolean;
+  upcoming?: boolean;
   soon: boolean;
 };
 
-function BillItem({
-  avatar,
-  name,
-  date,
-  amount,
-  paid,
-  upcoming,
-  soon,
-}: BillItemProps) {
+function BillItem({ avatar, name, date, amount, paid, soon }: BillItemProps) {
   return (
-    <div className={styles.billItem}>
-      <div className={styles.iconAndTitle}>
-        <img className={styles.billIcon} src={avatar} alt={name} />
-        <span className={styles.billTitle}>{name}</span>
+    <div className={styles["bill-item"]}>
+      <div className={styles["icon-and-title"]}>
+        <img className={styles["bill-icon"]} src={avatar} alt={name} />
+        <span className={styles["bill-title"]}>{name}</span>
       </div>
       <span
-        className={clsx(styles.billDueDate, {
-          [styles.dueSoon]: soon,
+        className={clsx(styles["bill-due-date"], {
+          [styles["due-soon"]]: soon,
         })}
       >
         {formatMonthlyLabel(date)}
@@ -79,8 +71,8 @@ function BillItem({
         {paid && <IconSuccess />}
       </span>
       <span
-        className={clsx(styles.billAmount, {
-          [styles.dueSoon]: soon,
+        className={clsx(styles["bill-amount"], {
+          [styles["due-soon"]]: soon,
         })}
       >
         ${Math.abs(Number(amount)).toFixed(2)}
@@ -88,7 +80,6 @@ function BillItem({
     </div>
   );
 }
-
 function IconAlert() {
   return (
     <svg

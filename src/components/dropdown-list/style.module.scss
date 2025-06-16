@@ -1,7 +1,7 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.listboxButton {
+.listbox-button {
   @include flex-align-center;
 
   gap: $spacing-200;
@@ -17,7 +17,7 @@
 
   @include transition-base;
 
-  .listboxDisplay {
+  .listbox-display {
     display: none;
   }
 
@@ -35,7 +35,7 @@
       display: none;
     }
 
-    .listboxDisplay {
+    .listbox-display {
       gap: $spacing-200;
       justify-content: space-between;
       width: 100%;
@@ -51,19 +51,19 @@
   }
 }
 
-.selectedLabel {
+.selected-label {
   @include flex-align-center;
 
   gap: $spacing-150;
   width: 100%;
 }
 
-.listboxWrapper {
+.listbox-wrapper {
   position: relative;
   width: 100%;
 }
 
-.listboxOptions {
+.listbox-options {
   position: absolute;
   top: 100%;
   right: 0;
@@ -80,27 +80,27 @@
   box-shadow: 0 4px 24px 0 rgb(0 0 0 / 25%);
 }
 
-.listboxOptions::-webkit-scrollbar {
+.listbox-options::-webkit-scrollbar {
   width: 8px;
 }
 
-.listboxOptions::-webkit-scrollbar-track {
+.listbox-options::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 8px;
 }
 
-.listboxOptions::-webkit-scrollbar-thumb {
+.listbox-options::-webkit-scrollbar-thumb {
   background-color: rgb(0 0 0 / 20%);
   background-clip: content-box;
   border: 2px solid transparent;
   border-radius: 8px;
 }
 
-.listboxOptions::-webkit-scrollbar-thumb:hover {
+.listbox-options::-webkit-scrollbar-thumb:hover {
   background-color: rgb(0 0 0 / 30%);
 }
 
-.listboxOption {
+.listbox-option {
   display: grid;
   grid-template-columns: auto 1fr 1fr;
   gap: $spacing-150;
@@ -115,11 +115,11 @@
   @include text-preset-4;
 }
 
-.listboxOption:first-child {
+.listbox-option:first-child {
   padding-top: 0;
 }
 
-.listboxOption:last-child {
+.listbox-option:last-child {
   padding-bottom: 0;
   border-bottom: 0;
 }
@@ -128,19 +128,19 @@
   font-weight: 700;
 }
 
-.dropDown {
+.dropdown {
   @include flex-align-center;
 
   gap: $spacing-100;
 }
 
-.vDropDown {
+.v-dropdown {
   @include flex-column;
 
   gap: $spacing-50;
 }
 
-.vLabel {
+.v-label {
   @include text-preset-5-bold;
 
   color: $grey-500;
@@ -159,13 +159,13 @@
   }
 }
 
-.colorTag {
+.color-tag {
   width: 16px;
   height: 16px;
   border-radius: 50%;
 }
 
-.optionStatus {
+.option-status {
   @include text-preset-5;
 
   justify-self: flex-end;
@@ -174,7 +174,7 @@
 .used {
   color: $grey-500;
 
-  .colorTag {
+  .color-tag {
     opacity: 0.1;
   }
 }

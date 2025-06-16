@@ -18,14 +18,14 @@ export default function OptionButton({ label, category }: Props) {
   return (
     <>
       <Menu>
-        <div className={styles.menuWrapper}>
+        <div className={styles["menu-wrapper"]}>
           <MenuButton className={styles.button}>
             <OptionsIcon />
           </MenuButton>
-          <MenuItems modal={false} className={styles.optionsList}>
+          <MenuItems modal={false} className={styles["options-list"]}>
             <MenuItem>
               <button
-                className={styles.optionButton}
+                className={styles["option-button"]}
                 onClick={() => {
                   setIsEditModalOpen(true);
                 }}
@@ -35,7 +35,7 @@ export default function OptionButton({ label, category }: Props) {
             </MenuItem>
             <MenuItem>
               <button
-                className={styles.optionButton}
+                className={styles["option-button"]}
                 onClick={() => {
                   setIsDeleteModalOpen(true);
                 }}

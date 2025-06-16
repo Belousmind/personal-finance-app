@@ -16,19 +16,19 @@ export default function Modal({
   children,
 }: ModalProps) {
   return (
-    <Dialog open={isOpen} onClose={onClose} className={styles.dialogOverlay}>
-      <div className={styles.dialogContainer}>
-        <DialogPanel className={styles.dialogPanel}>
-          <DialogTitle className={styles.dialogTitle}>
-            {title}
-            <button onClick={onClose} className={styles.closeButton}>
-              <CloseIcon />
-            </button>
-          </DialogTitle>
-          {children}
-        </DialogPanel>
-      </div>
-    </Dialog>
+<Dialog open={isOpen} onClose={onClose} className={styles["dialog-overlay"]}>
+  <div className={styles["dialog-container"]}>
+    <DialogPanel className={styles["dialog-panel"]}>
+      <DialogTitle className={styles["dialog-title"]}>
+        {title}
+        <button onClick={onClose} className={styles["close-button"]}>
+          <CloseIcon />
+        </button>
+      </DialogTitle>
+      {children}
+    </DialogPanel>
+  </div>
+</Dialog>
   );
 }
 

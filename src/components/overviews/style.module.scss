@@ -1,7 +1,7 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.overviewSection {
+.overview-section {
   @include flex-column;
 
   gap: $spacing-400;
@@ -18,13 +18,13 @@
   }
 }
 
-.leftColumn {
+.left-column {
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp($spacing-200, 3.125vw, $spacing-300);
 }
 
-.rightColumn {
+.right-column {
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp($spacing-200, 3.125vw, $spacing-300);

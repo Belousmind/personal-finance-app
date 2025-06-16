@@ -1,14 +1,16 @@
 import styles from "./style.module.scss";
 
-import BalanceSummary from "../balance-summary";
-import OverviewPots from "./overview-pots";
-import OvervieBudgets from "./overvie-budgets";
-import OvervieTransactions from "./overvie-transactions";
-import OvervieRecurringBills from "./overvie-recurring-bills";
+import {
+  BalanceSummary,
+  OverviewPots,
+  OvervieBudgets,
+  OvervieTransactions,
+  OvervieRecurringBills,
+} from "@/components";
 
 export default function OverviewSection() {
   return (
-    <section className={styles.overviewSection}>
+    <section className={styles["overview-section"]}>
       <BalanceSummary />
       <Overviews />
     </section>
@@ -18,11 +20,11 @@ export default function OverviewSection() {
 function Overviews() {
   return (
     <section className={styles.overview}>
-      <div className={styles.leftColumn}>
+      <div className={styles["left-column"]}>
         <OverviewPots />
         <OvervieTransactions />
       </div>
-      <div className={styles.rightColumn}>
+      <div className={styles["right-column"]}>
         <OvervieBudgets />
         <OvervieRecurringBills />
       </div>

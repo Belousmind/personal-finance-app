@@ -1,14 +1,14 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.potCard {
+.pot-card {
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: $spacing-50 auto;
   gap: $spacing-50 $spacing-200;
 }
 
-.potColor {
+.pot-color {
   grid-row: span 2;
   grid-column: 1;
   width: $spacing-50;
@@ -16,13 +16,13 @@
   border-radius: $spacing-100;
 }
 
-.potLabel {
+.pot-label {
   @include text-preset-5;
 
   color: $grey-500;
 }
 
-.potValue {
+.pot-value {
   @include text-preset-4-bold;
 
   color: $grey-900;

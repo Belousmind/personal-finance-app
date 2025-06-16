@@ -4,13 +4,11 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { budgetSchema, BudgetFormData } from "@/lib/schema/budget-schema";
 import { addBudget, editBudget } from "@/store/budgets/budgetsSlice";
-import { useAppDispatch } from "@/store/hooks";
-import { useAppSelector } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+
 import { useEffect } from "react";
 
-import InputField from "@/components/fileds/input-field";
-import Button from "@/components/button";
-import DropDownList from "@/components/dropdown-list";
+import { InputField, Button, DropDownList } from "@/components";
 
 import { useAvailableColors } from "@/lib/filters";
 import { useAvailableCategories } from "@/hooks/useAvailableCategories";
@@ -83,7 +81,6 @@ export default function BudgetForm({
   const onSubmit = (data: BudgetFormData) => {
     if (mode === "edit") {
       dispatch(editBudget({ ...data, transactions }));
-      console.log("Edited budget:", data);
     } else {
       dispatch(addBudget({ ...data, transactions }));
     }

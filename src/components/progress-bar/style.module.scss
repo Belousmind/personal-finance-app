@@ -1,14 +1,14 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.progressWrapper {
+.progress-wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column: span 2;
   row-gap: $spacing-150;
 }
 
-.progressBar {
+.progress-bar {
   @include flex-align-center;
 
   grid-column: span 2;
@@ -19,12 +19,12 @@
   border-radius: $spacing-50;
 }
 
-.currentProgress {
+.current-progress {
   height: 100%;
   background-color: $grey-900;
 }
 
-.incomingProgress {
+.incoming-progress {
   height: 100%;
   background-color: $green;
   border-top-right-radius: $spacing-50;
@@ -43,7 +43,7 @@
   color: $red;
 }
 
-.targetLabel {
+.target-label {
   @include text-preset-5;
 
   grid-column: 2;

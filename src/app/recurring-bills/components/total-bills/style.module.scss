@@ -1,7 +1,7 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.billSummary {
+.bill-summary {
   @include flex-column;
 
   gap: $spacing-150;
@@ -11,13 +11,13 @@
   border-radius: $spacing-150;
 }
 
-// .billIcon {
+// .bill-icon {
 // }
 
-.billLabel {
+.bill-label {
   @include text-preset-4;
 }
 
-.billAmount {
+.bill-amount {
   @include text-preset-1;
 }
