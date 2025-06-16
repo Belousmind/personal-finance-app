@@ -27,15 +27,7 @@ export default function UpdateBalance({
         mode === "add" ? `Add to '${pot.name}'` : `Withdraw from '${pot.name}'`
       }
     >
-      <UpdateBalanceForm
-        mode={mode}
-        pot={pot}
-        onSubmit={(newTotal) => {
-          
-          // console.log("New total for pot:", newTotal);
-          onClose();
-        }}
-      />
+      <UpdateBalanceForm mode={mode} pot={pot} onClose={onClose} />
     </Modal>
   );
 }

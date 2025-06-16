@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import InputField from "@/components/fileds/input-field";
-import Button from "@/components/button";
-import getPercentage from "@/utils/get-percentage";
+import { useDispatch } from "react-redux";
+import { updateBalance } from "@/store/pots/potsSlice";
+import { useUpdateBalance } from "@/hooks/useUpdateBalance";
+import {InputField, Button, ProgressBar} from '@/components'
 import styles from "./styles.module.scss";
 
 type Pot = {
@@ -16,41 +16,30 @@ type Pot = {
 type Props = {
   mode?: "add" | "withdraw";
   pot: Pot;
-  onSubmit: (newTotal: number) => void;
+  onClose: () => void;
 };
 
 export default function UpdateBalanceForm({
   mode = "add",
   pot,
-  onSubmit,
+  onClose,
 }: Props) {
+  const dispatch = useDispatch();
   const isWithdraw = mode === "withdraw";
 
-  const [inputValue, setInputValue] = useState<string>("");
-
-  const numericAmount = parseFloat(inputValue);
-  const isValidNumber = !isNaN(numericAmount) && numericAmount > 0;
-
-  const maxAdd = pot.target - pot.total;
-  const maxWithdraw = pot.total;
-
-  const exceeded =
-    (isWithdraw && numericAmount > maxWithdraw) ||
-    (!isWithdraw && numericAmount > maxAdd);
-
-  const safeAmount = isValidNumber && !exceeded ? numericAmount : 0;
-
-  const newTotal = isWithdraw ? pot.total - safeAmount : pot.total + safeAmount;
-
-  const percentage = getPercentage(safeAmount, pot.target);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
+  const {
+    inputValue,
+    handleChange,
+    isValidNumber,
+    exceeded,
+    newTotal,
+    safeAmount,
+  } = useUpdateBalance(pot, mode);
 
   const handleConfirm = () => {
     if (!isValidNumber || exceeded) return;
-    onSubmit(newTotal);
+    dispatch(updateBalance({ name: pot.name, newTotal }));
+    onClose();
   };
 
   return (
@@ -66,39 +55,13 @@ export default function UpdateBalanceForm({
         {!exceeded ? `$${newTotal.toFixed(2)}` : `$${pot.total.toFixed(2)}`}
       </span>
 
-      <div className={styles.progressWrapper}>
-        <div className={styles.progressBar}>
-          <div
-            className={styles.currentProgress}
-            style={{
-              width: `${getPercentage(
-                isWithdraw ? pot.total - safeAmount : pot.total,
-                pot.target
-              )}%`,
-            }}
-          ></div>
-          {!exceeded && (
-            <div
-              className={styles.incomingProgress}
-              style={{
-                width: `${percentage}%`,
-                backgroundColor: isWithdraw ? "#c94736" : "#597c7c",
-              }}
-            ></div>
-          )}
-        </div>
-
-        <span
-          className={`${styles.percentage} ${
-            isWithdraw ? styles.red : styles.green
-          } ${exceeded && styles.red}`}
-        >
-          {!exceeded ? `${percentage.toFixed(2)}%` : "Limit exceeded"}
-        </span>
-        <span className={styles.targetLabel}>
-          Target of ${pot.target.toLocaleString()}
-        </span>
-      </div>
+      <ProgressBar
+        current={isWithdraw ? pot.total - safeAmount : pot.total}
+        incoming={safeAmount}
+        target={pot.target}
+        isWithdraw={isWithdraw}
+        exceeded={exceeded}
+      />
 
       <form
         onSubmit={(e) => {

@@ -1,0 +1,49 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.progressWrapper {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: $spacing-150;
+}
+
+.progressBar {
+  @include flex-align-center;
+  height: $spacing-100;
+  background-color: $beige-100;
+  border-radius: $spacing-50;
+  overflow: hidden;
+  gap: 2px;
+  grid-column: span 2;
+}
+
+.currentProgress {
+  background-color: $grey-900;
+  height: 100%;
+}
+
+.incomingProgress {
+  height: 100%;
+  background-color: $green;
+  border-top-right-radius: $spacing-50;
+  border-bottom-right-radius: $spacing-50;
+}
+
+.percentage {
+  @include text-preset-5-bold;
+}
+
+.green {
+  color: $green;
+}
+
+.red {
+  color: $red;
+}
+
+.targetLabel {
+  @include text-preset-5;
+  grid-column: 2;
+  justify-self: end;
+}

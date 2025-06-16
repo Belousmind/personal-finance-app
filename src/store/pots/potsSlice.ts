@@ -46,8 +46,20 @@ const potsSlice = createSlice({
         state.totalSaved = state.pots.reduce((acc, pot) => acc + pot.total, 0);
       }
     },
+    updateBalance: (
+      state,
+      action: PayloadAction<{ name: string; newTotal: number }>
+    ) => {
+      const { name, newTotal } = action.payload;
+      const pot = state.pots.find((p) => p.name === name);
+      if (pot) {
+        pot.total = newTotal;
+        state.totalSaved = state.pots.reduce((acc, pot) => acc + pot.total, 0);
+      }
+    },
   },
 });
 
-export const { setPots, removePot, addPot, editPot } = potsSlice.actions;
+export const { setPots, removePot, addPot, editPot, updateBalance } =
+  potsSlice.actions;
 export default potsSlice.reducer;
