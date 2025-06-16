@@ -4,13 +4,13 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { potSchema, PotFormData } from "@/lib/schema/pot-schema";
 
-import InputField from "@/components/fileds/input-field";
-import DropDownList from "@/components/dropdown-list";
-import Button from "@/components/button";
+import { InputField, DropDownList, Button } from "@/components";
 
 import { useAvailableColors } from "@/lib/filters";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { addPot, editPot } from "@/store/pots/potsSlice";
+
+import styles from "./style.module.scss";
 
 type PotFormProps = {
   initialName?: string;
@@ -54,7 +54,7 @@ export default function PotForm({
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <Controller
         name="name"
         control={control}

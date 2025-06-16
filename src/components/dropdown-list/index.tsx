@@ -10,16 +10,18 @@ import {
 import clsx from "clsx";
 import styles from "./style.module.scss";
 
+type DropDownItem = {
+  label: string;
+  value: string;
+  occupied?: boolean;
+};
+
 type DropDownListProps = {
   label: string;
-  list: { label: string; value: string; occupied?: boolean }[];
+  list: DropDownItem[];
   iconSrc?: string;
-  selected: { label: string; value: string; occupied?: boolean };
-  onChange: (item: {
-    label: string;
-    value: string;
-    occupied?: boolean;
-  }) => void;
+  selected: DropDownItem;
+  onChange: (item: DropDownItem) => void;
   withColor?: boolean;
   isForm?: boolean;
 };
@@ -39,50 +41,49 @@ export default function DropDownList({
         {label}
       </span>
       <Listbox value={selected} onChange={onChange}>
-        <ListboxButton className={styles.listboxButton}>
-          <span>
-            {withColor && (
-              <div
-                className={styles.colorTag}
-                style={{ backgroundColor: selected.value }}
-              ></div>
-            )}
-            {selected.label}
-            <DropdownArrowIcon />
-          </span>
-          <img src={iconSrc} alt="" />
-        </ListboxButton>
-        <ListboxOptions
-          modal={false}
-  
-          className={styles.listboxOptions}
-          anchor="bottom"
-        >
-          {list.map((item) => (
-            <ListboxOption
-              key={item.label}
-              value={item}
-              className={clsx(
-                styles.listboxOption,
-                selected.label === item.label && styles.selected,
-                item?.occupied && styles.used
-              )}
-            >
-              {withColor && (
-                <div
-                  className={styles.colorTag}
-                  style={{ backgroundColor: item.value }}
-                ></div>
-              )}
-              <span className="optionText">
-                {item.label}
+        <div className={styles.listboxWrapper}>
+          <ListboxButton className={styles.listboxButton}>
+            <span className={styles.listboxDisplay}>
+              <span className={styles.selectedLabel}>
+                {withColor && (
+                  <div
+                    className={styles.colorTag}
+                    style={{ backgroundColor: selected.value }}
+                  ></div>
+                )}
+                {selected.label}
+              </span>
+              <DropdownArrowIcon />
+            </span>
+            <img src={iconSrc} alt="icon" />
+          </ListboxButton>
+          <ListboxOptions modal={false} className={styles.listboxOptions}>
+            {list.map((item) => (
+              <ListboxOption
+                key={item.label}
+                disabled={item.occupied && item.value !== selected.value}
+                value={item}
+                className={clsx(
+                  styles.listboxOption,
+                  selected.label === item.label && styles.selected,
+                  item?.occupied && styles.used
+                )}
+              >
+                {withColor && (
+                  <div
+                    className={styles.colorTag}
+                    style={{ backgroundColor: item.value }}
+                  ></div>
+                )}
+                <span>{item.label}</span>
+
                 {item.occupied && (
                   <span className={styles.optionStatus}>Already used</span>
                 )}
-              </span>
-            </ListboxOption>
-          ))}
-        </ListboxOptions>
+              </ListboxOption>
+            ))}
+          </ListboxOptions>
+        </div>
       </Listbox>
     </div>
   );
