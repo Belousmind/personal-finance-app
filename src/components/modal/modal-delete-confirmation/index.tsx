@@ -1,6 +1,6 @@
 "use client";
-import Modal from "..";
-import Button from "@/components/button";
+
+import { Modal, Button } from "@/components";
 import { removeBudget } from "@/store/budgets/budgetsSlice";
 import { removePot } from "@/store/pots/potsSlice";
 import { useAppDispatch } from "@/store/hooks";
@@ -14,7 +14,7 @@ type Props = {
   onClose: () => void;
 };
 
-export default function ModalDeleteConfitmation({
+export default function ModalDeleteConfirmation({
   label,
   category,
   isOpen,
@@ -39,7 +39,9 @@ export default function ModalDeleteConfitmation({
         onClick={handleDelete}
         variant="destroy"
       />
-      <button onClick={onClose} className={styles.cancelButton}>No, Go Back</button>
+      <button onClick={onClose} className={styles.cancelButton}>
+        No, Go Back
+      </button>
     </Modal>
   );
 }

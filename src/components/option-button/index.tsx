@@ -4,9 +4,7 @@ import styles from "./style.module.scss";
 import { useState } from "react";
 
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import ModalDeleteConfirmation from "@/components/modal/modal-delete-confirmation";
-import ModalBudget from "../modal/modal-budget";
-import ModalPot from "@/components/modal/modal-pot";
+import { ModalDeleteConfirmation, ModalBudget, ModalPot } from "@/components";
 
 type Props = {
   label: string;
@@ -20,31 +18,33 @@ export default function OptionButton({ label, category }: Props) {
   return (
     <>
       <Menu>
-        <MenuButton className={styles.button}>
-          <OptionsIcon />
-        </MenuButton>
-        <MenuItems modal={false} anchor="bottom" className={styles.optionsList}>
-          <MenuItem>
-            <button
-              className={styles.optionButton}
-              onClick={() => {
-                setIsEditModalOpen(true);
-              }}
-            >
-              Edit {label}
-            </button>
-          </MenuItem>
-          <MenuItem>
-            <button
-              className={styles.optionButton}
-              onClick={() => {
-                setIsDeleteModalOpen(true);
-              }}
-            >
-              Delete {label}
-            </button>
-          </MenuItem>
-        </MenuItems>
+        <div className={styles.menuWrapper}>
+          <MenuButton className={styles.button}>
+            <OptionsIcon />
+          </MenuButton>
+          <MenuItems modal={false} className={styles.optionsList}>
+            <MenuItem>
+              <button
+                className={styles.optionButton}
+                onClick={() => {
+                  setIsEditModalOpen(true);
+                }}
+              >
+                Edit {label}
+              </button>
+            </MenuItem>
+            <MenuItem>
+              <button
+                className={styles.optionButton}
+                onClick={() => {
+                  setIsDeleteModalOpen(true);
+                }}
+              >
+                Delete {label}
+              </button>
+            </MenuItem>
+          </MenuItems>
+        </div>
       </Menu>
       {label === "pot" && (
         <ModalPot

@@ -9,7 +9,15 @@
   cursor: pointer;
 }
 
+.menuWrapper {
+  position: relative;
+}
+
 .optionsList {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 10;
   @include flex-column;
   outline: none;
 
@@ -21,6 +29,7 @@
 }
 
 .optionButton {
+  white-space: nowrap;
   @include text-preset-4;
   border: none;
   outline: none;
