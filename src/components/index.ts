@@ -30,4 +30,6 @@ export { default as FiltersPanel } from "./filters-panel";
 
 export * from "./sidebar/sidebar-icons";
 
+export { default as Transaction } from "./transaction";
+
 // export {default as } from './'

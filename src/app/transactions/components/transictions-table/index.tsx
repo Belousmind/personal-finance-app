@@ -1,5 +1,5 @@
 import { TransactionType } from "@/lib/transactions";
-import { Transaction } from "@/components/overviews/overvie-transactions";
+import { Transaction } from "@/components";
 
 import styles from "./style.module.scss";
 
@@ -9,16 +9,20 @@ type Props = {
 
 export default function TransactionsTable({ transactions }: Props) {
   return (
-    <div>
+    <div className={styles.table}>
       <div className={styles["table-header"]}>
-        <span>Recipient / Sender</span>
-        <span>Category</span>
-        <span>Transaction Date</span>
-        <span>Amount</span>
+        <span className={styles["header-recipient"]}>Recipient / Sender</span>
+        <span className={styles["header-category"]}>Category</span>
+        <span className={styles["header-date"]}>Transaction Date</span>
+        <span className={styles["header-amount"]}>Amount</span>
       </div>
-      <div>
+      <div className={styles["table-body"]}>
         {transactions.map((transaction) => (
-          <Transaction key={transaction.date} {...transaction} />
+          <Transaction
+            key={transaction.date}
+            {...transaction}
+            isFullVersion={true}
+          />
         ))}
       </div>
     </div>

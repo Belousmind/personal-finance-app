@@ -1,16 +1,33 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
+.table {
+  @include flex-column;
+  gap: $spacing-300;
+  container-type: inline-size;
+}
+
 .table-header {
   display: none;
 
-  @media screen and (width >= 680px) {
-    display: flex;
+  @container (min-width: 600px) {
+    @include text-preset-5;
+
+    display: grid;
+    grid-template-columns: 1fr repeat(2, 80px) 88px;
     gap: $spacing-400;
     align-items: center;
-    padding: $spacing-200;
+    padding: $spacing-200 0;
     color: $grey-500;
 
-    @include text-preset-5;
+    border-bottom: 1px solid $grey-100;
   }
+
+  @container (min-width: 1100px) {
+    grid-template-columns: 1fr repeat(2, 120px) 200px;
+  }
+}
+
+.header-amount {
+  justify-self: flex-end;
 }
