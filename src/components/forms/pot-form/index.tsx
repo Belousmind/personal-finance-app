@@ -6,7 +6,7 @@ import { potSchema, PotFormData } from "@/lib/schema/pot-schema";
 
 import { InputField, DropDownList, Button } from "@/components";
 
-import { useAvailableColors } from "@/utils/is-occupied-color";
+import { useAvailableColors } from "@/hooks";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { addPot, editPot } from "@/store/pots/potsSlice";
 

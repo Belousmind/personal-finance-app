@@ -2,7 +2,7 @@ import { useAppSelector } from "@/store/hooks";
 import { CATEGORIES_LIST } from "@/constants";
 import { Budget } from "@/store/budgets/budgetsSlice";
 
-export function useAvailableCategories() {
+export default function useAvailableCategories() {
   const budgets = useAppSelector((state) => state.budgets);
 
   const usedCategories = new Set(

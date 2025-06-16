@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAppSelector } from "@/store/hooks";
-import { categoriesList, sortingList } from "@/utils/is-occupied-color";
+import { CATEGORIES_LIST, SORTING_LIST } from "@/constants";
 
 export function useFilteredTransactions() {
   const transactions = useAppSelector(
@@ -8,8 +8,8 @@ export function useFilteredTransactions() {
   );
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState(categoriesList[0]);
-  const [selectedSort, setSelectedSort] = useState(sortingList[0]);
+  const [selectedCategory, setSelectedCategory] = useState(CATEGORIES_LIST[0]);
+  const [selectedSort, setSelectedSort] = useState(SORTING_LIST[0]);
   const [currentPage, setCurrentPage] = useState(1);
 
   const itemsPerPage = 10;

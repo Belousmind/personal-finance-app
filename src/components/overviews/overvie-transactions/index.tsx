@@ -1,3 +1,5 @@
+"use client";
+import { useAppSelector } from "@/store/hooks";
 import { formattedDate } from "@/utils";
 import { ROUTES } from "@/constants";
 import { OverviewContainer } from "@/components";
@@ -5,10 +7,10 @@ import { OverviewContainer } from "@/components";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
 
-import data from "../../../../data.json";
-const { transactions } = data;
-
 export default function OvervieTransactions() {
+  const transactions = useAppSelector(
+    (state) => state.transactions.transactions
+  );
   return (
     <OverviewContainer
       title="Transactions"

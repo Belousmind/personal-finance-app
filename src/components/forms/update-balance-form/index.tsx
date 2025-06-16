@@ -2,8 +2,8 @@
 
 import { useDispatch } from "react-redux";
 import { updateBalance } from "@/store/pots/potsSlice";
-import { useUpdateBalance } from "@/hooks/useUpdateBalance";
-import {InputField, Button, ProgressBar} from '@/components'
+import { useUpdateBalance } from "@/hooks";
+import { InputField, Button, ProgressBar } from "@/components";
 import styles from "./styles.module.scss";
 
 type Pot = {

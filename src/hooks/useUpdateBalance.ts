@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from "react";
 
-export function useUpdateBalance(
+export default function useUpdateBalance(
   pot: { total: number; target: number },
   mode: "add" | "withdraw"
 ) {
