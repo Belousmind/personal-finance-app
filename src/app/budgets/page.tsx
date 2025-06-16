@@ -5,7 +5,6 @@ export default function Page() {
   return (
     <MainContent text="Budgets">
       <BudgetSection />
- 
     </MainContent>
   );
 }
