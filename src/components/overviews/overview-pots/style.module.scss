@@ -31,6 +31,10 @@
   }
 }
 
+.savedLabel {
+  align-self: flex-end;
+}
+
 .savedSum {
   @include text-preset-1;
   color: $grey-900;

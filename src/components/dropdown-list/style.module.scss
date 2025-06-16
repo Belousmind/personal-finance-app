@@ -5,6 +5,8 @@
   @include flex-align-center;
   justify-content: space-between;
   gap: $spacing-200;
+  
+  white-space: nowrap;
 
   border: none;
   border-radius: $spacing-100;
@@ -63,6 +65,7 @@
   cursor: pointer;
   padding: $spacing-150 0;
   border-bottom: 1px solid $grey-100;
+  white-space: nowrap;
 }
 
 .listboxOption:first-child {
@@ -100,6 +103,7 @@
     display: inline-block;
     @include text-preset-4;
     color: $grey-500;
+    white-space: nowrap;
   }
 }
 

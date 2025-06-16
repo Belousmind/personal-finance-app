@@ -14,7 +14,7 @@ export default function OverviewPots() {
       <div className={styles.potsOverview}>
         <div className={styles.potsTotalSaved}>
           <img src="/icon-pot.svg" alt="Pot Icon" />
-          <span>Total Saved</span>
+          <span className={styles.savedLabel}>Total Saved</span>
           <span className={styles.savedSum}>${totalSaved.toFixed(2)}</span>
         </div>
 
