@@ -6,11 +6,10 @@ import styles from "./style.module.scss";
 import { useAppSelector } from "@/store/hooks";
 
 export default function SpendingSummary() {
-  
   const budgets = useAppSelector((state) => state.budgets);
 
   return (
-    <div className={styles.spendingSummary}>
+    <div className={styles["spending-summary"]}>
       <span className={styles.title}>Spending Summary</span>
       <div>
         {budgets.map((budget) => (

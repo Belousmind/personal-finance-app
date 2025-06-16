@@ -1,14 +1,15 @@
-@use "../../../../styles/variables" as *;
-@use "../../../../styles/mixins" as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
-.spendingSummary {
+.spending-summary {
   @include flex-column;
+
   gap: $spacing-200;
   width: 100%;
 }
 
 .title {
   @include text-preset-2;
+
   color: $grey-900;
 }
-

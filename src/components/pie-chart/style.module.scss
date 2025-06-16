@@ -1,8 +1,9 @@
-@use "../../styles/variables" as *;
-@use "../../styles/mixins" as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .chart {
   @include flex-center;
+
   position: relative;
   max-width: 240px;
   max-height: 240px;
@@ -10,19 +11,22 @@
 
 .chartInfo {
   @include flex-column;
+
+  position: absolute;
   align-items: center;
   justify-content: center;
-  @include text-preset-1;
-  color: $grey-900;
-  position: absolute;
-  background-color: rgba($color: $white, $alpha: 0.25);
   width: 70%;
-  height: 70%;
   min-width: 168px;
+  height: 70%;
+  color: $grey-900;
+  background-color: rgba($color: $white, $alpha: 25%);
   border-radius: 50%;
+
+  @include text-preset-1;
 }
 
 .limit {
   @include text-preset-5;
+
   color: $grey-500;
 }

@@ -1,61 +1,62 @@
-@use "../../../../styles/variables" as *;
-@use "../../../../styles/mixins" as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .pot {
   @include white-background;
-  padding: clamp($spacing-250, 4.17vw, $spacing-400);
 
   display: grid;
-
   grid-template-columns: repeat(2, 1fr);
-  row-gap: $spacing-400;
-  column-gap: $spacing-200;
+  gap: $spacing-400 $spacing-200;
+  padding: clamp($spacing-250, 4.17vw, $spacing-400);
 }
 
-.potChart {
-  grid-column: span 2;
+.pot-chart {
   display: grid;
   grid-template-columns: auto auto;
+  grid-column: span 2;
   row-gap: $spacing-200;
   align-items: center;
-
   color: $grey-500;
 }
 
-.potTotal {
+.pot-total {
   @include text-preset-4;
+
+  justify-self: start;
   text-transform: capitalize;
-  justify-self: start;
 }
 
-.potAmount {
+.pot-amount {
   @include text-preset-1;
-  color: $grey-900;
+
   justify-self: end;
+  color: $grey-900;
 }
 
-.potPrecent {
+.pot-precent {
   @include text-preset-5-bold;
+
   justify-self: start;
 }
 
-.potTarget {
+.pot-target {
   @include text-preset-5;
+
   justify-self: end;
 }
 
-.potBar {
+.pot-bar {
+  position: relative;
   grid-column: span 2;
-  border-radius: $spacing-50;
-  background: $beige-100;
   width: 100%;
   height: $spacing-100;
-  position: relative;
   overflow: hidden;
+  background: $beige-100;
+  border-radius: $spacing-50;
 }
 
-.potBarPrecent {
+.pot-bar-precent {
   position: absolute;
-  border-radius: $spacing-50;
   height: 100%;
+  border-radius: $spacing-50;
 }

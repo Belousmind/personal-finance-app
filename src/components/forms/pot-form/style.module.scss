@@ -1,7 +1,8 @@
-@use "../../../styles/variables" as *;
-@use "../../../styles/mixins" as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .form {
   @include flex-column;
+
   gap: $spacing-250;
 }

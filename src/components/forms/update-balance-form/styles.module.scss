@@ -1,34 +1,38 @@
-@use "../../../styles/variables" as *;
-@use "../../../styles/mixins" as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .formWrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: $spacing-250;
-
-  background-color: $white;
   color: $grey-500;
+  background-color: $white;
 }
 
 .form {
   grid-column: span 2;
+
   @include flex-column;
+
   gap: $spacing-250;
 }
 
 .description {
   @include text-preset-4;
+
   grid-column: span 2;
 }
 
 .label {
   @include text-preset-4;
+
   align-self: center;
 }
 
 .newAmount {
   @include text-preset-1;
-  color: $grey-900;
+
   grid-column: 2;
   justify-self: end;
+  color: $grey-900;
 }

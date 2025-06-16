@@ -1,4 +1,4 @@
-import TertiatyLink from "@/components/tertiaty-link";
+import { TertiatyLink } from "@/components";
 import formattedDate from "@/utils/format-date";
 import styles from "./style.module.scss";
 
@@ -15,7 +15,7 @@ type LatestSpendingProps = {
 
 export default function LatestSpeding({ transactions }: LatestSpendingProps) {
   return (
-    <div className={styles.latestSpeding}>
+    <div className={styles["latest-spending"]}>
       <span className={styles.title}>Latest Spending</span>
       <TertiatyLink text="See All" href="/transactions" />
       <div className={styles.list}>
@@ -32,12 +32,12 @@ export default function LatestSpeding({ transactions }: LatestSpendingProps) {
 function LatestSpedingTransaction({ avatar, name, amount, date }: Transaction) {
   return (
     <div className={styles.transaction}>
-      <img src={avatar} alt={name} className={styles.transactionImage} />
-      <span className={styles.transactionName}>{name}</span>
-      <span className={styles.transactionAmount}>
+      <img src={avatar} alt={name} className={styles["transaction-image"]} />
+      <span className={styles["transaction-name"]}>{name}</span>
+      <span className={styles["transaction-amount"]}>
         {`-$${Math.abs(Number(amount)).toFixed(2)}`}
       </span>
-      <span className={styles.transactionDate}>{formattedDate(date)}</span>
+      <span className={styles["transaction-date"]}>{formattedDate(date)}</span>
     </div>
   );
 }

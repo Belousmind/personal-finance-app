@@ -16,7 +16,7 @@ export default function PotSection() {
   return (
     <>
       <Button text="+ Add New Pot" onClick={() => setIsModalOpen(true)} />
-      <section className={styles.potsContainer}>
+      <section  className={styles["pots-container"]}>
         {pots.map((pot) => (
           <Pot key={pot.name} {...pot} />
         ))}

@@ -1,14 +1,15 @@
 @use "./variables" as *;
 
 @mixin text {
-  letter-spacing: $letter-spacing-0;
   font-family: $font;
+  letter-spacing: $letter-spacing-0;
 }
 
 @mixin text-preset-1 {
   font-size: $text-size-1;
   font-weight: $font-weight-700;
   line-height: $line-height-120;
+
   @include text;
 }
 
@@ -16,6 +17,7 @@
   font-size: $text-size-2;
   font-weight: $font-weight-700;
   line-height: $line-height-120;
+
   @include text;
 }
 
@@ -23,6 +25,7 @@
   font-size: $text-size-3;
   font-weight: $font-weight-700;
   line-height: $line-height-150;
+
   @include text;
 }
 
@@ -30,6 +33,7 @@
   font-size: $text-size-4;
   font-weight: $font-weight-400;
   line-height: $line-height-150;
+
   @include text;
 }
 
@@ -37,6 +41,7 @@
   font-size: $text-size-4;
   font-weight: $font-weight-700;
   line-height: $line-height-150;
+
   @include text;
 }
 
@@ -44,6 +49,7 @@
   font-size: $text-size-5;
   font-weight: $font-weight-400;
   line-height: $line-height-150;
+
   @include text;
 }
 
@@ -51,6 +57,7 @@
   font-size: $text-size-5;
   font-weight: $font-weight-700;
   line-height: $line-height-150;
+
   @include text;
 }
 
@@ -71,21 +78,22 @@
 }
 
 @mixin transition-base {
-  transition: 0.2s ease-out;
   cursor: pointer;
+  transition: 0.2s ease-out;
 }
 
 @mixin pagination-button {
   @include text-preset-4;
   @include flex-center;
   @include transition-base;
+
   gap: $spacing-200;
+  height: 40px;
   padding: $spacing-200;
   color: $grey-900;
-  border-radius: $spacing-100;
-  border: 1px solid $beige-500;
   background: $white;
-  height: 40px;
+  border: 1px solid $beige-500;
+  border-radius: $spacing-100;
 }
 
 @mixin image-icon {

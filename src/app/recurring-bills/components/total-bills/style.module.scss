@@ -1,20 +1,23 @@
-@use "../../../../styles/variables" as *;
-@use "../../../../styles/mixins" as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .billSummary {
   @include flex-column;
+
   gap: $spacing-150;
-  border-radius: $spacing-150;
   padding: $spacing-300 $spacing-250;
-  background-color: $grey-900;
   color: $white;
+  background-color: $grey-900;
+  border-radius: $spacing-150;
 }
+
 // .billIcon {
 // }
 
 .billLabel {
   @include text-preset-4;
 }
+
 .billAmount {
   @include text-preset-1;
 }

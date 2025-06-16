@@ -17,14 +17,16 @@ export default function SpendingItem({
   return (
     <div className={styles.spending}>
       <div
-        className={styles.spendingColor}
+        className={styles["spending-color"]}
         style={{ backgroundColor: theme }}
       ></div>
-      <span className={styles.spendingTitle}>{category}</span>
-      <span className={styles.spendingAmount}>
+      <span className={styles["spending-title"]}>{category}</span>
+      <span className={styles["spending-amount"]}>
         ${Math.abs(total).toFixed(2)}
       </span>
-      <span className={styles.spendingMaximum}>of ${maximum.toFixed(2)}</span>
+      <span className={styles["spending-maximum"]}>
+        of ${maximum.toFixed(2)}
+      </span>
     </div>
   );
 }

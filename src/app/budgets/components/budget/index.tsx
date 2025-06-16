@@ -6,7 +6,7 @@ import getPercentage from "@/utils/get-percentage";
 import styles from "./style.module.scss";
 
 type Transaction = {
- avatar: string;
+  avatar: string;
   name: string;
   amount: number;
   date: string;
@@ -33,15 +33,15 @@ export default function Budget({
 
   return (
     <div className={styles.budget}>
-      <ColorTitle category={category} color={theme} label='budget'/>
+      <ColorTitle category={category} color={theme} label="budget" />
 
-      <div className={styles.budgetStats}>
-        <span className={styles.budgetMaximum}>
+      <div className={styles["budget-stats"]}>
+        <span className={styles["budget-maximum"]}>
           Maximum of ${maximum.toFixed(2)}
         </span>
-        <div className={styles.budgetBar}>
+        <div className={styles["budget-bar"]}>
           <div
-            className={styles.budgetBarPrecent}
+            className={styles["budget-bar-percent"]}
             style={{
               backgroundColor: theme,
               width: `${Math.min(precent, 100)}%`,

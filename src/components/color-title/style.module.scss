@@ -1,12 +1,12 @@
-@use "../../styles/variables" as *;
-@use "../../styles/mixins" as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .container {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: $spacing-200;
   grid-column: span 2;
+  gap: $spacing-200;
+  align-items: center;
 }
 
 .colorCircle {
@@ -17,5 +17,6 @@
 
 .title {
   @include text-preset-2;
+
   color: $grey-900;
 }

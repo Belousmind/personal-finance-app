@@ -1,13 +1,15 @@
-@use "../../styles/variables" as *;
-@use "../../styles/mixins" as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .link {
   @include text-preset-4;
   @include flex-center;
+
   gap: $spacing-150;
   color: $beige-500;
-  text-decoration: none;
   text-transform: capitalize;
+  text-decoration: none;
+
   @include transition-base;
 
   @media (hover: hover) {

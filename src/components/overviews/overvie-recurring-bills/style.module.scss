@@ -1,26 +1,30 @@
-@use "../../../styles/variables" as *;
-@use "../../../styles/mixins" as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .billsContainer {
   @include flex-column;
+
   gap: $spacing-150;
   width: 100%;
 }
 
 .billItem {
   @include flex-center;
+
   justify-content: space-between;
   padding: $spacing-250 $spacing-200;
-  border-radius: $spacing-100;
   background-color: $beige-100;
+  border-radius: $spacing-100;
 }
 
 .billTitle {
   @include text-preset-4;
+
   color: $grey-500;
 }
 
 .billAmount {
   @include text-preset-4-bold;
+
   color: $grey-900;
 }

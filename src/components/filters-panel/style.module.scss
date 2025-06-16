@@ -1,14 +1,16 @@
-@use "../../styles/variables" as *;
-@use "../../styles/mixins" as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .serachPanel {
   @include flex-align-center;
-  justify-content: space-between;
+
   gap: $spacing-300;
+  justify-content: space-between;
 }
 
 .filtres {
   @include flex-align-center;
-  justify-content: space-between;
+
   gap: $spacing-300;
+  justify-content: space-between;
 }

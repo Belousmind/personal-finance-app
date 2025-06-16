@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ColorTitle, Button, Modal } from "@/components";
-import getPercentage from "@/utils/get-percentage";
-import { formatUSD } from "@/utils/format-сurrency";
-import UpdateBalance from "@/components/modal/modal-update-balance";
+import { ColorTitle, Button, UpdateBalance } from "@/components";
+import { formatUSD, getPercentage } from "@/utils";
 
 import styles from "./style.module.scss";
 
@@ -36,20 +34,22 @@ export default function Pot({ name, theme, total, target }: PotProps) {
     <div className={styles.pot}>
       <ColorTitle category={name} color={theme} label="pot" />
 
-      <div className={styles.potChart}>
-        <span className={styles.potTotal}>Total Saved</span>
-        <span className={styles.potAmount}>${total.toFixed()}</span>
-        <div className={styles.potBar}>
+      <div className={styles["pot-chart"]}>
+        <span className={styles["pot-total"]}>Total Saved</span>
+        <span className={styles["pot-amount"]}>${total.toFixed()}</span>
+        <div className={styles["pot-bar"]}>
           <div
-            className={styles.potBarPrecent}
+            className={styles["pot-bar-precent"]}
             style={{
               backgroundColor: theme,
               width: `${Math.min(precent, 100)}%`,
             }}
           ></div>
         </div>
-        <span className={styles.potPrecent}>{precent.toFixed(1)}%</span>
-        <span className={styles.potTarget}>Target of {formatUSD(target)}</span>
+        <span className={styles["pot-precent"]}>{precent.toFixed(1)}%</span>
+        <span className={styles["pot-target"]}>
+          Target of {formatUSD(target)}
+        </span>
       </div>
 
       <Button

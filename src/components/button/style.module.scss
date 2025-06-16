@@ -1,20 +1,21 @@
-@use "../../styles/variables" as *;
-@use "../../styles/mixins" as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .button {
   @include flex-center;
   @include text-preset-4-bold;
   @include transition-base;
-  border-radius: $spacing-100;
+
   width: 100%;
+  padding: $spacing-200;
   text-transform: capitalize;
   border: none;
-  padding: $spacing-200;
+  border-radius: $spacing-100;
 }
 
 .primary {
-  background-color: $grey-900;
   color: $white;
+  background-color: $grey-900;
 
   @media (hover: hover) {
     &:hover {
@@ -24,9 +25,9 @@
 }
 
 .secondary {
+  color: $grey-900;
   background-color: $beige-100;
   border: 1px solid $beige-100;
-  color: $grey-900;
 
   @media (hover: hover) {
     &:hover {
@@ -37,15 +38,15 @@
 }
 
 .destroy {
-  background-color: $red;
   color: $white;
+  background-color: $red;
 
   @media (hover: hover) {
     &:hover {
       background: linear-gradient(
           0deg,
-          rgba(255, 255, 255, 0.2) 0%,
-          rgba(255, 255, 255, 0.2) 100%
+          rgb(255 255 255 / 20%) 0%,
+          rgb(255 255 255 / 20%) 100%
         ),
         $red;
     }

@@ -1,18 +1,20 @@
-@use "../../../styles/variables" as *;
-@use "../../../styles/mixins" as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .confirmText {
   @include text-preset-4;
+
   color: $grey-500;
 }
 
 .cancelButton {
   @include text-preset-4;
+
   color: $grey-500;
+  text-transform: capitalize;
+  outline: none;
   background-color: transparent;
   border: none;
-  outline: none;
-  text-transform: capitalize;
 
   @include transition-base;
 

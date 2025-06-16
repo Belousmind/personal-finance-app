@@ -4,24 +4,25 @@
 .link {
   @include text-preset-5-bold;
   @include transition-base;
+
+  gap: $spacing-50;
+  align-items: center;
+  justify-content: center;
+  max-width: 212px;
+  padding: $spacing-100 0 $spacing-150 0;
+  color: $grey-300;
+  text-transform: capitalize;
   white-space: nowrap;
   text-decoration: none;
-  text-transform: capitalize;
-  color: $grey-300;
-  padding: $spacing-100 0 $spacing-150 0;
 
   @include flex-column;
-  justify-content: center;
-  align-items: center;
-  gap: $spacing-50;
 
-  max-width: 212px;
-
-  @media screen and (min-width: 900px) {
+  @media screen and (width >= 900px) {
     @include text-preset-3;
+
     flex-direction: row;
-    justify-content: flex-start;
     gap: $spacing-200;
+    justify-content: flex-start;
     padding: $spacing-200 $spacing-400;
 
     @media (hover: hover) {
@@ -33,19 +34,20 @@
 }
 
 .active {
-  background-color: $beige-100;
   color: $grey-900;
-  border-radius: $spacing-100 $spacing-100 0 0;
+  background-color: $beige-100;
   border-bottom: 4px solid $green;
+  border-radius: $spacing-100 $spacing-100 0 0;
 
   svg {
     color: $green;
   }
 
-  @media screen and (min-width: 900px) {
-    border-radius: 0 $spacing-150 $spacing-150 0;
+  @media screen and (width >= 900px) {
     border-bottom: 0;
     border-left: 4px solid $green;
+    border-radius: 0 $spacing-150 $spacing-150 0;
+
     // margin-left: $spacing-100;
 
     @media (hover: hover) {
@@ -59,7 +61,7 @@
 .label {
   display: none;
 
-  @media screen and (min-width: 560px) {
+  @media screen and (width >= 560px) {
     display: block;
   }
 }

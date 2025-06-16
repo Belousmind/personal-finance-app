@@ -1,32 +1,32 @@
-@use "../../../styles/variables" as *;
-@use "../../../styles/mixins" as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .input-field {
   @include text-preset-5-bold;
-  color: $grey-500;
 
   display: flex;
   flex-direction: column;
-
-  text-align: left;
   gap: $spacing-50;
+  color: $grey-500;
+  text-align: left;
   text-transform: capitalize;
 
   & > span {
     @include text-preset-5;
+
     align-self: end;
   }
 }
 
 .input-wrapper {
   @include flex-align-center;
+
   justify-content: space-between;
-  background: $white;
-  border-radius: $spacing-100;
-  border: 1px solid $beige-500;
   width: 100%;
   overflow: hidden;
-
+  background: $white;
+  border: 1px solid $beige-500;
+  border-radius: $spacing-100;
   transition: 0.2s ease-out;
 
   svg {
@@ -54,24 +54,25 @@
 
   width: 100%;
   padding: $spacing-150;
+  color: $grey-900;
+  outline: none;
   background: $white;
   border: none;
-  outline: none;
-  color: $grey-900;
 
   &::placeholder {
-    text-transform: capitalize;
     color: $beige-500;
+    text-transform: capitalize;
   }
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+    appearance: none;
   }
 }
 
 .prefix {
   margin-left: $spacing-150;
   color: $beige-500;
+
   @include text-preset-4;
 }

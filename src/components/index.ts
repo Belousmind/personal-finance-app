@@ -17,8 +17,8 @@ export { default as ModalBudget } from "./modal/modal-budget";
 export { default as ModalDeleteConfirmation } from "./modal/modal-delete-confirmation";
 export { default as ModalPot } from "./modal/modal-pot";
 export { default as UpdateBalance } from "./modal/modal-update-balance";
-// export {default as } from './'
-// export {default as } from './'
+
+export { default as TertiatyLink } from "./tertiaty-link";
 // export {default as } from './'
 // export {default as } from './'
 // export {default as } from './'

@@ -1,14 +1,14 @@
-@use "../../../../styles/variables" as *;
-@use "../../../../styles/mixins" as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .spending {
   display: grid;
   grid-template-columns: auto 1fr auto auto;
   gap: $spacing-100;
-  color: $grey-500;
   align-items: center;
   padding-bottom: $spacing-200;
   margin-top: $spacing-200;
+  color: $grey-500;
   border-bottom: 1px solid $grey-100;
 }
 
@@ -17,26 +17,27 @@
 }
 
 .spending:last-child {
-  border-bottom: none;
   padding-bottom: 0;
+  border-bottom: none;
 }
 
-.spendingColor {
-  margin-right: $spacing-100;
-  border-radius: $spacing-100;
+.spending-color {
   width: $spacing-50;
   height: 100%;
+  margin-right: $spacing-100;
+  border-radius: $spacing-100;
 }
 
-.spendingTitle {
+.spending-title {
   @include text-preset-4;
 }
 
-.spendingAmount {
+.spending-amount {
   @include text-preset-3;
+
   color: $grey-900;
 }
 
-.spendingMaximum {
+.spending-maximum {
   @include text-preset-5;
 }

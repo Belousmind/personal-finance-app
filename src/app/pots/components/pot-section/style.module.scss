@@ -1,11 +1,11 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.potsContainer {
+.pots-container {
   display: grid;
   gap: $spacing-300;
 
-  @media screen and (min-width: 760px) {
+  @media screen and (width >= 760px) {
     grid-template-columns: repeat(2, 1fr);
   }
 }
