@@ -1,15 +1,15 @@
 import { InputField, DropDownList } from "@/components";
-import { categoriesList, sortingList } from "@/lib/filters";
+import { SORTING_LIST, CATEGORIES_LIST } from "@/constants";
 
 import styles from "./style.module.scss";
 
 type Props = {
   searchQuery: string;
-  selectedCategory?: (typeof categoriesList)[0];
-  selectedSort: (typeof sortingList)[0];
+  selectedCategory?: (typeof CATEGORIES_LIST)[0];
+  selectedSort: (typeof SORTING_LIST)[0];
   onSearchChange: (value: string) => void;
-  onCategoryChange?: (item: (typeof categoriesList)[0]) => void;
-  onSortChange: (item: (typeof sortingList)[0]) => void;
+  onCategoryChange?: (item: (typeof CATEGORIES_LIST)[0]) => void;
+  onSortChange: (item: (typeof SORTING_LIST)[0]) => void;
   withCategory?: boolean;
 };
 
@@ -33,7 +33,7 @@ export default function FiltersPanel({
       <div className={styles.filters}>
         <DropDownList
           label="Sort by"
-          list={sortingList}
+          list={SORTING_LIST}
           selected={selectedSort}
           onChange={onSortChange}
           iconSrc="/icon-sort-mobile.svg"
@@ -41,7 +41,7 @@ export default function FiltersPanel({
         {withCategory && selectedCategory && onCategoryChange && (
           <DropDownList
             label="Category"
-            list={categoriesList}
+            list={CATEGORIES_LIST}
             selected={selectedCategory}
             onChange={onCategoryChange}
             iconSrc="/icon-filter-mobile.svg"

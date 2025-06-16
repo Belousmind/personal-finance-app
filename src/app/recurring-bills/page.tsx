@@ -1,4 +1,4 @@
-import MainContent from "@/components/main-content";
+import { MainContent } from "@/components";
 import RecurringBillsSection from "./components/recurring-bills-section";
 
 export default function Page() {

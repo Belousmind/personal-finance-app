@@ -1,7 +1,6 @@
-import ColorTitle from "@/components/color-title";
-import SavingSmall from "@/components/saving-small";
+import { ColorTitle, SavingSmall } from "@/components";
 import LatestSpeding from "../latest-speding";
-import getPercentage from "@/utils/get-percentage";
+import { getPercentage } from "@/utils";
 
 import styles from "./style.module.scss";
 

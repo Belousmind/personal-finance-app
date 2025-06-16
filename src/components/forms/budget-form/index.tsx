@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 import { InputField, Button, DropDownList } from "@/components";
 
-import { useAvailableColors } from "@/lib/filters";
+import { useAvailableColors } from "@/utils/is-occupied-color";
 import { useAvailableCategories } from "@/hooks/useAvailableCategories";
 
 import styles from "./style.module.scss";

@@ -1,39 +1,17 @@
+import { RECURRING_BILLS, ROUTES } from "@/constants";
 import { OverviewContainer } from "@/components";
 import styles from "./style.module.scss";
-
-const RecurringBills = [
-  {
-    name: "Paid Bills",
-    theme: "#277C78",
-    total: 190.0,
-  },
-  {
-    name: "Total Upcoming",
-    theme: "#F2CDAC",
-    total: 194.98,
-  },
-  {
-    name: "Due Soon",
-    theme: "#82C9D7",
-    total: 59.98,
-  },
-];
 
 export default function OvervieRecurringBills() {
   return (
     <OverviewContainer
       title="Recurring Bills"
-      href="/recurring-bills"
+      href={ROUTES.RECURRING_BILLS}
       gapSize={32}
     >
       <div className={styles["bills-container"]}>
-        {RecurringBills.map((bill) => (
-          <Bill
-            key={bill.name}
-            title={bill.name}
-            sum={bill.total.toFixed(2)}
-            color={bill.theme}
-          />
+        {RECURRING_BILLS.map((bill) => (
+          <Bill key={bill.name} {...bill} />
         ))}
       </div>
     </OverviewContainer>
@@ -41,19 +19,19 @@ export default function OvervieRecurringBills() {
 }
 
 type BillProps = {
-  title: string;
-  sum: string;
-  color: string;
+  name: string;
+  total: number;
+  theme: string;
 };
 
-function Bill({ title, sum, color }: BillProps) {
+function Bill({ name, total, theme }: BillProps) {
   return (
     <div
       className={styles["bill-item"]}
-      style={{ borderLeft: `4px solid ${color}` }}
+      style={{ borderLeft: `4px solid ${theme}` }}
     >
-      <span className={styles["bill-title"]}>{title}</span>
-      <span className={styles["bill-amount"]}>${sum}</span>
+      <span className={styles["bill-title"]}>{name}</span>
+      <span className={styles["bill-amount"]}>${total.toFixed(2)}</span>
     </div>
   );
 }

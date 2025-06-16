@@ -1,5 +1,5 @@
 import { TertiatyLink } from "@/components";
-import formattedDate from "@/utils/format-date";
+import { formattedDate } from "@/utils";
 import styles from "./style.module.scss";
 
 type Transaction = {

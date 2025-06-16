@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppSelector } from "@/store/hooks";
-import { sortingList } from "@/lib/filters";
+import { SORTING_LIST } from "@/constants";
 
 export default function useReccuringBills() {
   const transactions = useAppSelector(
@@ -8,7 +8,7 @@ export default function useReccuringBills() {
   );
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedSort, setSelectedSort] = useState(sortingList[0]);
+  const [selectedSort, setSelectedSort] = useState(SORTING_LIST[0]);
 
   const filteredTransactions = transactions
     .filter((t) => t.name.toLowerCase().includes(searchQuery.toLowerCase()))

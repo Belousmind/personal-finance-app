@@ -1,18 +1,18 @@
 import { formattedDate } from "@/utils";
+import { ROUTES } from "@/constants";
 import { OverviewContainer } from "@/components";
 
 import styles from "./styles.module.scss";
 import clsx from "clsx";
 
 import data from "../../../../data.json";
-
 const { transactions } = data;
 
 export default function OvervieTransactions() {
   return (
     <OverviewContainer
       title="Transactions"
-      href="/transactions"
+      href={ROUTES.TRANSACTIONS}
       gapSize={32}
       text="View All"
     >

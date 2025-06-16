@@ -1,6 +1,6 @@
 "use client";
-import { Pagination } from "@/components";
-import FiltersPanel from "@/components/filters-panel";
+
+import { Pagination, FiltersPanel } from "@/components";
 import TransactionsTable from "../transictions-table";
 import { useFilteredTransactions } from "./useFilteredTransactions";
 

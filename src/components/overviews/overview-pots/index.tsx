@@ -1,6 +1,7 @@
 "use client";
 
 import { useAppSelector } from "@/store/hooks";
+import { ROUTES } from "@/constants";
 import { OverviewContainer, SavingSmall } from "@/components";
 
 import styles from "./style.module.scss";
@@ -9,7 +10,7 @@ export default function OverviewPots() {
   const { pots, totalSaved } = useAppSelector((state) => state.pots);
 
   return (
-    <OverviewContainer title="Pots" href="/pots">
+    <OverviewContainer title="Pots" href={ROUTES.POTS}>
       <div className={styles["pots-overview"]}>
         <div className={styles["pots-total-saved"]}>
           <img src="/icon-pot.svg" alt="Pot Icon" />

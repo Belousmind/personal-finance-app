@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/store/hooks";
-import { categoriesList } from "@/lib/filters";
+import { CATEGORIES_LIST } from "@/constants";
 import { Budget } from "@/store/budgets/budgetsSlice";
 
 export function useAvailableCategories() {
@@ -9,7 +9,7 @@ export function useAvailableCategories() {
     budgets.map((b: Budget) => b.category.toLowerCase())
   );
 
-  const availableCategories = categoriesList.filter(
+  const availableCategories = CATEGORIES_LIST.filter(
     (category) =>
       category.value !== "All Transactions" &&
       !usedCategories.has(category.value.toLowerCase())

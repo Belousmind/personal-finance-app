@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { formatMonthlyLabel } from "@/utils/format-date";
 
 import useReccuringBills from "./useRecurringBills";
-import FiltersPanel from "@/components/filters-panel";
+import { FiltersPanel } from "@/components";
 
 export default function BillsList() {
   const {

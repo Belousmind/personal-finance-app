@@ -4,16 +4,16 @@ import {
   BudgetsIcon,
   PotsIcon,
   RecurringBillsIcon,
-} from "./sidebar-icons";
-import { ROUTES } from "./routes";
+} from "@/components";
+import { ROUTES } from "@/constants";
 
-export type SidebarItem = {
+export type NavigationItem = {
   icon: React.ReactElement;
   link: (typeof ROUTES)[keyof typeof ROUTES];
   label: string;
 };
 
-export const SIDEBAR_DATA: SidebarItem[] = [
+export const NAVIGATION_DATA: NavigationItem[] = [
   {
     icon: <HomeIcon />,
     link: ROUTES.HOME,

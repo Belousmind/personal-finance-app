@@ -1,9 +1,8 @@
 "use client";
 
+import { useAppSelector } from "@/store/hooks";
 import SpendingItem from "../spending-item";
 import styles from "./style.module.scss";
-
-import { useAppSelector } from "@/store/hooks";
 
 export default function SpendingSummary() {
   const budgets = useAppSelector((state) => state.budgets);

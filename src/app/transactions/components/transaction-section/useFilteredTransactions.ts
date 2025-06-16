@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { useAppSelector } from "@/store/hooks";
-import { categoriesList, sortingList } from "@/lib/filters";
+import { categoriesList, sortingList } from "@/utils/is-occupied-color";
 
 export function useFilteredTransactions() {
-  
   const transactions = useAppSelector(
     (state) => state.transactions.transactions
   );
@@ -16,9 +15,7 @@ export function useFilteredTransactions() {
   const itemsPerPage = 10;
 
   const filteredTransactions = transactions
-    .filter((t) =>
-      t.name.toLowerCase().includes(searchQuery.toLowerCase())
-    )
+    .filter((t) => t.name.toLowerCase().includes(searchQuery.toLowerCase()))
     .filter((t) =>
       selectedCategory.value === "All Transactions"
         ? true

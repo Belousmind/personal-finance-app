@@ -1,11 +1,13 @@
 "use client";
 
-import { SIDEBAR_DATA } from "./sidebar.data";
-import SideBarLink from "./sidebar-link";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+
+import { NAVIGATION_DATA } from "@/constants";
+import SideBarLink from "./sidebar-link";
+
 import styles from "./style.module.scss";
 import clsx from "clsx";
-import { useState, useEffect } from "react";
 
 export default function SideBar() {
   const [isClosed, setIsClosed] = useState(false);
@@ -31,7 +33,7 @@ export default function SideBar() {
         <LogoIcon />
       </Link>
       <nav className={styles.nav}>
-        {SIDEBAR_DATA.map((menuItem, index) => {
+        {NAVIGATION_DATA.map((menuItem, index) => {
           const { icon, label, link } = menuItem;
           return (
             <SideBarLink key={index} icon={icon} label={label} link={link} />

@@ -1,6 +1,7 @@
 "use client";
-import { useAppSelector } from "@/store/hooks";
 
+import { useAppSelector } from "@/store/hooks";
+import { ROUTES } from "@/constants";
 import { OverviewContainer, Chart, SavingSmall } from "@/components";
 
 import styles from "./style.module.scss";
@@ -9,7 +10,7 @@ export default function OvervieBudgets() {
   const budgets = useAppSelector((state) => state.budgets);
 
   return (
-    <OverviewContainer title="Budgets" href="/budgets">
+    <OverviewContainer title="Budgets" href={ROUTES.BUDGETS}>
       <div className={styles["budgets-overview"]}>
         <Chart />
         <div className={styles["budgets-list"]}>

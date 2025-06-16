@@ -3,11 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { SidebarItem } from "../sidebar.data";
+import { SidebarItem } from "../../../constants/navigation-data";
 import styles from "./style.module.scss";
 
 export default function SideBarLink({ link, label, icon }: SidebarItem) {
-  
   const pathname = usePathname();
   const isActive = pathname === link;
 

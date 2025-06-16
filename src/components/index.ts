@@ -19,12 +19,15 @@ export { default as ModalPot } from "./modal/modal-pot";
 export { default as UpdateBalance } from "./modal/modal-update-balance";
 
 export { default as TertiatyLink } from "./tertiaty-link";
-export {default as OverviewPots} from './overviews/overview-pots'
-export {default as OvervieBudgets} from './overviews/overvie-budgets'
-export {default as OvervieTransactions} from './overviews/overvie-transactions'
-export {default as OvervieRecurringBills} from './overviews/overvie-recurring-bills'
-export {default as OverviewContainer} from './overviews/overview-container'
-export {default as OptionButton } from './option-button'
+export { default as OverviewPots } from "./overviews/overview-pots";
+export { default as OvervieBudgets } from "./overviews/overvie-budgets";
+export { default as OvervieTransactions } from "./overviews/overvie-transactions";
+export { default as OvervieRecurringBills } from "./overviews/overvie-recurring-bills";
+export { default as OverviewContainer } from "./overviews/overview-container";
+export { default as OptionButton } from "./option-button";
+
+export { default as FiltersPanel } from "./filters-panel";
+
+export * from "./sidebar/sidebar-icons";
 
 // export {default as } from './'
-
