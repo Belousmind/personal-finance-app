@@ -7,7 +7,7 @@ import { OverviewContainer, Chart, SavingSmall } from "@/components";
 import styles from "./style.module.scss";
 
 export default function OvervieBudgets() {
-  const budgets = useAppSelector((state) => state.budgets);
+  const budgets = useAppSelector((state) => state.budgets).slice(0, 4);
 
   return (
     <OverviewContainer title="Budgets" href={ROUTES.BUDGETS}>

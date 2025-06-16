@@ -18,12 +18,12 @@
   @container (min-width: 600px) {
     grid-template-columns: auto $spacing-200 1fr $spacing-400 80px $spacing-400 80px $spacing-400 88px;
     grid-row: 1fr;
-    align-items: center;
     row-gap: 0;
+    align-items: center;
 
     .transaction-image {
-      margin: 0;
       grid-row: 1;
+      margin: 0;
     }
 
     .transaction-name {
@@ -91,8 +91,8 @@
 
 .full-category {
   display: inline-block;
-  grid-column: 2;
   grid-row: 2;
+  grid-column: 2;
 }
 
 .transaction-amount {

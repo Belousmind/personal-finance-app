@@ -2,19 +2,31 @@
 @use "@/styles/mixins" as *;
 
 .budgets-overview {
-  @include flex-align-center;
-
+  display: grid;
+  grid-template-rows: 1fr auto;
   gap: $spacing-200;
-
-  justify-content: center;
   width: 100%;
   margin: $spacing-100 0;
+
+  & > div {
+    justify-self: center;
+  }
+
+  @media screen and (width >= 480px) {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
 }
 
 .budgets-list {
   display: grid;
-
-  // grid-template-columns: repeat(2, 1fr);
-  // grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: $spacing-200;
+  justify-self: start;
+  width: 100%;
+
+  @media screen and (width >= 480px) {
+    grid-template-columns: 1fr;
+  }
 }
