@@ -3,6 +3,7 @@
 
 .pots-container {
   display: grid;
+  align-items: flex-start;
   gap: $spacing-300;
 
   @media screen and (width >= 760px) {

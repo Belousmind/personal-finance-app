@@ -11,20 +11,21 @@ import clsx from "clsx";
 
 export default function SideBar() {
   const [isClosed, setIsClosed] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 900 && !isClosed) {
-        setIsClosed(false);
-      }
+    const checkScreen = () => {
+      setIsDesktop(window.innerWidth > 900);
     };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+
+    return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
   const toggleMenu = () => {
-    setIsClosed((prev) => !prev);
+    if (isDesktop) setIsClosed((prev) => !prev);
   };
 
   return (

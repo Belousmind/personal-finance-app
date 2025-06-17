@@ -8,6 +8,7 @@ import clsx from "clsx";
 import styles from "./style.module.scss";
 
 export default function SideBarLink({ link, label, icon }: NavigationItem) {
+  
   const pathname = usePathname();
   const isActive = pathname === link;
 
