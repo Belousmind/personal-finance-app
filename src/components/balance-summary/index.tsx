@@ -1,11 +1,10 @@
 "use client";
 
 import { useAppSelector } from "@/store/hooks";
-
+import { formatUSD } from "@/utils";
 import styles from "./style.module.scss";
 
 export default function BalanceSummary() {
-  
   const { current, income, expenses } = useAppSelector(
     (state) => state.balance
   );
@@ -33,7 +32,7 @@ function SummaryCard({ label, amount }: SummaryCardProps) {
   return (
     <div className={styles.card}>
       <span className={styles.title}>{label}</span>
-      <span className={styles.sum}>${amount.toFixed(2)}</span>
+      <span className={styles.sum}>{formatUSD(amount)}</span>
     </div>
   );
 }
