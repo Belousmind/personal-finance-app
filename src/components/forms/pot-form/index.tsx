@@ -37,9 +37,9 @@ export default function PotForm({
   } = useForm<PotFormData>({
     resolver: zodResolver(potSchema),
     defaultValues: {
-      name: editingPot?.name || "",
-      target: editingPot?.target || 0,
-      theme: editingPot?.theme || budgetColors[0]?.value || "",
+      name: editingPot?.name,
+      target: editingPot?.target,
+      theme: editingPot?.theme,
     },
   });
 
@@ -78,7 +78,11 @@ export default function PotForm({
             placeholder="e.g. 2000"
             withPrefix
             {...field}
-            helpText={errors.target?.message}
+            helpText={
+              errors.target?.message === "Expected number, received nan"
+                ? "Please enter a number"
+                : errors.target?.message
+            }
           />
         )}
       />

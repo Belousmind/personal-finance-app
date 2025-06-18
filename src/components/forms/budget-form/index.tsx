@@ -61,9 +61,9 @@ export default function BudgetForm({
   } = useForm<BudgetFormData>({
     resolver: zodResolver(budgetSchema),
     defaultValues: {
-      category: editingBudget?.category || availableCategories[0]?.value || "",
-      maximum: editingBudget?.maximum ?? 0,
-      theme: editingBudget?.theme || budgetColors[0]?.value || "",
+      category: editingBudget?.category,
+      maximum: editingBudget?.maximum,
+      theme: editingBudget?.theme,
     },
   });
 

@@ -59,7 +59,7 @@ export default function DropDownList({
             </span>
             <img src={iconSrc} alt="icon" />
           </ListboxButton>
-          <span className={styles["help-text"]}>{helpText} text</span>
+          <span className={styles["help-text"]}>{helpText}</span>
           <ListboxOptions modal={false} className={styles["listbox-options"]}>
             {list.map((item) => (
               <ListboxOption
