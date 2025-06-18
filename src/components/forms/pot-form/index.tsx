@@ -1,15 +1,16 @@
 "use client";
 
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { potSchema, PotFormData } from "@/lib/schema/pot-schema";
 
-import { InputField, DropDownList, Button } from "@/components";
+import { Button } from "@/components";
 
 import { useAvailableColors } from "@/hooks";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { addPot, editPot } from "@/store/pots/potsSlice";
 
+import { ThemeField, NumberField, NameField } from "../fields";
 import styles from "./style.module.scss";
 
 type PotFormProps = {
@@ -24,7 +25,8 @@ export default function PotForm({
   onClose,
 }: PotFormProps) {
   const dispatch = useAppDispatch();
-  const { budgetColors } = useAvailableColors();
+
+  const { potColors } = useAvailableColors();
   const pots = useAppSelector((state) => state.pots.pots);
 
   const editingPot = pots.find((p) => p.name === initialName);
@@ -55,56 +57,17 @@ export default function PotForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <Controller
-        name="name"
-        control={control}
-        render={({ field }) => (
-          <InputField
-            title="Pot Name"
-            placeholder="e.g. Rainy Days"
-            helpText={errors.name ? errors.name.message : `30 characters left`}
-            {...field}
-          />
-        )}
-      />
+      <NameField<PotFormData> name="name" control={control} errors={errors} />
 
-      <Controller
+      <NumberField<PotFormData>
         name="target"
+        title="Target"
+        placeholder="e.g. 2000"
         control={control}
-        render={({ field }) => (
-          <InputField
-            title="Target"
-            type="number"
-            placeholder="e.g. 2000"
-            withPrefix
-            {...field}
-            helpText={
-              errors.target?.message === "Expected number, received nan"
-                ? "Please enter a number"
-                : errors.target?.message
-            }
-          />
-        )}
+        errors={errors}
       />
 
-      <Controller
-        name="theme"
-        control={control}
-        render={({ field }) => (
-          <DropDownList
-            label="Theme"
-            list={budgetColors}
-            selected={
-              budgetColors.find((c) => c.value === field.value) ||
-              budgetColors[0]
-            }
-            onChange={(item) => field.onChange(item.value)}
-            withColor
-            isForm
-            helpText={errors.theme?.message}
-          />
-        )}
-      />
+      <ThemeField control={control} errors={errors} colors={potColors} />
 
       <Button text={mode === "edit" ? "Save Changes" : "Add Pot"} />
     </form>

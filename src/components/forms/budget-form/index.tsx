@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { budgetSchema, BudgetFormData } from "@/lib/schema/budget-schema";
 import { addBudget, editBudget } from "@/store/budgets/budgetsSlice";
@@ -8,9 +8,11 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
 import { useEffect } from "react";
 
-import { InputField, Button, DropDownList } from "@/components";
+import { Button } from "@/components";
 
 import { useAvailableColors, useAvailableCategories } from "@/hooks";
+
+import { ThemeField, NumberField, CategorySelectField } from "../fields";
 
 import styles from "./style.module.scss";
 
@@ -89,57 +91,21 @@ export default function BudgetForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <Controller
-        name="category"
+      <CategorySelectField
         control={control}
-        render={({ field }) => (
-          <DropDownList
-            label="Category"
-            list={categoryOptions}
-            selected={
-              categoryOptions.find((c) => c.value === field.value) ||
-              categoryOptions[0]
-            }
-            onChange={(item) => field.onChange(item.value)}
-            isForm
-            helpText={errors.category?.message}
-          />
-        )}
+        options={categoryOptions}
+        error={errors.category}
       />
 
-      <Controller
+      <NumberField<BudgetFormData>
         name="maximum"
         control={control}
-        render={({ field }) => (
-          <InputField
-            title="Maximum Spend"
-            placeholder="e.g. 2000"
-            type="number"
-            withPrefix
-            {...field}
-            helpText={errors.maximum?.message}
-          />
-        )}
+        errors={errors}
+        title="Maximum Spend"
+        placeholder="e.g. 2000"
       />
 
-      <Controller
-        name="theme"
-        control={control}
-        render={({ field }) => (
-          <DropDownList
-            label="Theme"
-            list={budgetColors}
-            selected={
-              budgetColors.find((c) => c.value === field.value) ||
-              budgetColors[0]
-            }
-            onChange={(item) => field.onChange(item.value)}
-            withColor
-            isForm
-            helpText={errors.theme?.message}
-          />
-        )}
-      />
+      <ThemeField control={control} errors={errors} colors={budgetColors} />
 
       <Button text={mode === "edit" ? "Save Changes" : "Add Budget"} />
     </form>
