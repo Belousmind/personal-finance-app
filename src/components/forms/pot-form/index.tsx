@@ -62,12 +62,11 @@ export default function PotForm({
           <InputField
             title="Pot Name"
             placeholder="e.g. Rainy Days"
-            helpText="30 characters left"
+            helpText={errors.name ? errors.name.message : `30 characters left`}
             {...field}
           />
         )}
       />
-      {errors.name && <p>{errors.name.message}</p>}
 
       <Controller
         name="target"
@@ -79,10 +78,10 @@ export default function PotForm({
             placeholder="e.g. 2000"
             withPrefix
             {...field}
+            helpText={errors.target?.message}
           />
         )}
       />
-      {errors.target && <p>{errors.target.message}</p>}
 
       <Controller
         name="theme"
@@ -98,10 +97,10 @@ export default function PotForm({
             onChange={(item) => field.onChange(item.value)}
             withColor
             isForm
+            helpText={errors.theme?.message}
           />
         )}
       />
-      {errors.theme && <p>{errors.theme.message}</p>}
 
       <Button text={mode === "edit" ? "Save Changes" : "Add Pot"} />
     </form>

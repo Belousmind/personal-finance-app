@@ -24,6 +24,7 @@ type DropDownListProps = {
   onChange: (item: DropDownItem) => void;
   withColor?: boolean;
   isForm?: boolean;
+  helpText?: string;
 };
 
 export default function DropDownList({
@@ -34,6 +35,7 @@ export default function DropDownList({
   onChange,
   withColor = false,
   isForm = false,
+  helpText = "",
 }: DropDownListProps) {
   return (
     <div className={clsx(isForm ? styles["v-dropdown"] : styles.dropdown)}>
@@ -57,6 +59,7 @@ export default function DropDownList({
             </span>
             <img src={iconSrc} alt="icon" />
           </ListboxButton>
+          <span className={styles["help-text"]}>{helpText} text</span>
           <ListboxOptions modal={false} className={styles["listbox-options"]}>
             {list.map((item) => (
               <ListboxOption

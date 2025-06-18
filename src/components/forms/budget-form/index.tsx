@@ -102,10 +102,10 @@ export default function BudgetForm({
             }
             onChange={(item) => field.onChange(item.value)}
             isForm
+            helpText={errors.category?.message}
           />
         )}
       />
-      {errors.category && <p>{errors.category.message}</p>}
 
       <Controller
         name="maximum"
@@ -117,10 +117,10 @@ export default function BudgetForm({
             type="number"
             withPrefix
             {...field}
+            helpText={errors.maximum?.message}
           />
         )}
       />
-      {errors.maximum && <p>{errors.maximum.message}</p>}
 
       <Controller
         name="theme"
@@ -136,10 +136,10 @@ export default function BudgetForm({
             onChange={(item) => field.onChange(item.value)}
             withColor
             isForm
+            helpText={errors.theme?.message}
           />
         )}
       />
-      {errors.theme && <p>{errors.theme.message}</p>}
 
       <Button text={mode === "edit" ? "Save Changes" : "Add Budget"} />
     </form>
