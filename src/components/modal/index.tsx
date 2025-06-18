@@ -1,6 +1,28 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import { m, AnimatePresence } from "framer-motion";
 
 import styles from "./style.module.scss";
+
+const backdropVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+  },
+  exit: {
+    opacity: 0,
+  },
+};
+
+const modalVariants = {
+  hidden: { scale: 0 },
+  visible: {
+    scale: 1,
+    transition: {
+      delay: 0.2,
+    },
+  },
+  exit: { scale: 0 },
+};
 
 type ModalProps = {
   isOpen: boolean;
@@ -16,19 +38,37 @@ export default function Modal({
   children,
 }: ModalProps) {
   return (
-<Dialog open={isOpen} onClose={onClose} className={styles["dialog-overlay"]}>
-  <div className={styles["dialog-container"]}>
-    <DialogPanel className={styles["dialog-panel"]}>
-      <DialogTitle className={styles["dialog-title"]}>
-        {title}
-        <button onClick={onClose} className={styles["close-button"]}>
-          <CloseIcon />
-        </button>
-      </DialogTitle>
-      {children}
-    </DialogPanel>
-  </div>
-</Dialog>
+    <AnimatePresence>
+      {isOpen && (
+        <Dialog open={isOpen} onClose={onClose}>
+          <m.div
+            className={styles["dialog-overlay"]}
+            variants={backdropVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <m.div
+              className={styles["dialog-container"]}
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <DialogPanel className={styles["dialog-panel"]}>
+                <DialogTitle className={styles["dialog-title"]}>
+                  {title}
+                  <button onClick={onClose} className={styles["close-button"]}>
+                    <CloseIcon />
+                  </button>
+                </DialogTitle>
+                {children}
+              </DialogPanel>
+            </m.div>
+          </m.div>
+        </Dialog>
+      )}
+    </AnimatePresence>
   );
 }
 
