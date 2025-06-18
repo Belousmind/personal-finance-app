@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { budgetSchema, BudgetFormData } from "@/lib/schema/budget-schema";
 import { addBudget, editBudget } from "@/store/budgets/budgetsSlice";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { getThemeOptions } from "@/utils";
 
 import { useEffect } from "react";
 
@@ -54,6 +55,8 @@ export default function BudgetForm({
               ]),
         ]
       : availableCategories;
+
+  const themeOptions = getThemeOptions(budgetColors, editingBudget?.theme);
 
   const {
     control,
@@ -105,7 +108,7 @@ export default function BudgetForm({
         placeholder="e.g. 2000"
       />
 
-      <ThemeField control={control} errors={errors} colors={budgetColors} />
+      <ThemeField control={control} errors={errors} colors={themeOptions} />
 
       <Button text={mode === "edit" ? "Save Changes" : "Add Budget"} />
     </form>

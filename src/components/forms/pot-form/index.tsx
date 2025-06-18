@@ -9,7 +9,7 @@ import { Button } from "@/components";
 import { useAvailableColors } from "@/hooks";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { addPot, editPot } from "@/store/pots/potsSlice";
-
+import { getThemeOptions } from "@/utils";
 import { ThemeField, NumberField, NameField } from "../fields";
 import styles from "./style.module.scss";
 
@@ -30,6 +30,8 @@ export default function PotForm({
   const pots = useAppSelector((state) => state.pots.pots);
 
   const editingPot = pots.find((p) => p.name === initialName);
+
+  const themeOptions = getThemeOptions(potColors, editingPot?.theme);
 
   const {
     control,
@@ -67,7 +69,7 @@ export default function PotForm({
         errors={errors}
       />
 
-      <ThemeField control={control} errors={errors} colors={potColors} />
+      <ThemeField control={control} errors={errors} colors={themeOptions} />
 
       <Button text={mode === "edit" ? "Save Changes" : "Add Pot"} />
     </form>
