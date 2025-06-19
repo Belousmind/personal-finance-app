@@ -7,8 +7,11 @@ import styles from "./style.module.scss";
 export default function RecurringBillsSection() {
   return (
     <section className={styles["bills-section"]}>
-      <TotallBills />
-      <Summary />
+      <div className={styles["bills-summary"]}>
+        <TotallBills />
+        <Summary />
+      </div>
+
       <BillsList />
     </section>
   );

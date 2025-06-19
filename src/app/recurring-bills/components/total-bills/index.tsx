@@ -15,10 +15,12 @@ export default function TotallBills() {
         src="/total-bill-icon.svg"
         alt="Bill Icon"
       />
-      <span className={styles["bill-label"]}>Total bills</span>
-      <span className={styles["bill-amount"]}>
-        ${Math.abs(totalSum).toFixed(2)}
-      </span>
+      <div className={styles['bill-info']}>
+        <span className={styles["bill-label"]}>Total bills</span>
+        <span className={styles["bill-amount"]}>
+          ${Math.abs(totalSum).toFixed(2)}
+        </span>
+      </div>
     </div>
   );
 }

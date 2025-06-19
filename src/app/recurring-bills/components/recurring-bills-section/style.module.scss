@@ -2,7 +2,33 @@
 @use "@/styles/mixins" as *;
 
 .bills-section {
-  @include flex-column;
+  display: grid;
+  grid-template-columns: 1fr;
 
-  gap: $spacing-200;
+  gap: $spacing-300;
+
+  @media screen and (min-width: 900px) {
+    grid-template-columns: 0.5fr 1fr;
+  }
+}
+
+.bills-summary {
+  display: flex;
+  flex-direction: column;
+  gap: clamp($spacing-150, 4.8vw, $spacing-300);
+
+  @media screen and (min-width: 500px) {
+    flex-direction: row;
+    & > * {
+      flex-grow: 1;
+      flex-basis: 0;
+    }
+  }
+
+  @media screen and (min-width: 900px) {
+    flex-direction: column;
+    & > * {
+      flex-grow: 0;
+    }
+  }
 }

@@ -10,14 +10,16 @@ export default function Summary() {
   return (
     <div className={styles["summary-wrapper"]}>
       <span className={styles["summary-title"]}>Summary</span>
-      {summary.map((item) => (
-        <span key={item.label} className={styles["summary-item"]}>
-          {item.label}
-          <span className={styles["item-sum"]}>
-            {item.amount} (${Math.abs(item.sum).toFixed(2)})
+      <div className={styles['summary-list']}>
+        {summary.map((item) => (
+          <span key={item.label} className={styles["summary-item"]}>
+            {item.label}
+            <span className={styles["item-sum"]}>
+              {item.amount} (${Math.abs(item.sum).toFixed(2)})
+            </span>
           </span>
-        </span>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

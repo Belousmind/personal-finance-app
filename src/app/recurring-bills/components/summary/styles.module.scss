@@ -6,14 +6,13 @@
   @include white-background;
   @include text-preset-5;
 
+  gap: $spacing-250;
   padding: $spacing-250;
   color: $grey-500;
 }
 
 .summary-title {
   @include text-preset-3;
-
-  margin-bottom: $spacing-250;
   color: $grey-900;
 }
 

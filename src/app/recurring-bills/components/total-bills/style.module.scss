@@ -2,18 +2,29 @@
 @use "@/styles/mixins" as *;
 
 .bill-summary {
-  @include flex-column;
+  display: flex;
+  align-items: center;
 
-  gap: $spacing-150;
+  gap: clamp($spacing-250, 4.8vw, $spacing-400);
   padding: $spacing-300 $spacing-250;
   color: $white;
   background-color: $grey-900;
   border-radius: $spacing-150;
+
+  @media screen and (min-width: 500px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .bill-icon {
   width: $spacing-500;
   height: $spacing-500;
+}
+
+.bill-info {
+  @include flex-column;
+  gap: 11px;
 }
 
 .bill-label {
