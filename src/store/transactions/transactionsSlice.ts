@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Transaction } from "@/lib/transactions";
+import type { TransactionType } from "@/lib/transactions";
 
 type Transactions = {
-  transactions: Transaction[];
+  transactions: TransactionType[];
 };
 
 const initialState: Transactions = {
@@ -13,7 +13,7 @@ const TransactionSlice = createSlice({
   name: "balance",
   initialState,
   reducers: {
-    setTransactons(state, action: PayloadAction<Transaction[]>) {
+    setTransactons(state, action: PayloadAction<TransactionType[]>) {
       state.transactions = action.payload;
     },
   },
