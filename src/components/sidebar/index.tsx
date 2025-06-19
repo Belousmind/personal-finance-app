@@ -55,7 +55,7 @@ export default function SideBar() {
         {NAVIGATION_DATA.map((menuItem, index) => {
           return (
             <SideBarLink
-              key={index}
+              key={menuItem.label}
               {...menuItem}
               isClosed={isClosed}
               index={index}
