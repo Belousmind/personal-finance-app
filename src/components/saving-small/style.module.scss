@@ -19,6 +19,9 @@
 .pot-label {
   @include text-preset-5;
 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: $grey-500;
 }
 
