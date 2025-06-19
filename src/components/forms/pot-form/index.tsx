@@ -59,7 +59,12 @@ export default function PotForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <NameField<PotFormData> name="name" control={control} errors={errors} />
+      <NameField<PotFormData>
+        name="name"
+        control={control}
+        errors={errors}
+        maxLength={30}
+      />
 
       <NumberField<PotFormData>
         name="target"
