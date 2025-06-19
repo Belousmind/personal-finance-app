@@ -4,7 +4,7 @@ import RecurringBillsSection from "./components/recurring-bills-section";
 export default function Page() {
   return (
     <MainContent text="Recurring Bills">
-      {/* <RecurringBillsSection /> */}
+      <RecurringBillsSection />
     </MainContent>
   );
 }
