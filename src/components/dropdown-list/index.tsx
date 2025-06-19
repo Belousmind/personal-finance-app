@@ -57,7 +57,7 @@ export default function DropDownList({
               </span>
               <DropdownArrowIcon />
             </span>
-            <img src={iconSrc} alt="icon" />
+            {iconSrc && <img src={iconSrc} alt="icon" />}
           </ListboxButton>
           <span className={styles["help-text"]}>{helpText}</span>
           <ListboxOptions modal={false} className={styles["listbox-options"]}>

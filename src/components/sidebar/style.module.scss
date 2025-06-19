@@ -4,37 +4,14 @@
 .menu {
   background-color: $grey-900;
   border-radius: $spacing-100 $spacing-100 0 0;
+  width: 100%;
 
   @media screen and (width >= 900px) {
     display: flex;
     flex-direction: column;
     gap: $spacing-300;
-    width: 300px;
     padding-bottom: $spacing-300;
     border-radius: 0 $spacing-200 $spacing-200 0;
-    
-  }
-}
-
-.closed {
-  width: 88px;
-
-  a span {
-    display: none;
-  }
-
-  svg path:not(:first-child) {
-    display: none;
-  }
-
-  button {
-    span {
-      display: none;
-    }
-
-    svg {
-      transform: rotate(180deg);
-    }
   }
 }
 
@@ -78,6 +55,9 @@
     background-color: transparent;
     border: none;
 
+    span {
+      white-space: nowrap;
+    }
 
     @media (hover: hover) {
       &:hover {
