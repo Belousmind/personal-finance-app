@@ -49,7 +49,7 @@ export default function PotForm({
 
   const onSubmit = (data: PotFormData) => {
     if (mode === "edit") {
-      dispatch(editPot(data));
+      dispatch(editPot({ ...data, originalName: editingPot?.name! }));
     } else {
       dispatch(addPot(data));
     }

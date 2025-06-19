@@ -1,16 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import type { Pot, PotState, EditPotPayload } from "./type";
 
-type Pot = {
-  name: string;
-  target: number;
-  total: number;
-  theme: string;
-};
-
-type PotState = {
-  totalSaved: number;
-  pots: Pot[];
-};
+function recalculateTotalSaved(pots: Pot[]): number {
+  return pots.reduce((acc, pot) => acc + pot.total, 0);
+}
 
 const initialState: PotState = {
   totalSaved: 0,
@@ -18,32 +11,29 @@ const initialState: PotState = {
 };
 
 const potsSlice = createSlice({
-  name: "balance",
+  name: "pots",
   initialState,
   reducers: {
     setPots: (state, action: PayloadAction<Pot[]>) => {
       state.pots = action.payload;
-      state.totalSaved = action.payload.reduce(
-        (acc, pot) => acc + pot.total,
-        0
-      );
+      state.totalSaved = recalculateTotalSaved(state.pots);
     },
     removePot: (state, action: PayloadAction<string>) => {
       state.pots = state.pots.filter((pot) => pot.name !== action.payload);
-      state.totalSaved = state.pots.reduce((acc, pot) => acc + pot.total, 0);
+      state.totalSaved = recalculateTotalSaved(state.pots);
     },
     addPot: (state, action: PayloadAction<Omit<Pot, "total">>) => {
       state.pots.push({ ...action.payload, total: 0 });
-      state.totalSaved = state.pots.reduce((acc, pot) => acc + pot.total, 0);
+      state.totalSaved = recalculateTotalSaved(state.pots);
     },
-    editPot: (state, action: PayloadAction<Omit<Pot, "total">>) => {
-      const index = state.pots.findIndex(
-        (pot) => pot.name === action.payload.name
-      );
+    editPot: (state, action: PayloadAction<EditPotPayload>) => {
+      const { originalName, name, target, theme } = action.payload;
+
+      const index = state.pots.findIndex((pot) => pot.name === originalName);
       if (index !== -1) {
         const oldTotal = state.pots[index].total;
-        state.pots[index] = { ...action.payload, total: oldTotal };
-        state.totalSaved = state.pots.reduce((acc, pot) => acc + pot.total, 0);
+        state.pots[index] = { name, target, theme, total: oldTotal };
+        state.totalSaved = recalculateTotalSaved(state.pots);
       }
     },
     updateBalance: (
@@ -54,7 +44,7 @@ const potsSlice = createSlice({
       const pot = state.pots.find((p) => p.name === name);
       if (pot) {
         pot.total = newTotal;
-        state.totalSaved = state.pots.reduce((acc, pot) => acc + pot.total, 0);
+        state.totalSaved = recalculateTotalSaved(state.pots);
       }
     },
   },
