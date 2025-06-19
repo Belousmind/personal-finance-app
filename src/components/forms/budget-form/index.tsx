@@ -84,7 +84,13 @@ export default function BudgetForm({
 
   const onSubmit = (data: BudgetFormData) => {
     if (mode === "edit") {
-      dispatch(editBudget({ ...data, transactions }));
+      dispatch(
+        editBudget({
+          ...data,
+          originalCategory: editingBudget?.category!,
+          transactions,
+        })
+      );
     } else {
       dispatch(addBudget({ ...data, transactions }));
     }

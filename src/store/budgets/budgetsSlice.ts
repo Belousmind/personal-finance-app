@@ -1,34 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { calculateBudgetStats } from "@/utils";
 
-type Transaction = {
-  avatar: string;
-  name: string;
-  category: string;
-  date: string;
-  amount: number;
-  recurring: boolean;
-};
-
-export type Budget = {
-  category: string;
-  total: number;
-  maximum: number;
-  theme: string;
-  remaining: number;
-  transactions: Transaction[];
-};
-
-type EditBudgetPayload = {
-  category: string;
-  maximum: number;
-  theme: string;
-  transactions: Transaction[];
-};
-
-type SetBudgetsPayload = {
-  budgets: Omit<Budget, "total" | "transactions">[];
-  transactions: Transaction[];
-};
+import type {
+  Transaction,
+  Budget,
+  EditBudgetPayload,
+  SetBudgetsPayload,
+} from "./type";
 
 const initialState: Budget[] = [];
 
@@ -40,16 +18,11 @@ const budgetSlice = createSlice({
       const { budgets, transactions } = action.payload;
 
       return budgets.map((budget) => {
-        const relatedTransactions = transactions.filter(
-          (t) => t.category === budget.category && t.amount < 0
+        const { relatedTransactions, total, remaining } = calculateBudgetStats(
+          budget.category,
+          budget.maximum,
+          transactions
         );
-
-        const total = relatedTransactions.reduce(
-          (acc, tx) => acc + tx.amount,
-          0
-        );
-
-        const remaining = Math.max(budget.maximum - Math.abs(total), 0);
 
         return {
           ...budget,
@@ -76,12 +49,11 @@ const budgetSlice = createSlice({
       const exists = state.some((b) => b.category === category);
       if (exists) return state;
 
-      const relatedTransactions = transactions.filter(
-        (t) => t.category === category && t.amount < 0
+      const { relatedTransactions, total, remaining } = calculateBudgetStats(
+        category,
+        maximum,
+        transactions
       );
-
-      const total = relatedTransactions.reduce((acc, tx) => acc + tx.amount, 0);
-      const remaining = Math.max(maximum - Math.abs(total), 0);
 
       const newBudget: Budget = {
         category,
@@ -95,19 +67,20 @@ const budgetSlice = createSlice({
       state.push(newBudget);
     },
     editBudget: (state, action: PayloadAction<EditBudgetPayload>) => {
-      const { category, maximum, theme, transactions } = action.payload;
+      const { originalCategory, category, maximum, theme, transactions } =
+        action.payload;
 
-      const relatedTransactions = transactions.filter(
-        (t) => t.category === category && t.amount < 0
+      const { relatedTransactions, total, remaining } = calculateBudgetStats(
+        category,
+        maximum,
+        transactions
       );
 
-      const total = relatedTransactions.reduce((acc, tx) => acc + tx.amount, 0);
-      const remaining = Math.max(maximum - Math.abs(total), 0);
-
       return state.map((budget) =>
-        budget.category === category
+        budget.category === originalCategory
           ? {
               ...budget,
+              category,
               maximum,
               theme,
               total,
@@ -120,5 +93,6 @@ const budgetSlice = createSlice({
   },
 });
 
-export const { setBudgets, removeBudget, addBudget, editBudget } = budgetSlice.actions;
+export const { setBudgets, removeBudget, addBudget, editBudget } =
+  budgetSlice.actions;
 export default budgetSlice.reducer;
