@@ -24,9 +24,12 @@
   justify-content: space-between;
   width: 100%;
   overflow: hidden;
-  background: $white;
+
   border: 1px solid $beige-500;
+
+  background: $white;
   border-radius: $spacing-100;
+  
   transition: 0.2s ease-out;
 
   svg {

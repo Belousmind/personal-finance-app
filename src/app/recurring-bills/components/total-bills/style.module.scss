@@ -11,8 +11,10 @@
   border-radius: $spacing-150;
 }
 
-// .bill-icon {
-// }
+.bill-icon {
+  width: $spacing-500;
+  height: $spacing-500;
+}
 
 .bill-label {
   @include text-preset-4;

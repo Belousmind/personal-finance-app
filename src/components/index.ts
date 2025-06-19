@@ -1,7 +1,6 @@
 export { default as BalanceSummary } from "./balance-summary";
 export { default as Button } from "./button";
 export { default as ColorTitle } from "./color-title";
-export { default as DropDownList } from "./dropdown-list";
 export { default as InputField } from "./input-field";
 export { default as MainContent } from "./main-content";
 export { default as Modal } from "./modal";
@@ -31,5 +30,6 @@ export { default as FiltersPanel } from "./filters-panel";
 export * from "./sidebar/sidebar-icons";
 
 export { default as Transaction } from "./transaction";
-
+export { default as FilterDropDownList } from "./filter-dropdown-list";
+export { default as FormDropDownList } from "./form-dropdown-list";
 // export {default as } from './'

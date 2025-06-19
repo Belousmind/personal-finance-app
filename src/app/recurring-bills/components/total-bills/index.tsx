@@ -10,7 +10,11 @@ export default function TotallBills() {
 
   return (
     <div className={styles["bill-summary"]}>
-      {/* <img className={styles["bill-icon"]} src="/" alt="Bill Icon" /> */}
+      <img
+        className={styles["bill-icon"]}
+        src="/total-bill-icon.svg"
+        alt="Bill Icon"
+      />
       <span className={styles["bill-label"]}>Total bills</span>
       <span className={styles["bill-amount"]}>
         ${Math.abs(totalSum).toFixed(2)}

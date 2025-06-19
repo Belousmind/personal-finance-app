@@ -1,7 +1,7 @@
 "use client";
 
 import { Controller, Control } from "react-hook-form";
-import { DropDownList } from "@/components";
+import { FormDropDownList } from "@/components";
 import { FieldError } from "react-hook-form";
 
 type CategoryOption = {
@@ -21,12 +21,11 @@ export function CategorySelectField({ control, options, error }: Props) {
       name="category"
       control={control}
       render={({ field }) => (
-        <DropDownList
+        <FormDropDownList
           label="Category"
           list={options}
           selected={options.find((c) => c.value === field.value) || options[0]}
           onChange={(item) => field.onChange(item.value)}
-          isForm
           helpText={error?.message}
         />
       )}

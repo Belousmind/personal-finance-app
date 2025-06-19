@@ -1,4 +1,4 @@
-import { InputField, DropDownList } from "@/components";
+import { InputField, FilterDropDownList } from "@/components";
 import { SORTING_LIST, CATEGORIES_LIST } from "@/constants";
 
 import styles from "./style.module.scss";
@@ -31,7 +31,7 @@ export default function FiltersPanel({
         onChange={(e) => onSearchChange(e.target.value)}
       />
       <div className={styles.filters}>
-        <DropDownList
+        <FilterDropDownList
           label="Sort by"
           list={SORTING_LIST}
           selected={selectedSort}
@@ -39,7 +39,7 @@ export default function FiltersPanel({
           iconSrc="/icon-sort-mobile.svg"
         />
         {withCategory && selectedCategory && onCategoryChange && (
-          <DropDownList
+          <FilterDropDownList
             label="Category"
             list={CATEGORIES_LIST}
             selected={selectedCategory}

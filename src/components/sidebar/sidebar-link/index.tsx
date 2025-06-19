@@ -46,7 +46,7 @@ export default function SideBarLink({
         {icon}
 
         {isDesktop ? (
-          <AnimatePresence mode="wait" initial={false}>
+          <AnimatePresence initial={false}>
             {!isClosed && (
               <m.span
                 variants={textVariants}

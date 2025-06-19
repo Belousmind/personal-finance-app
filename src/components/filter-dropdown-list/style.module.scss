@@ -1,0 +1,76 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.listbox-button {
+  @include dropdown-button-base;
+
+  --button-width: 100%;
+  border: none;
+
+  .listbox-display {
+    display: none;
+  }
+
+  img {
+    width: $spacing-250;
+    height: $spacing-250;
+  }
+
+  @media screen and (width >= 680px) {
+    padding: $spacing-150 $spacing-250;
+    border: 1px solid $beige-500;
+
+    img {
+      display: none;
+    }
+
+    .listbox-display {
+      @include dropdown-display-base;
+    }
+  }
+}
+
+.selected-label {
+  @include flex-align-center;
+
+  gap: $spacing-150;
+  width: 100%;
+}
+
+.listbox-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.listbox-options {
+  @include dropdown-panel;
+  width: max-content;
+  min-width: var(--button-width);
+}
+
+.listbox-option {
+  @include option-list-item;
+}
+
+.selected {
+  font-weight: 700;
+}
+
+.dropdown {
+  @include flex-align-center;
+
+  gap: $spacing-100;
+}
+
+.label {
+  display: none;
+
+  @media screen and (width >= 680px) {
+    display: inline-block;
+
+    @include text-preset-4;
+
+    color: $grey-500;
+    white-space: nowrap;
+  }
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import { Controller } from "react-hook-form";
-import { DropDownList } from "@/components";
+import { FormDropDownList } from "@/components";
 
 type Props = {
   control: any;
@@ -15,13 +15,12 @@ export function ThemeField({ control, errors, colors }: Props) {
       name="theme"
       control={control}
       render={({ field }) => (
-        <DropDownList
+        <FormDropDownList
           label="Theme"
           list={colors}
           selected={colors.find((c) => c.value === field.value) || colors[0]}
           onChange={(item) => field.onChange(item.value)}
           withColor
-          isForm
           helpText={errors.theme?.message}
         />
       )}

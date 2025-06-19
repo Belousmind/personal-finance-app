@@ -1,0 +1,84 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.listbox-button {
+  @include dropdown-button-base;
+
+  background-color: $white;
+  border-radius: $spacing-100;
+
+  padding: $spacing-150 $spacing-250;
+  border: 1px solid $beige-500;
+}
+
+.listbox-display {
+  @include dropdown-display-base;
+}
+
+.selected-label {
+  @include flex-align-center;
+
+  gap: $spacing-150;
+  width: 100%;
+}
+
+.listbox-wrapper {
+  position: relative;
+  width: 100%;
+
+  @include flex-column;
+  gap: $spacing-50;
+}
+
+.help-text {
+  @include text-preset-5;
+  color: $grey-500;
+  align-self: flex-end;
+  text-transform: capitalize;
+}
+
+.listbox-options {
+  @include dropdown-panel;
+
+  width: 100%;
+}
+
+.listbox-option {
+  @include option-list-item;
+}
+
+.selected {
+  font-weight: 700;
+}
+
+.v-dropdown {
+  @include flex-column;
+
+  gap: $spacing-50;
+}
+
+.v-label {
+  @include text-preset-5-bold;
+
+  color: $grey-500;
+}
+
+.color-tag {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.option-status {
+  @include text-preset-5;
+
+  justify-self: flex-end;
+}
+
+.used {
+  color: $grey-500;
+
+  .color-tag {
+    opacity: 0.1;
+  }
+}

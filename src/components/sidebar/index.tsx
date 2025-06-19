@@ -26,7 +26,6 @@ export default function SideBar() {
   }, []);
 
   const toggleMenu = () => {
-    
     if (isDesktop) setIsClosed((prev) => !prev);
   };
 
