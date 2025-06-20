@@ -12,6 +12,7 @@
     gap: $spacing-300;
     padding-bottom: $spacing-300;
     border-radius: 0 $spacing-200 $spacing-200 0;
+    max-width: 300px;
   }
 }
 
@@ -26,6 +27,7 @@
     display: flex;
     flex-direction: column;
     padding: 0;
+
   }
 }
 

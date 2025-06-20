@@ -12,7 +12,7 @@ import styles from "./style.module.scss";
 type Props = NavigationItem & {
   isClosed: boolean;
   index: number;
-  isDesktop: boolean;
+  isDesktop?: boolean;
 };
 
 export default function SideBarLink({

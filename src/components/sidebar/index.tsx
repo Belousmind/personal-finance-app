@@ -10,9 +10,13 @@ import { LogoIcon } from "./logo-icon";
 import { MenuButton } from "./sidebar-button";
 import styles from "./style.module.scss";
 
-export default function SideBar() {
+type SideBarProps = {
+  deviceType: boolean;
+};
+
+export default function SideBar({ deviceType }: SideBarProps) {
   const [isClosed, setIsClosed] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(deviceType);
 
   useEffect(() => {
     const checkScreen = () => {
@@ -21,7 +25,6 @@ export default function SideBar() {
 
     checkScreen();
     window.addEventListener("resize", checkScreen);
-
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
@@ -29,19 +32,12 @@ export default function SideBar() {
     if (isDesktop) setIsClosed((prev) => !prev);
   };
 
-  const motionProps = isDesktop
-    ? {
-        variants: menuAnimation,
-        initial: false,
-        animate: isClosed ? "closed" : "open",
-      }
-    : {};
-
-  return (
+  return isDesktop ? (
     <m.aside
-      {...motionProps}
+      variants={menuAnimation}
+      initial={false}
+      animate={isClosed ? "closed" : "open"}
       className={styles.menu}
-      // key={"desktop"}
       onClick={toggleMenu}
     >
       <Link
@@ -55,7 +51,7 @@ export default function SideBar() {
         {NAVIGATION_DATA.map((menuItem, index) => {
           return (
             <SideBarLink
-              key={menuItem.label}
+              key={`${menuItem.label}-${index}`}
               {...menuItem}
               isClosed={isClosed}
               index={index}
@@ -67,5 +63,21 @@ export default function SideBar() {
 
       <MenuButton onToggle={toggleMenu} isClosed={isClosed} />
     </m.aside>
+  ) : (
+    <aside className={styles.menu}>
+      <nav className={styles.nav}>
+        {NAVIGATION_DATA.map((menuItem, index) => {
+          return (
+            <SideBarLink
+              key={`${menuItem.label}-${index}`}
+              {...menuItem}
+              isClosed={isClosed}
+              index={index}
+              isDesktop={isDesktop}
+            />
+          );
+        })}
+      </nav>
+    </aside>
   );
 }
