@@ -1,6 +1,6 @@
 import TotallBills from "../total-bills";
 import Summary from "../summary";
-import BillsList from "../bills-table";
+import BillsTable from "../bills-table";
 
 import styles from "./style.module.scss";
 
@@ -11,8 +11,7 @@ export default function RecurringBillsSection() {
         <TotallBills />
         <Summary />
       </div>
-
-      <BillsList />
+      <BillsTable />
     </section>
   );
 }

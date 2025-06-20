@@ -27,9 +27,15 @@ export { default as OptionButton } from "./option-button";
 
 export { default as FiltersPanel } from "./filters-panel";
 
-export * from "./sidebar/sidebar-icons";
+export {
+  HomeIcon,
+  TransactionsIcon,
+  BudgetsIcon,
+  PotsIcon,
+  RecurringBillsIcon,
+} from "./sidebar/sidebar-icons";
 
 export { default as Transaction } from "./transaction";
 export { default as FilterDropDownList } from "./filter-dropdown-list";
 export { default as FormDropDownList } from "./form-dropdown-list";
-// export {default as } from './'
+export { ArrowIcon } from "./icons/arrow-icon";

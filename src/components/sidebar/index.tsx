@@ -41,7 +41,7 @@ export default function SideBar() {
     <m.aside
       {...motionProps}
       className={styles.menu}
-      key={isDesktop ? "desktop" : "mobile"}
+      // key={"desktop"}
       onClick={toggleMenu}
     >
       <Link

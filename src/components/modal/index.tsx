@@ -1,3 +1,4 @@
+"use client";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { m, AnimatePresence } from "framer-motion";
 

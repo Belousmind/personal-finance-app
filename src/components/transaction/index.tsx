@@ -1,4 +1,5 @@
 import { formattedDate } from "@/utils";
+import Image from "next/image";
 
 import styles from "./styles.module.scss";
 import clsx from "clsx";
@@ -21,8 +22,19 @@ export default function Transaction({
   isFullVersion = false,
 }: TransactionProps) {
   return (
-    <div className={clsx(styles.transaction, isFullVersion && styles["full-transaction"])}>
-      <img className={styles["transaction-image"]} src={avatar} alt={name} />
+    <div
+      className={clsx(
+        styles.transaction,
+        isFullVersion && styles["full-transaction"]
+      )}
+    >
+      <Image
+        src={avatar}
+        alt={name}
+        className={styles["transaction-image"]}
+        width={32}
+        height={32}
+      />
       <span
         className={clsx(
           styles["transaction-name"],

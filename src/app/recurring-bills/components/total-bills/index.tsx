@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import styles from "./style.module.scss";
 
@@ -10,12 +11,14 @@ export default function TotallBills() {
 
   return (
     <div className={styles["bill-summary"]}>
-      <img
+      <Image
         className={styles["bill-icon"]}
         src="/total-bill-icon.svg"
         alt="Bill Icon"
+        width={40}
+        height={40}
       />
-      <div className={styles['bill-info']}>
+      <div className={styles["bill-info"]}>
         <span className={styles["bill-label"]}>Total bills</span>
         <span className={styles["bill-amount"]}>
           ${Math.abs(totalSum).toFixed(2)}

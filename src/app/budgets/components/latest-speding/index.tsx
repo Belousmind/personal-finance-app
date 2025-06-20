@@ -1,6 +1,7 @@
 import { TertiatyLink } from "@/components";
 import { formattedDate } from "@/utils";
 import styles from "./style.module.scss";
+import Image from "next/image";
 
 type Transaction = {
   avatar: string;
@@ -32,7 +33,13 @@ export default function LatestSpeding({ transactions }: LatestSpendingProps) {
 function LatestSpedingTransaction({ avatar, name, amount, date }: Transaction) {
   return (
     <div className={styles.transaction}>
-      <img src={avatar} alt={name} className={styles["transaction-image"]} />
+      <Image
+        src={avatar}
+        alt={name}
+        className={styles["transaction-image"]}
+        width={32}
+        height={32}
+      />
       <span className={styles["transaction-name"]}>{name}</span>
       <span className={styles["transaction-amount"]}>
         {`-$${Math.abs(Number(amount)).toFixed(2)}`}

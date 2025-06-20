@@ -6,6 +6,7 @@ import {
   ListboxOption,
   ListboxOptions,
 } from "@headlessui/react";
+import { ArrowIcon } from "../icons/arrow-icon";
 
 import clsx from "clsx";
 import styles from "./style.module.scss";
@@ -51,7 +52,7 @@ export default function FormDropDownList({
                 )}
                 {selected.label}
               </span>
-              <DropdownArrowIcon />
+              <ArrowIcon />
             </span>
           </ListboxButton>
           <span className={styles["help-text"]}>{helpText}</span>

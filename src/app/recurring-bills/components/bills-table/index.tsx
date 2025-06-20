@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
 
@@ -8,7 +9,7 @@ import { formatMonthlyLabel } from "@/utils/format-date";
 import useReccuringBills from "./useRecurringBills";
 import { FiltersPanel } from "@/components";
 
-export default function BillsList() {
+export default function BillsTable() {
   const {
     searchQuery,
     selectedSort,
@@ -18,7 +19,7 @@ export default function BillsList() {
   } = useReccuringBills();
 
   return (
-    <div className={styles["bills-list"]}>
+    <div className={styles["bills-table"]}>
       <FiltersPanel
         searchQuery={searchQuery}
         selectedSort={selectedSort}
@@ -58,7 +59,13 @@ function BillItem({ avatar, name, date, amount, paid, soon }: BillItemProps) {
   return (
     <div className={styles["bill-item"]}>
       <div className={styles["icon-and-title"]}>
-        <img className={styles["bill-icon"]} src={avatar} alt={name} />
+        <Image
+          src={avatar}
+          alt={name}
+          className={styles["bill-icon"]}
+          width={32}
+          height={32}
+        />
         <span className={styles["bill-title"]}>{name}</span>
       </div>
       <span
@@ -80,6 +87,7 @@ function BillItem({ avatar, name, date, amount, paid, soon }: BillItemProps) {
     </div>
   );
 }
+
 function IconAlert() {
   return (
     <svg

@@ -26,6 +26,9 @@
 
     .listbox-display {
       @include dropdown-display-base;
+      svg {
+        flex-shrink: 0;
+      }
     }
   }
 }

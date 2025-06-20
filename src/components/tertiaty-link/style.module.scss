@@ -12,6 +12,12 @@
 
   @include transition-base;
 
+  svg {
+    width: 12px;
+    height: 13px;
+    transform: rotate(-90deg);
+  }
+
   @media (hover: hover) {
     &:hover {
       color: $grey-900;

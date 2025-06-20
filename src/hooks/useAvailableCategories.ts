@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/store/hooks";
 import { CATEGORIES_LIST } from "@/constants";
-import { Budget } from "@/store/budgets/budgetsSlice";
+import { Budget } from "@/store/budgets/type";
 
 export default function useAvailableCategories() {
   const budgets = useAppSelector((state) => state.budgets);
