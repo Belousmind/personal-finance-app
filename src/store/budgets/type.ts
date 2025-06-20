@@ -25,6 +25,10 @@ export type EditBudgetPayload = {
 };
 
 export type SetBudgetsPayload = {
-  budgets: Omit<Budget, "total" | "transactions">[];
+  budgets: Array<{
+    category: string;
+    maximum: number;
+    theme: string;
+  }>;
   transactions: Transaction[];
 };
