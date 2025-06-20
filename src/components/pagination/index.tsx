@@ -32,7 +32,9 @@ export default function Pagination({
           />
         ))}
       </div>
-
+      <span className={styles["current-page"]}>
+        Page {currentPage} / {totalPages}
+      </span>
       <PaginationArrowButton
         direction="next"
         disabled={currentPage === totalPages}

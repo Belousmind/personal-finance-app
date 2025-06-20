@@ -10,13 +10,20 @@
 }
 
 .pagination-list {
-  @include flex-align-center;
+  display: none;
+  @media screen and (min-width: 500px) {
+    @include flex-align-center;
 
-  gap: $spacing-100;
+    gap: $spacing-100;
+  }
 }
 
 .arrow-button {
   @include pagination-button;
+
+  &:disabled {
+    opacity: 0.4;
+  }
 
   span {
     display: none;
@@ -28,7 +35,7 @@
   }
 
   @media (hover: hover) {
-    &:hover {
+    &:not(:disabled):hover {
       color: $white;
       background-color: $beige-500;
 
@@ -42,6 +49,18 @@
     span {
       display: inline;
     }
+  }
+}
+
+.arrow-button:first-child {
+  svg {
+    transform: rotate(90deg);
+  }
+}
+
+.arrow-button:last-child {
+  svg {
+    transform: rotate(-90deg);
   }
 }
 
@@ -63,4 +82,13 @@
   color: $white;
   background-color: $grey-900;
   border-color: $grey-900;
+}
+
+.current-page {
+  @include text-preset-4;
+  color: $grey-500;
+
+  @media screen and (min-width: 500px) {
+    display: none;
+  }
 }

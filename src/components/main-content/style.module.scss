@@ -7,13 +7,14 @@
   text-transform: capitalize;
 
   @include text-preset-1;
+  align-self: center;
 }
 
 .main {
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr auto;
-  align-items: center;
+  // align-items: center;
   gap: $spacing-400;
   width: 100%;
   min-height: 100dvh;
