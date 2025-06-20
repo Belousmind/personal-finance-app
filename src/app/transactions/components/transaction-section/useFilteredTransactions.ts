@@ -46,7 +46,7 @@ export function useFilteredTransactions() {
     if (currentPage > totalPages) {
       setCurrentPage(1);
     }
-  }, [totalPages]);
+  }, [totalPages, currentPage]);
 
   const currentTransactions = filteredTransactions.slice(
     (currentPage - 1) * itemsPerPage,

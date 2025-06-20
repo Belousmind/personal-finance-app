@@ -1,24 +1,35 @@
 "use client";
 
-import { Controller, Control } from "react-hook-form";
+import {
+  Controller,
+  Control,
+  FieldError,
+  FieldValues,
+  Path,
+} from "react-hook-form";
 import { FormDropDownList } from "@/components";
-import { FieldError } from "react-hook-form";
 
 type CategoryOption = {
   label: string;
   value: string;
 };
 
-type Props = {
-  control: Control<any>;
+type Props<TFieldValues extends FieldValues> = {
+  control: Control<TFieldValues>;
+  name: Path<TFieldValues>;
   options: CategoryOption[];
   error?: FieldError;
 };
 
-export function CategorySelectField({ control, options, error }: Props) {
+export function CategorySelectField<TFieldValues extends FieldValues>({
+  control,
+  options,
+  error,
+  name,
+}: Props<TFieldValues>) {
   return (
     <Controller
-      name="category"
+      name={name}
       control={control}
       render={({ field }) => (
         <FormDropDownList

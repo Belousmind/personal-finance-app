@@ -84,10 +84,11 @@ export default function BudgetForm({
 
   const onSubmit = (data: BudgetFormData) => {
     if (mode === "edit") {
+      if (!editingBudget) return;
       dispatch(
         editBudget({
           ...data,
-          originalCategory: editingBudget?.category!,
+          originalCategory: editingBudget.category,
           transactions,
         })
       );
@@ -100,7 +101,8 @@ export default function BudgetForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <CategorySelectField
+      <CategorySelectField<BudgetFormData>
+        name="category"
         control={control}
         options={categoryOptions}
         error={errors.category}
@@ -114,7 +116,12 @@ export default function BudgetForm({
         placeholder="e.g. 2000"
       />
 
-      <ThemeField control={control} errors={errors} colors={themeOptions} />
+      <ThemeField<BudgetFormData>
+        name="theme"
+        control={control}
+        errors={errors}
+        colors={themeOptions}
+      />
 
       <Button text={mode === "edit" ? "Save Changes" : "Add Budget"} />
     </form>

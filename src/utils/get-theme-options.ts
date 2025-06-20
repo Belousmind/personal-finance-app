@@ -1,5 +1,3 @@
-import { COLORS_LIST } from "@/constants";
-
 type Color = {
   label: string;
   value: string;

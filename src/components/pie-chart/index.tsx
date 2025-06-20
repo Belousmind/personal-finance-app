@@ -65,7 +65,7 @@ function PieChart() {
     );
     ctx.fillStyle = "white";
     ctx.fill();
-  }, [budgets, width, height]);
+  }, [budgets, chartData]);
 
   return <canvas ref={canvasRef} width={width} height={height} />;
 }

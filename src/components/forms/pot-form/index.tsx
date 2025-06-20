@@ -49,7 +49,8 @@ export default function PotForm({
 
   const onSubmit = (data: PotFormData) => {
     if (mode === "edit") {
-      dispatch(editPot({ ...data, originalName: editingPot?.name! }));
+      if (!editingPot) return;
+      dispatch(editPot({ ...data, originalName: editingPot.name }));
     } else {
       dispatch(addPot(data));
     }
@@ -74,7 +75,12 @@ export default function PotForm({
         errors={errors}
       />
 
-      <ThemeField control={control} errors={errors} colors={themeOptions} />
+      <ThemeField<PotFormData>
+        name="theme"
+        control={control}
+        errors={errors}
+        colors={themeOptions}
+      />
 
       <Button text={mode === "edit" ? "Save Changes" : "Add Pot"} />
     </form>
