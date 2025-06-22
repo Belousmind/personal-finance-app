@@ -1,5 +1,6 @@
 import { formattedDate } from "@/utils";
-// import Image from "next/image";
+import { basePath } from "@/constants";
+import Image from "next/image";
 
 import styles from "./styles.module.scss";
 import clsx from "clsx";
@@ -12,8 +13,6 @@ type TransactionProps = {
   date: string;
   isFullVersion?: boolean;
 };
-
-const basePath = "/personal-finance-app"; 
 
 export default function Transaction({
   avatar,
@@ -30,15 +29,14 @@ export default function Transaction({
         isFullVersion && styles["full-transaction"]
       )}
     >
-      <img src={`${basePath}${avatar}`} alt={name} />
-      {/* <Image
-        src={avatar}
+      <Image
+        src={`${basePath}${avatar}`}
         alt={name}
         className={styles["transaction-image"]}
         width={32}
         height={32}
         unoptimized
-      /> */}
+      />
       <span
         className={clsx(
           styles["transaction-name"],

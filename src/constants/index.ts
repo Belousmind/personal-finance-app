@@ -12,3 +12,4 @@ export {
   pathVariants,
   menuAnimation,
 } from "./motion-variants";
+export { basePath } from "./base-usrl";

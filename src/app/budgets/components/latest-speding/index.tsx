@@ -1,5 +1,6 @@
 import { TertiatyLink } from "@/components";
 import { formattedDate } from "@/utils";
+import { basePath } from "@/constants";
 import styles from "./style.module.scss";
 import Image from "next/image";
 
@@ -34,11 +35,12 @@ function LatestSpedingTransaction({ avatar, name, amount, date }: Transaction) {
   return (
     <div className={styles.transaction}>
       <Image
-        src={avatar}
+        src={`${basePath}avatar`}
         alt={name}
         className={styles["transaction-image"]}
         width={32}
         height={32}
+        unoptimized
       />
       <span className={styles["transaction-name"]}>{name}</span>
       <span className={styles["transaction-amount"]}>

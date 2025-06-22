@@ -4,7 +4,8 @@ import Image from "next/image";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
 
-import { formatMonthlyLabel } from "@/utils/format-date";
+import { formatMonthlyLabel } from "@/utils";
+import { basePath } from "@/constants";
 
 import useReccuringBills from "./useRecurringBills";
 import { FiltersPanel } from "@/components";
@@ -60,11 +61,12 @@ function BillItem({ avatar, name, date, amount, paid, soon }: BillItemProps) {
     <div className={styles["bill-item"]}>
       <div className={styles["icon-and-title"]}>
         <Image
-          src={avatar}
+          src={`${basePath}${avatar}`}
           alt={name}
           className={styles["bill-icon"]}
           width={32}
           height={32}
+          unoptimized
         />
         <span className={styles["bill-title"]}>{name}</span>
       </div>

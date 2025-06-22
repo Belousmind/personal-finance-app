@@ -1,4 +1,4 @@
-export default function formattedDate(isoDate: string) {
+export function formattedDate(isoDate: string) {
   const date = new Date(isoDate);
 
   if (isNaN(date.getTime())) {

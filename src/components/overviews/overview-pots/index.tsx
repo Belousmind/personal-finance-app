@@ -1,7 +1,7 @@
 "use client";
 
 import { useAppSelector } from "@/store/hooks";
-import { ROUTES } from "@/constants";
+import { ROUTES, basePath } from "@/constants";
 import { OverviewContainer, SavingSmall } from "@/components";
 import Image from "next/image";
 
@@ -14,7 +14,13 @@ export default function OverviewPots() {
     <OverviewContainer title="Pots" href={ROUTES.POTS}>
       <div className={styles["pots-overview"]}>
         <div className={styles["pots-total-saved"]}>
-          <Image src="/icon-pot.svg" alt="Pot Icon" width={27} height={34} />
+          <Image
+            src={`${basePath}/icon-pot.svg`}
+            alt="Pot Icon"
+            width={27}
+            height={34}
+            unoptimized
+          />
           <span className={styles["saved-label"]}>Total Saved</span>
           <span className={styles["saved-sum"]}>${totalSaved.toFixed(2)}</span>
         </div>
