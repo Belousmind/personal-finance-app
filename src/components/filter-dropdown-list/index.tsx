@@ -8,6 +8,7 @@ import {
 } from "@headlessui/react";
 import Image from "next/image";
 import { ArrowIcon } from "../icons/arrow-icon";
+import { basePath } from "@/constants";
 
 import clsx from "clsx";
 import styles from "./style.module.scss";
@@ -46,7 +47,13 @@ export default function FilterDropDownList({
             </span>
 
             {iconSrc && (
-              <Image src={iconSrc} alt="icon" width={20} height={20} />
+              <Image
+                src={`${basePath}${iconSrc}`}
+                alt="icon"
+                width={20}
+                height={20}
+                unoptimized
+              />
             )}
           </ListboxButton>
 

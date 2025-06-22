@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import SideBar from "@/components/sidebar";
 import "./global.scss";
 import Providers from "@/providers";
+import { basePath } from "@/constants";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -18,8 +19,8 @@ export const metadata: Metadata = {
   description:
     "Finanoe helps you manage your personal finances with ease. Track transactions, create budgets, monitor savings pots, and stay on top of recurring bills — all in one intuitive dashboard.",
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: `${basePath}/favicon.ico`,
+    apple: `${basePath}/apple-touch-icon.png`,
   },
 };
 
@@ -28,7 +29,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <Providers>
