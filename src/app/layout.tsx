@@ -1,20 +1,39 @@
+import { Public_Sans } from "next/font/google";
+import { Metadata } from "next";
 import SideBar from "@/components/sidebar";
 import "./global.scss";
 import Providers from "@/providers";
-import { isDesktop } from "@/utils";
 
-export default async function RootLayout({
+const publicSans = Public_Sans({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  title: {
+    default: "Finance",
+    template: "%s | Finance",
+  },
+  description:
+    "Finanoe helps you manage your personal finances with ease. Track transactions, create budgets, monitor savings pots, and stay on top of recurring bills — all in one intuitive dashboard.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+};
+
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const deviceType = await isDesktop();
 
   return (
     <html lang="en">
       <Providers>
-        <body>
-          <SideBar deviceType={deviceType} />
+        <body className={publicSans.className}>
+          <SideBar />
           {children}
         </body>
       </Providers>

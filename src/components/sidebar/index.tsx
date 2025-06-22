@@ -4,19 +4,16 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { m } from "framer-motion";
 
+
 import { NAVIGATION_DATA, menuAnimation } from "@/constants";
 import SideBarLink from "./sidebar-link";
 import { LogoIcon } from "./logo-icon";
 import { MenuButton } from "./sidebar-button";
 import styles from "./style.module.scss";
 
-type SideBarProps = {
-  deviceType: boolean;
-};
-
-export default function SideBar({ deviceType }: SideBarProps) {
+export default function SideBar() {
   const [isClosed, setIsClosed] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(deviceType);
+  const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
     const checkScreen = () => {

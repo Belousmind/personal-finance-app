@@ -1,64 +1,45 @@
 @use "./variables" as *;
 
-@mixin text {
-  font-family: $font;
-  letter-spacing: $letter-spacing-0;
-}
-
 @mixin text-preset-1 {
   font-size: $text-size-1;
   font-weight: $font-weight-700;
   line-height: $line-height-120;
-
-  @include text;
 }
 
 @mixin text-preset-2 {
   font-size: $text-size-2;
   font-weight: $font-weight-700;
   line-height: $line-height-120;
-
-  @include text;
 }
 
 @mixin text-preset-3 {
   font-size: $text-size-3;
   font-weight: $font-weight-700;
   line-height: $line-height-150;
-
-  @include text;
 }
 
 @mixin text-preset-4 {
   font-size: $text-size-4;
   font-weight: $font-weight-400;
   line-height: $line-height-150;
-
-  @include text;
 }
 
 @mixin text-preset-4-bold {
   font-size: $text-size-4;
   font-weight: $font-weight-700;
   line-height: $line-height-150;
-
-  @include text;
 }
 
 @mixin text-preset-5 {
   font-size: $text-size-5;
   font-weight: $font-weight-400;
   line-height: $line-height-150;
-
-  @include text;
 }
 
 @mixin text-preset-5-bold {
   font-size: $text-size-5;
   font-weight: $font-weight-700;
   line-height: $line-height-150;
-
-  @include text;
 }
 
 @mixin flex-center {
@@ -114,7 +95,7 @@
   @include transition-base;
   justify-content: space-between;
   width: 100%;
-  
+
   gap: $spacing-200;
 
   white-space: nowrap;

@@ -34,6 +34,7 @@ export default function Transaction({
         className={styles["transaction-image"]}
         width={32}
         height={32}
+        unoptimized
       />
       <span
         className={clsx(
