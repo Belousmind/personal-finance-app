@@ -13,8 +13,6 @@ type TransactionProps = {
   isFullVersion?: boolean;
 };
 
-const basePath = "/personal-finance-app";
-
 export default function Transaction({
   avatar,
   name,
@@ -30,7 +28,7 @@ export default function Transaction({
         isFullVersion && styles["full-transaction"]
       )}
     >
-      <img src={`${basePath}/images/avatars/${avatar}`} alt={name} />
+      <img src={avatar} alt={name} />
       {/* <Image
         src={avatar}
         alt={name}
