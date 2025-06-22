@@ -35,11 +35,7 @@ function LatestSpedingTransaction({ avatar, name, amount, date }: Transaction) {
   return (
     <div className={styles.transaction}>
       <Image
-<<<<<<< HEAD
         src={`${basePath}${avatar}`}
-=======
-        src={`${basePath}${avatar}`}
->>>>>>> 4f999d7 (fix: paths of rest images)
         alt={name}
         className={styles["transaction-image"]}
         width={32}
