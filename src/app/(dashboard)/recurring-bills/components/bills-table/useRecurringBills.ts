@@ -10,14 +10,18 @@ export default function useReccuringBills() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSort, setSelectedSort] = useState(SORTING_LIST[0]);
 
+  function getDay(dateStr: string) {
+    return new Date(dateStr).getDate();
+  }
+
   const filteredTransactions = transactions
     .filter((t) => t.name.toLowerCase().includes(searchQuery.toLowerCase()))
     .sort((a, b) => {
       switch (selectedSort.value) {
         case "latest":
-          return new Date(b.date).getTime() - new Date(a.date).getTime();
+          return getDay(b.date) - getDay(a.date);
         case "oldest":
-          return new Date(a.date).getTime() - new Date(b.date).getTime();
+          return getDay(a.date) - getDay(b.date);
         case "a-z":
           return a.name.localeCompare(b.name);
         case "z-a":
