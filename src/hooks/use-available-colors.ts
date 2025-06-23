@@ -6,13 +6,20 @@ export default function useAvailableColors() {
   const budgets = useAppSelector((state) => state.budgets);
   const pots = useAppSelector((state) => state.pots.pots);
 
-  const budgetColors = isOccupiedColor(budgets, COLORS_LIST);
-  const potColors = isOccupiedColor(pots, COLORS_LIST);
+  let budgetColors = isOccupiedColor(budgets, COLORS_LIST);
+  let potColors = isOccupiedColor(pots, COLORS_LIST);
 
-  const defaultOption = { label: "Select color", value: "#201f24" };
+  const defaultOption = {
+    label: "Select color",
+    value: "#201f24",
+    occupied: true,
+  };
+
+  budgetColors = [defaultOption, ...budgetColors];
+  potColors = [defaultOption, ...potColors];
 
   return {
-    budgetColors: [defaultOption, ...budgetColors],
-    potColors: [defaultOption, ...potColors],
+    budgetColors,
+    potColors,
   };
 }
