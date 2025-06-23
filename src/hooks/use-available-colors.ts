@@ -12,7 +12,7 @@ export default function useAvailableColors() {
   const defaultOption = {
     label: "Select color",
     value: "#201f24",
-    occupied: true,
+    occupied: false,
   };
 
   budgetColors = [defaultOption, ...budgetColors];
