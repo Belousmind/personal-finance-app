@@ -4,8 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { m } from "framer-motion";
 
-
-import { NAVIGATION_DATA, menuAnimation } from "@/constants";
+import { NAVIGATION_DATA, menuAnimation, ROUTES } from "@/constants";
 import SideBarLink from "./sidebar-link";
 import { LogoIcon } from "./logo-icon";
 import { MenuButton } from "./sidebar-button";
@@ -39,7 +38,7 @@ export default function SideBar() {
     >
       <Link
         className={styles.logo}
-        href="/"
+        href={ROUTES.TRANSACTIONS}
         onClick={(e) => e.stopPropagation()}
       >
         <LogoIcon isClosed={isClosed} />
