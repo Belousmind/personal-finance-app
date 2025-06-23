@@ -1,8 +1,6 @@
 import { Public_Sans } from "next/font/google";
 import { Metadata } from "next";
-import SideBar from "@/components/sidebar";
 import "./global.scss";
-import Providers from "@/providers";
 import { basePath } from "@/constants";
 
 const publicSans = Public_Sans({
@@ -31,12 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={publicSans.className}>
-        <Providers>
-          <SideBar />
-          {children}
-        </Providers>
-      </body>
+      <body className={publicSans.className}>{children}</body>
     </html>
   );
 }
