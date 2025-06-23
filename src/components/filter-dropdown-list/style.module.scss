@@ -1,13 +1,13 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.listbox-button {
+.dropdown-button {
   @include dropdown-button-base;
 
   --button-width: 100%;
   border: none;
 
-  .listbox-display {
+  .dropdown-display {
     display: none;
   }
 
@@ -24,7 +24,7 @@
       display: none;
     }
 
-    .listbox-display {
+    .dropdown-display {
       @include dropdown-display-base;
       svg {
         flex-shrink: 0;
@@ -33,25 +33,25 @@
   }
 }
 
-.selected-label {
+.dropdown-selected {
   @include flex-align-center;
 
   gap: $spacing-150;
   width: 100%;
 }
 
-.listbox-wrapper {
+.dropdown-wrapper {
   position: relative;
   width: 100%;
 }
 
-.listbox-options {
+.dropdown-options {
   @include dropdown-panel;
   width: max-content;
   min-width: var(--button-width);
 }
 
-.listbox-option {
+.dropdown-option {
   @include option-list-item;
 }
 
@@ -59,13 +59,13 @@
   font-weight: 700;
 }
 
-.dropdown {
+.dropdown-field {
   @include flex-align-center;
 
   gap: $spacing-100;
 }
 
-.label {
+.dropdown-label {
   display: none;
 
   @media screen and (width >= 680px) {

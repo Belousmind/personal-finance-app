@@ -35,44 +35,46 @@ export default function FilterDropDownList({
   onChange,
 }: DropDownListProps) {
   return (
-    <div className={styles.dropdown}>
-      <span className={styles.label}>{label}</span>
+<div className={styles["dropdown-field"]}>
+  <span className={styles["dropdown-label"]}>{label}</span>
 
-      <Listbox value={selected} onChange={onChange}>
-        <div className={styles["listbox-wrapper"]}>
-          <ListboxButton className={styles["listbox-button"]}>
-            <span className={styles["listbox-display"]}>
-              <span className={styles["selected-label"]}>{selected.label}</span>
-              <ArrowIcon />
-            </span>
+  <Listbox value={selected} onChange={onChange}>
+    <div className={styles["dropdown-wrapper"]}>
+      <ListboxButton className={styles["dropdown-button"]}>
+        <span className={styles["dropdown-display"]}>
+          <span className={styles["dropdown-selected"]}>
+            {selected.label}
+          </span>
+          <ArrowIcon />
+        </span>
 
-            {iconSrc && (
-              <Image
-                src={`${basePath}${iconSrc}`}
-                alt="icon"
-                width={20}
-                height={20}
-                unoptimized
-              />
+        {iconSrc && (
+          <Image
+            src={`${basePath}${iconSrc}`}
+            alt={`${selected.label} icon`}
+            width={20}
+            height={20}
+            unoptimized
+          />
+        )}
+      </ListboxButton>
+
+      <ListboxOptions modal={false} className={styles["dropdown-options"]}>
+        {list.map((item) => (
+          <ListboxOption
+            key={item.label}
+            value={item}
+            className={clsx(
+              styles["dropdown-option"],
+              selected.label === item.label && styles["dropdown-option--selected"]
             )}
-          </ListboxButton>
-
-          <ListboxOptions modal={false} className={styles["listbox-options"]}>
-            {list.map((item) => (
-              <ListboxOption
-                key={item.label}
-                value={item}
-                className={clsx(
-                  styles["listbox-option"],
-                  selected.label === item.label && styles.selected
-                )}
-              >
-                <span>{item.label}</span>
-              </ListboxOption>
-            ))}
-          </ListboxOptions>
-        </div>
-      </Listbox>
+          >
+            <span>{item.label}</span>
+          </ListboxOption>
+        ))}
+      </ListboxOptions>
     </div>
+  </Listbox>
+</div>
   );
 }

@@ -9,5 +9,10 @@ export default function useAvailableColors() {
   const budgetColors = isOccupiedColor(budgets, COLORS_LIST);
   const potColors = isOccupiedColor(pots, COLORS_LIST);
 
-  return { budgetColors, potColors };
+  const defaultOption = { label: "Select color", value: "#201f24" };
+
+  return {
+    budgetColors: [defaultOption, ...budgetColors],
+    potColors: [defaultOption, ...potColors],
+  };
 }

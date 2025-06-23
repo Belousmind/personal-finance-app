@@ -15,5 +15,7 @@ export default function useAvailableCategories() {
       !usedCategories.has(category.value.toLowerCase())
   );
 
-  return availableCategories;
+  const defaultOption = { label: "Select category", value: "" };
+
+  return [defaultOption, ...availableCategories];
 }
