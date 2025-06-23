@@ -31,12 +31,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Providers>
-        <body className={publicSans.className}>
+      <body className={publicSans.className}>
+        <Providers>
           <SideBar />
           {children}
-        </body>
-      </Providers>
+        </Providers>
+      </body>
     </html>
   );
 }

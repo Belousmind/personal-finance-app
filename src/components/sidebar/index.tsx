@@ -38,7 +38,7 @@ export default function SideBar() {
     >
       <Link
         className={styles.logo}
-        href={ROUTES.TRANSACTIONS}
+        href={ROUTES.HOME}
         onClick={(e) => e.stopPropagation()}
       >
         <LogoIcon isClosed={isClosed} />
