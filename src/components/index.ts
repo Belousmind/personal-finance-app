@@ -39,3 +39,4 @@ export { default as Transaction } from "./transaction";
 export { default as FilterDropDownList } from "./filter-dropdown-list";
 export { default as FormDropDownList } from "./form-dropdown-list";
 export { ArrowIcon } from "./icons/arrow-icon";
+export { default as EmptyState } from "./empty-state";

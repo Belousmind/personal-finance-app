@@ -1,5 +1,5 @@
 import { TransactionType } from "@/lib/transactions";
-import { Transaction } from "@/components";
+import { Transaction, EmptyState } from "@/components";
 
 import styles from "./style.module.scss";
 
@@ -17,13 +17,17 @@ export default function TransactionsTable({ transactions }: Props) {
         <span className={styles["header-amount"]}>Amount</span>
       </div>
       <div className={styles["table-body"]}>
-        {transactions.map((transaction) => (
-          <Transaction
-            key={transaction.date}
-            {...transaction}
-            isFullVersion={true}
-          />
-        ))}
+        {transactions.length > 0 ? (
+          transactions.map((transaction) => (
+            <Transaction
+              key={transaction.date}
+              {...transaction}
+              isFullVersion={true}
+            />
+          ))
+        ) : (
+          <EmptyState text="No transactions found" />
+        )}
       </div>
     </div>
   );

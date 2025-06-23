@@ -2,7 +2,12 @@
 
 import { useAppSelector } from "@/store/hooks";
 import { ROUTES } from "@/constants";
-import { OverviewContainer, Chart, SavingSmall } from "@/components";
+import {
+  OverviewContainer,
+  Chart,
+  SavingSmall,
+  EmptyState,
+} from "@/components";
 
 import styles from "./style.module.scss";
 
@@ -12,16 +17,22 @@ export default function OvervieBudgets() {
   return (
     <OverviewContainer title="Budgets" href={ROUTES.BUDGETS}>
       <div className={styles["budgets-overview"]}>
-        <Chart />
-        <div className={styles["budgets-list"]}>
-          {budgets.map((budget) => (
-            <SavingSmall
-              key={budget.category}
-              name={budget.category}
-              {...budget}
-            />
-          ))}
-        </div>
+        {budgets.length > 0 ? (
+          <>
+            <Chart />
+            <div className={styles["budgets-list"]}>
+              {budgets.map((budget) => (
+                <SavingSmall
+                  key={budget.category}
+                  name={budget.category}
+                  {...budget}
+                />
+              ))}
+            </div>
+          </>
+        ) : (
+          <EmptyState text="You haven’t added any budgets yet. Create one to see your spending summary here" />
+        )}
       </div>
     </OverviewContainer>
   );

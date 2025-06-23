@@ -37,7 +37,7 @@ export default function Pagination({
       </span>
       <PaginationArrowButton
         direction="next"
-        disabled={currentPage === totalPages}
+        disabled={totalPages <= 1}
         onClick={() => onPageChange(currentPage + 1)}
       />
     </div>

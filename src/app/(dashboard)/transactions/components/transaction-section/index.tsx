@@ -20,6 +20,8 @@ export default function TransactionsSection() {
     setCurrentPage,
   } = useFilteredTransactions();
 
+  console.log(totalPages);
+
   return (
     <section className={styles.content}>
       <FiltersPanel

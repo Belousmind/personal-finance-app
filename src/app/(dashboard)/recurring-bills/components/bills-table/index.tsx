@@ -8,7 +8,7 @@ import { formatMonthlyLabel } from "@/utils";
 import { basePath } from "@/constants";
 
 import useReccuringBills from "./useRecurringBills";
-import { FiltersPanel } from "@/components";
+import { FiltersPanel, EmptyState } from "@/components";
 
 export default function BillsTable() {
   const {
@@ -28,10 +28,13 @@ export default function BillsTable() {
         onSortChange={setSelectedSort}
       />
       <BillTableTitle />
-
-      {filteredTransactions.map((transaction) => (
-        <BillItem key={transaction.date} {...transaction} />
-      ))}
+      {filteredTransactions.length > 0 ? (
+        filteredTransactions.map((transaction) => (
+          <BillItem key={transaction.date} {...transaction} />
+        ))
+      ) : (
+        <EmptyState text="No recurring bills found" />
+      )}
     </div>
   );
 }
