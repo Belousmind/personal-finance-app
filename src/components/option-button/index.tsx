@@ -22,6 +22,7 @@ export default function OptionButton({ label, category }: Props) {
           <MenuButton className={styles.button}>
             <OptionsIcon />
           </MenuButton>
+
           <MenuItems modal={false} className={styles["options-list"]}>
             <MenuItem>
               <button
