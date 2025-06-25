@@ -7,7 +7,7 @@ import clsx from "clsx";
 import { formatMonthlyLabel } from "@/utils";
 import { basePath } from "@/constants";
 
-import useReccuringBills from "./useRecurringBills";
+import useReccuringBills from "./use-recurring-bills";
 import { FiltersPanel, EmptyState } from "@/components";
 
 export default function BillsTable() {

@@ -2,7 +2,7 @@
 
 import { Pagination, FiltersPanel } from "@/components";
 import TransactionsTable from "../transictions-table";
-import { useFilteredTransactions } from "./useFilteredTransactions";
+import { useFilteredTransactions } from "./use-filtered-transactions";
 
 import styles from "./style.module.scss";
 
@@ -19,8 +19,6 @@ export default function TransactionsSection() {
     setSelectedSort,
     setCurrentPage,
   } = useFilteredTransactions();
-
-  console.log(totalPages);
 
   return (
     <section className={styles.content}>

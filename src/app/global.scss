@@ -9,13 +9,13 @@
 }
 
 body {
-  @media screen and (width >= 900px) {
-    flex-direction: row;
-  }
-
   display: flex;
   flex-direction: column-reverse;
   justify-content: end;
   margin: 0;
   background-color: $grey-100;
+
+  @media screen and (width >= 900px) {
+    flex-direction: row;
+  }
 }
