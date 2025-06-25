@@ -15,7 +15,7 @@ export default function Page() {
       <div className={styles["auth-content"]}>
         <Image
           src={`${basePath}/illustration-authentication.webp`}
-          alt=""
+          alt="authentication illustration"
           width={250}
           height={250}
           className={styles["auth-image"]}

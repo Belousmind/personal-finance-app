@@ -1,0 +1,28 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.not-found {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: $spacing-250;
+  text-align: cneter;
+
+  & > div {
+    @include flex-center;
+
+    flex-direction: column;
+    gap: $spacing-250;
+  }
+}
+
+.not-found-title {
+  @include text-preset-1;
+}
+
+.not-found-text {
+  @include text-preset-3;
+
+  color: $grey-500;
+}
