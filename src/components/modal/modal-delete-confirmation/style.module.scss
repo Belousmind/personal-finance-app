@@ -1,13 +1,13 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.confirmText {
+.confirm-text {
   @include text-preset-4;
 
   color: $grey-500;
 }
 
-.cancelButton {
+.cancel-button {
   @include text-preset-4;
 
   color: $grey-500;

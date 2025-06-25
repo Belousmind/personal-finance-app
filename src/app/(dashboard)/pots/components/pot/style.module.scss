@@ -5,8 +5,8 @@
   @include white-background;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto auto auto;
+  grid-template-columns: repeat(2, 1fr);
   gap: $spacing-400 $spacing-200;
   padding: clamp($spacing-250, 4.17vw, $spacing-400);
 }

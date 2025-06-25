@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: $spacing-150;
-  
+
   @media screen and (width >= 600px) {
     grid-template-columns: repeat(3, 1fr);
     gap: $spacing-300;
@@ -22,6 +22,12 @@
   border-radius: $spacing-150;
 }
 
+.sum {
+  @include text-preset-1;
+
+  color: $grey-900;
+}
+
 .card:first-child {
   color: $white;
   background-color: $grey-900;
@@ -36,10 +42,4 @@
 
   margin: 0;
   text-transform: capitalize;
-}
-
-.sum {
-  @include text-preset-1;
-
-  color: $grey-900;
 }

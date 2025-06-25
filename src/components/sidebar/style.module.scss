@@ -2,17 +2,17 @@
 @use "@/styles/mixins" as *;
 
 .menu {
+  width: 100%;
   background-color: $grey-900;
   border-radius: $spacing-100 $spacing-100 0 0;
-  width: 100%;
 
   @media screen and (width >= 900px) {
     display: flex;
     flex-direction: column;
     gap: $spacing-300;
+    max-width: 300px;
     padding-bottom: $spacing-300;
     border-radius: 0 $spacing-200 $spacing-200 0;
-    max-width: 300px;
   }
 }
 

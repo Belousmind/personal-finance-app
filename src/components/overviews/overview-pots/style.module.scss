@@ -3,6 +3,7 @@
 
 .pots-overview {
   @include flex-center;
+
   flex-wrap: wrap;
   gap: $spacing-250;
   width: 100%;

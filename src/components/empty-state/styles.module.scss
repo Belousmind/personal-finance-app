@@ -3,5 +3,6 @@
 
 .text {
   @include text-preset-4;
+
   color: $grey-500;
 }

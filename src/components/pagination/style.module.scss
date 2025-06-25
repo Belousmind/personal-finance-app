@@ -12,7 +12,8 @@
 
 .pagination-list {
   display: none;
-  @media screen and (min-width: 500px) {
+
+  @media screen and (width >= 500px) {
     @include flex-align-center;
 
     gap: $spacing-100;
@@ -87,9 +88,10 @@
 
 .current-page {
   @include text-preset-4;
+
   color: $grey-500;
 
-  @media screen and (min-width: 500px) {
+  @media screen and (width >= 500px) {
     display: none;
   }
 }

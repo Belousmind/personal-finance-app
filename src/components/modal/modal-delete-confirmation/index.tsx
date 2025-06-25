@@ -30,7 +30,7 @@ export default function ModalDeleteConfirmation({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={`Delete ‘${category}’?`}>
-      <p className={styles.confirmText}>
+      <p className={styles['confirm-text']}>
         Are you sure you want to delete this {label}? This action cannot be
         reversed, and all the data inside it will be removed forever.
       </p>
@@ -39,7 +39,7 @@ export default function ModalDeleteConfirmation({
         onClick={handleDelete}
         variant="destroy"
       />
-      <button onClick={onClose} className={styles.cancelButton}>
+      <button onClick={onClose} className={styles['cancel-button']}>
         No, Go Back
       </button>
     </Modal>

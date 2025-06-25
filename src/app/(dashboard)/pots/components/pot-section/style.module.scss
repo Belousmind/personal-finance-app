@@ -3,8 +3,8 @@
 
 .pots-container {
   display: grid;
-  align-items: flex-start;
   gap: $spacing-300;
+  align-items: flex-start;
 
   @media screen and (width >= 760px) {
     grid-template-columns: repeat(2, 1fr);

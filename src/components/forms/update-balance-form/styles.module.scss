@@ -1,7 +1,7 @@
 @use "@/styles/variables" as *;
 @use "@/styles/mixins" as *;
 
-.formWrapper {
+.form-wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: $spacing-250;
@@ -29,7 +29,7 @@
   align-self: center;
 }
 
-.newAmount {
+.new-amount {
   @include text-preset-1;
 
   grid-column: 2;

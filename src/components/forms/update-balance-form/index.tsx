@@ -43,7 +43,7 @@ export default function UpdateBalanceForm({
   };
 
   return (
-    <div className={styles.formWrapper}>
+    <div className={styles['form-wrapper']}>
       <p className={styles.description}>
         {isWithdraw
           ? "Reduce your savings for this goal. This action is helpful when funds need to be redirected or spent."
@@ -51,7 +51,7 @@ export default function UpdateBalanceForm({
       </p>
 
       <span className={styles.label}>New Amount</span>
-      <span className={styles.newAmount}>
+      <span className={styles['new-amount']}>
         {!exceeded ? `$${newTotal.toFixed(2)}` : `$${pot.total.toFixed(2)}`}
       </span>
 

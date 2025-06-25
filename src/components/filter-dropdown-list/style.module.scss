@@ -5,6 +5,7 @@
   @include dropdown-button-base;
 
   --button-width: 100%;
+
   border: none;
 
   .dropdown-display {
@@ -26,6 +27,7 @@
 
     .dropdown-display {
       @include dropdown-display-base;
+
       svg {
         flex-shrink: 0;
       }
@@ -47,6 +49,7 @@
 
 .dropdown-options {
   @include dropdown-panel;
+
   width: max-content;
   min-width: var(--button-width);
 }

@@ -3,30 +3,30 @@
 
 .auth-layout {
   display: grid;
-  grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
   min-height: 100dvh;
 
-  @media screen and (min-width: 900px) {
+  @media screen and (width >= 900px) {
     display: grid;
-    width: 100%;
-    grid-template-columns: 600px 1fr;
     grid-template-rows: 1fr;
-
+    grid-template-columns: 600px 1fr;
+    width: 100%;
     color: $white;
   }
 }
 
 .auth-header {
   @include flex-center;
+
   background-color: $grey-900;
-  border-radius: 0px 0px 8px 8px;
+  border-radius: 0 0 8px 8px;
 
   svg {
     margin: $spacing-300 $spacing-500;
   }
 
-  @media screen and (min-width: 900px) {
+  @media screen and (width >= 900px) {
     display: none;
   }
 }
@@ -37,16 +37,17 @@
   svg {
     display: none;
   }
-  @media screen and (min-width: 900px) {
+
+  @media screen and (width >= 900px) {
+    position: relative;
     display: block;
     padding: $spacing-250;
-    position: relative;
 
     svg {
-      display: block;
       position: absolute;
-      left: calc($spacing-250 + $spacing-500);
       top: calc($spacing-250 + $spacing-500);
+      left: calc($spacing-250 + $spacing-500);
+      display: block;
     }
   }
 }
@@ -60,11 +61,12 @@
 
 .auth-text {
   position: absolute;
-  left: calc($spacing-250 + $spacing-500);
   bottom: calc($spacing-250 + $spacing-500);
-  @include flex-column;
+  left: calc($spacing-250 + $spacing-500);
   gap: $spacing-300;
   max-width: 480px;
+
+  @include flex-column;
 }
 
 .auth-title {
@@ -86,11 +88,10 @@
   @include white-background;
   @include flex-column;
 
-  max-width: 560px;
-  color: $grey-900;
-
   gap: $spacing-250;
+  max-width: 560px;
   padding: clamp($spacing-250, 4.17vw, $spacing-400);
+  color: $grey-900;
 }
 
 .auth-hint {
@@ -101,16 +102,15 @@
   @include flex-center;
   @include text-preset-4-bold;
   @include transition-base;
-  text-decoration: none;
 
   width: 100%;
   padding: $spacing-200;
+  color: $white;
   text-transform: capitalize;
+  text-decoration: none;
+  background-color: $grey-900;
   border: none;
   border-radius: $spacing-100;
-
-  color: $white;
-  background-color: $grey-900;
 
   @media (hover: hover) {
     &:hover {

@@ -13,6 +13,7 @@
 
 .summary-title {
   @include text-preset-3;
+
   color: $grey-900;
 }
 
@@ -24,6 +25,12 @@
   padding-bottom: $spacing-200;
   margin-top: $spacing-200;
   border-bottom: 1px solid $grey-100;
+}
+
+.item-sum {
+  @include text-preset-5-bold;
+
+  color: $grey-900;
 }
 
 .summary-item:first-child {
@@ -38,10 +45,4 @@
   .item-sum {
     color: $red;
   }
-}
-
-.item-sum {
-  @include text-preset-5-bold;
-
-  color: $grey-900;
 }

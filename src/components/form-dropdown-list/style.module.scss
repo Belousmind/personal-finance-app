@@ -4,15 +4,15 @@
 .dropdown-button {
   @include dropdown-button-base;
 
-  background-color: $white;
-  border-radius: $spacing-100;
-
   padding: $spacing-150 $spacing-250;
+  background-color: $white;
   border: 1px solid $beige-500;
+  border-radius: $spacing-100;
 }
 
 .dropdown-display {
   @include dropdown-display-base;
+
   svg {
     flex-shrink: 0;
   }
@@ -27,16 +27,17 @@
 
 .dropdown-wrapper {
   position: relative;
+  gap: $spacing-50;
   width: 100%;
 
   @include flex-column;
-  gap: $spacing-50;
 }
 
 .dropdown-help {
   @include text-preset-5;
-  color: $grey-500;
+
   align-self: flex-end;
+  color: $grey-500;
   text-transform: capitalize;
 }
 
@@ -81,6 +82,7 @@
 .used {
   color: $grey-500;
   cursor: default;
+
   .dropdown-color {
     opacity: 0.1;
   }
