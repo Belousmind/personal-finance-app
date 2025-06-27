@@ -32,7 +32,7 @@ export default function BudgetForm({
   const { budgetColors } = useAvailableColors();
 
   const availableCategories = useAvailableCategories();
-  const budgets = useAppSelector((state) => state.budgets);
+  const { budgets } = useAppSelector((state) => state.budgets);
   const transactions = useAppSelector(
     (state) => state.transactions.transactions
   );

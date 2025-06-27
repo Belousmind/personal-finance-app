@@ -3,7 +3,7 @@ import { CATEGORIES_LIST } from "@/constants";
 import { Budget } from "@/store/budgets/type";
 
 export default function useAvailableCategories() {
-  const budgets = useAppSelector((state) => state.budgets);
+  const budgets = useAppSelector((state) => state.budgets.budgets);
 
   const usedCategories = new Set(
     budgets.map((b: Budget) => b.category.toLowerCase())

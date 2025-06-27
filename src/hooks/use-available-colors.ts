@@ -3,7 +3,7 @@ import { COLORS_LIST } from "@/constants";
 import { isOccupiedColor } from "@/utils";
 
 export default function useAvailableColors() {
-  const budgets = useAppSelector((state) => state.budgets);
+  const budgets = useAppSelector((state) => state.budgets.budgets);
   const pots = useAppSelector((state) => state.pots.pots);
 
   let budgetColors = isOccupiedColor(budgets, COLORS_LIST);
