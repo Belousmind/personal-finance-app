@@ -9,14 +9,15 @@
 
 .cancel-button {
   @include text-preset-4;
+  @include focus-dark;
+  @include transition-base;
 
   color: $grey-500;
   text-transform: capitalize;
   outline: none;
   background-color: transparent;
   border: none;
-
-  @include transition-base;
+  border-radius: $spacing-100;
 
   @media (hover: hover) {
     &:hover {

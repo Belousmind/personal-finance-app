@@ -2,11 +2,16 @@
 @use "@/styles/mixins" as *;
 
 .button {
+  padding: $spacing-50;
   color: $grey-300;
   cursor: pointer;
   outline: none;
   background-color: transparent;
   border: none;
+  border-radius: $spacing-100;
+  
+  @include flex-center;
+  @include focus-dark;
 }
 
 .menu-wrapper {

@@ -9,6 +9,7 @@
   width: 100%;
   padding: $spacing-200;
   text-transform: capitalize;
+  outline: none;
   border: none;
   border-radius: $spacing-100;
 }
@@ -22,6 +23,8 @@
       background-color: $grey-500;
     }
   }
+
+  @include focus-light;
 }
 
 .secondary {
@@ -35,6 +38,8 @@
       border-color: $beige-500;
     }
   }
+
+  @include focus-dark;
 }
 
 .destroy {
@@ -51,4 +56,6 @@
         $red;
     }
   }
+
+  @include focus-dark;
 }
