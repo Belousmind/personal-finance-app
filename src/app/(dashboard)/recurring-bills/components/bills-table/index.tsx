@@ -9,6 +9,8 @@ import { basePath } from "@/constants";
 
 import useReccuringBills from "./use-recurring-bills";
 import { FiltersPanel, EmptyState } from "@/components";
+import { staggeredItemVariants } from "@/constants";
+import { m, AnimatePresence } from "framer-motion";
 
 export default function BillsTable() {
   const {
@@ -29,9 +31,15 @@ export default function BillsTable() {
       />
       <BillTableTitle />
       {filteredTransactions.length > 0 ? (
-        filteredTransactions.map((transaction) => (
-          <BillItem key={transaction.date} {...transaction} />
-        ))
+        <AnimatePresence initial={false}>
+          {filteredTransactions.map((transaction, index) => (
+            <BillItem
+              key={`${transaction.date}_${index}`}
+              index={index}
+              {...transaction}
+            />
+          ))}
+        </AnimatePresence>
       ) : (
         <EmptyState text="No recurring bills found" />
       )}
@@ -57,11 +65,26 @@ type BillItemProps = {
   paid: boolean;
   upcoming?: boolean;
   soon: boolean;
+  index: number;
 };
 
-function BillItem({ avatar, name, date, amount, paid, soon }: BillItemProps) {
+function BillItem({
+  avatar,
+  name,
+  date,
+  amount,
+  paid,
+  soon,
+  index,
+}: BillItemProps) {
   return (
-    <div className={styles["bill-item"]}>
+    <m.div
+      custom={index}
+      variants={staggeredItemVariants}
+      initial="hidden"
+      animate="visible"
+      className={styles["bill-item"]}
+    >
       <div className={styles["icon-and-title"]}>
         <Image
           src={`${basePath}${avatar}`}
@@ -89,7 +112,7 @@ function BillItem({ avatar, name, date, amount, paid, soon }: BillItemProps) {
       >
         ${Math.abs(Number(amount)).toFixed(2)}
       </span>
-    </div>
+    </m.div>
   );
 }
 

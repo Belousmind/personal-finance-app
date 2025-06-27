@@ -9,7 +9,8 @@ import styles from "./styles.module.scss";
 export default function OvervieTransactions() {
   const transactions = useAppSelector(
     (state) => state.transactions.transactions
-  );
+  ).slice(0, 5);
+
   return (
     <OverviewContainer
       title="Transactions"
@@ -18,11 +19,9 @@ export default function OvervieTransactions() {
       text="View All"
     >
       <div className={styles["transaction-list"]}>
-        {transactions.map((transaction, index) =>
-          index < 5 ? (
-            <Transaction key={transaction.name} {...transaction} />
-          ) : null
-        )}
+        {transactions.map((transaction, index) => (
+          <Transaction key={transaction.name} {...transaction} index={index} />
+        ))}
       </div>
     </OverviewContainer>
   );

@@ -1,6 +1,7 @@
 import { formattedDate } from "@/utils";
-import { basePath } from "@/constants";
+import { basePath, staggeredItemVariants } from "@/constants";
 import Image from "next/image";
+import { m } from "framer-motion";
 
 import styles from "./styles.module.scss";
 import clsx from "clsx";
@@ -12,6 +13,7 @@ type TransactionProps = {
   category: string;
   date: string;
   isFullVersion?: boolean;
+  index: number;
 };
 
 export default function Transaction({
@@ -21,9 +23,14 @@ export default function Transaction({
   category,
   date,
   isFullVersion = false,
+  index,
 }: TransactionProps) {
   return (
-    <div
+    <m.div
+      custom={index}
+      variants={staggeredItemVariants}
+      initial="hidden"
+      animate="visible"
       className={clsx(
         styles.transaction,
         isFullVersion && styles["full-transaction"]
@@ -63,6 +70,6 @@ export default function Transaction({
           : `-$${Math.abs(Number(amount)).toFixed(2)}`}
       </span>
       <span className={styles["transaction-date"]}>{formattedDate(date)}</span>
-    </div>
+    </m.div>
   );
 }

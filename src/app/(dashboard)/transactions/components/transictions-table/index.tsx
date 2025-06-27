@@ -1,5 +1,6 @@
 import { TransactionType } from "@/lib/transactions";
 import { Transaction, EmptyState } from "@/components";
+import { AnimatePresence } from "framer-motion";
 
 import styles from "./style.module.scss";
 
@@ -13,13 +14,16 @@ export default function TransactionsTable({ transactions }: Props) {
       <TransactionsTableHeader />
       <div className={styles["table-body"]}>
         {transactions.length > 0 ? (
-          transactions.map((transaction) => (
-            <Transaction
-              key={transaction.date}
-              {...transaction}
-              isFullVersion={true}
-            />
-          ))
+          <AnimatePresence initial={false}>
+            {transactions.map((transaction, index) => (
+              <Transaction
+                key={`${transaction.date}_${index}`}
+                index={index}
+                {...transaction}
+                isFullVersion={true}
+              />
+            ))}
+          </AnimatePresence>
         ) : (
           <EmptyState text="No transactions found" />
         )}

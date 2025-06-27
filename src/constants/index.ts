@@ -21,3 +21,4 @@ export {
   menuVariants,
   itemVariants,
 } from "./animations/option-button-variants";
+export { staggeredItemVariants } from "./animations/staggered-item-variants";
