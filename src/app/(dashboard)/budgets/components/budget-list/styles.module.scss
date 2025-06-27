@@ -1,0 +1,8 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.budget-container {
+  @include flex-column;
+
+  gap: $spacing-300;
+}

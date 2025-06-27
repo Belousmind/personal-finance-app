@@ -1,12 +1,12 @@
-"use client";
-
-import { useAppSelector } from "@/store/hooks";
+import type { Budget } from "@/store/budgets/type";
 import SpendingItem from "../spending-item";
 import styles from "./style.module.scss";
 
-export default function SpendingSummary() {
-  const budgets = useAppSelector((state) => state.budgets);
+type SpendingSummaryProps = {
+  budgets: Budget[];
+};
 
+export default function SpendingSummary({ budgets }: SpendingSummaryProps) {
   return (
     <div className={styles["spending-summary"]}>
       <span className={styles.title}>Spending Summary</span>

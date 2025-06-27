@@ -1,15 +1,17 @@
 "use client";
 import { useRef, useEffect } from "react";
-import { useAppSelector } from "@/store/hooks";
+import type { Budget } from "@/store/budgets/type";
 import styles from "./style.module.scss";
 
 const width = 240;
 const height = 240;
 
-function PieChart() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+type Props = {
+  budgets: Budget[];
+};
 
-  const budgets = useAppSelector((state) => state.budgets);
+function PieChart({ budgets }: Props) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const chartData = budgets.map((item) => ({
     value: item.total,
@@ -70,15 +72,13 @@ function PieChart() {
   return <canvas ref={canvasRef} width={width} height={height} />;
 }
 
-export default function Chart() {
-  const budgets = useAppSelector((state) => state.budgets);
-
+export default function Chart({ budgets }: Props) {
   const limit = budgets.reduce((acc, b) => acc + b.maximum, 0);
   const spend = budgets.reduce((acc, b) => acc + b.total, 0);
 
   return (
     <div className={styles.chart}>
-      <PieChart />
+      <PieChart budgets={budgets} />
       <div className={styles["chart-info"]}>
         <span>${Math.abs(spend).toFixed(0)}</span>
         <span className={styles.limit}>of ${limit.toFixed(0)} limit</span>

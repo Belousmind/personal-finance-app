@@ -19,7 +19,7 @@ export default function OvervieBudgets() {
       <div className={styles["budgets-overview"]}>
         {budgets.length > 0 ? (
           <>
-            <Chart />
+            <Chart budgets={budgets} />
             <div className={styles["budgets-list"]}>
               {budgets.map((budget) => (
                 <SavingSmall

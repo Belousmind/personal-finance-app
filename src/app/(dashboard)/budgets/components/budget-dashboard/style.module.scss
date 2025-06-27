@@ -28,9 +28,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-.budget-container {
-  @include flex-column;
-
-  gap: $spacing-300;
-}

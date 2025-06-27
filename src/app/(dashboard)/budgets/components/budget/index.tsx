@@ -1,24 +1,9 @@
 import { ColorTitle, SavingSmall } from "@/components";
 import LatestSpeding from "../latest-speding";
 import { getPercentage } from "@/utils";
+import type {Budget as BudgetProps} from '@/store/budgets/type'
 
 import styles from "./style.module.scss";
-
-type Transaction = {
-  avatar: string;
-  name: string;
-  amount: number;
-  date: string;
-};
-
-type BudgetProps = {
-  category: string;
-  theme: string;
-  maximum: number;
-  total: number;
-  remaining: number;
-  transactions: Transaction[];
-};
 
 export default function Budget({
   category,
@@ -55,3 +40,5 @@ export default function Budget({
     </div>
   );
 }
+
+
