@@ -12,7 +12,8 @@ import {
 import styles from "./style.module.scss";
 
 export default function OvervieBudgets() {
-  const budgets = useAppSelector((state) => state.budgets).slice(0, 4);
+  const { budgets } = useAppSelector((state) => state.budgets);
+  const topBudgets = budgets.slice(0, 4);
 
   return (
     <OverviewContainer title="Budgets" href={ROUTES.BUDGETS}>
@@ -21,7 +22,7 @@ export default function OvervieBudgets() {
           <>
             <Chart budgets={budgets} />
             <div className={styles["budgets-list"]}>
-              {budgets.map((budget) => (
+              {topBudgets.map((budget) => (
                 <SavingSmall
                   key={budget.category}
                   name={budget.category}

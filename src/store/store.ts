@@ -22,7 +22,7 @@ store.subscribe(() => {
   const state = store.getState();
 
   saveToLocalStorage("pots", state.pots.pots);
-  saveToLocalStorage("budgets", state.budgets);
+  saveToLocalStorage("budgets", state.budgets.budgets);
   saveToLocalStorage("transactions", state.transactions.transactions);
 });
 

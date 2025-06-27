@@ -9,21 +9,25 @@ import { BudgetList } from "../budget-list";
 import styles from "./style.module.scss";
 
 export default function BudgetDashboard() {
-  const budget = useAppSelector((state) => state.budgets);
+  const { budgets, isLoading } = useAppSelector((state) => state.budgets);
+
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+
+  if (budgets.length === 0) {
+    return (
+      <EmptyState text="You haven’t added any budgets yet. Create one to see your spending summary here" />
+    );
+  }
 
   return (
     <section className={styles["budget-section"]}>
-      {budget.length > 0 ? (
-        <>
-          <div className={styles["budget-summary"]}>
-            <Chart budgets={budget} />
-            <SpendingSummary budgets={budget} />
-          </div>
-          <BudgetList budgets={budget} />
-        </>
-      ) : (
-        <EmptyState text="You haven’t added any budgets yet. Create one to see your spending summary here" />
-      )}
+      <div className={styles["budget-summary"]}>
+        <Chart budgets={budgets} />
+        <SpendingSummary budgets={budgets} />
+      </div>
+      <BudgetList budgets={budgets} />
     </section>
   );
 }

@@ -6,16 +6,24 @@ import Pot from "../pot";
 import styles from "./style.module.scss";
 
 export default function PotList() {
-  const { pots } = useAppSelector((state) => state.pots);
+  const { pots, isLoading } = useAppSelector((state) => state.pots);
+
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+
+  if (pots.length === 0) {
+    return (
+      <EmptyState text="You haven’t created any savings pots yet. Add one to start tracking your savings goals." />
+    );
+  }
 
   return (
     <>
       <section className={styles["pots-container"]}>
-        {pots.length > 0 ? (
-          pots.map((pot) => <Pot key={pot.name} {...pot} />)
-        ) : (
-          <EmptyState text="You haven’t created any savings pots yet. Add one to start tracking your savings goals." />
-        )}
+        {pots.map((pot) => (
+          <Pot key={pot.name} {...pot} />
+        ))}
       </section>
     </>
   );

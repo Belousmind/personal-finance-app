@@ -16,6 +16,11 @@ export type Budget = {
   transactions: Transaction[];
 };
 
+export type BudgetState = {
+  budgets: Budget[];
+  isLoading: boolean;
+};
+
 export type EditBudgetPayload = {
   originalCategory: string;
   category: string;

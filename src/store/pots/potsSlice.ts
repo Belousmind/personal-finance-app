@@ -8,6 +8,7 @@ function recalculateTotalSaved(pots: Pot[]): number {
 const initialState: PotState = {
   totalSaved: 0,
   pots: [],
+  isLoading: true,
 };
 
 const potsSlice = createSlice({
@@ -17,6 +18,7 @@ const potsSlice = createSlice({
     setPots: (state, action: PayloadAction<Pot[]>) => {
       state.pots = action.payload;
       state.totalSaved = recalculateTotalSaved(state.pots);
+      state.isLoading = false;
     },
     removePot: (state, action: PayloadAction<string>) => {
       state.pots = state.pots.filter((pot) => pot.name !== action.payload);

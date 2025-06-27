@@ -8,6 +8,7 @@ export type Pot = {
 export type PotState = {
   totalSaved: number;
   pots: Pot[];
+  isLoading: boolean;
 };
 
 export type EditPotPayload = {

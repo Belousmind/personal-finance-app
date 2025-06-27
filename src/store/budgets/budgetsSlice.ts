@@ -3,12 +3,15 @@ import { calculateBudgetStats } from "@/utils";
 
 import type {
   Transaction,
-  Budget,
   EditBudgetPayload,
   SetBudgetsPayload,
+  BudgetState,
 } from "./type";
 
-const initialState: Budget[] = [];
+const initialState: BudgetState = {
+  budgets: [],
+  isLoading: true,
+};
 
 const budgetSlice = createSlice({
   name: "budgets",
@@ -17,7 +20,7 @@ const budgetSlice = createSlice({
     setBudgets: (state, action: PayloadAction<SetBudgetsPayload>) => {
       const { budgets, transactions } = action.payload;
 
-      return budgets.map((budget) => {
+      state.budgets = budgets.map((budget) => {
         const { relatedTransactions, total, remaining } = calculateBudgetStats(
           budget.category,
           budget.maximum,
@@ -31,9 +34,13 @@ const budgetSlice = createSlice({
           transactions: relatedTransactions,
         };
       });
+
+      state.isLoading = false;
     },
     removeBudget: (state, action: PayloadAction<string>) => {
-      return state.filter((budget) => budget.category !== action.payload);
+      state.budgets = state.budgets.filter(
+        (budget) => budget.category !== action.payload
+      );
     },
     addBudget: (
       state,
@@ -46,8 +53,8 @@ const budgetSlice = createSlice({
     ) => {
       const { category, maximum, theme, transactions } = action.payload;
 
-      const exists = state.some((b) => b.category === category);
-      if (exists) return state;
+      const exists = state.budgets.some((b) => b.category === category);
+      if (exists) return;
 
       const { relatedTransactions, total, remaining } = calculateBudgetStats(
         category,
@@ -55,16 +62,14 @@ const budgetSlice = createSlice({
         transactions
       );
 
-      const newBudget: Budget = {
+      state.budgets.push({
         category,
         maximum,
         theme,
         total,
         remaining,
         transactions: relatedTransactions,
-      };
-
-      state.push(newBudget);
+      });
     },
     editBudget: (state, action: PayloadAction<EditBudgetPayload>) => {
       const { originalCategory, category, maximum, theme, transactions } =
@@ -76,7 +81,7 @@ const budgetSlice = createSlice({
         transactions
       );
 
-      return state.map((budget) =>
+      state.budgets = state.budgets.map((budget) =>
         budget.category === originalCategory
           ? {
               ...budget,
