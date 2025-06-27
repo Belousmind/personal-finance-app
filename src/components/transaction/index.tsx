@@ -1,3 +1,4 @@
+"use client";
 import { formattedDate } from "@/utils";
 import { basePath, staggeredItemVariants } from "@/constants";
 import Image from "next/image";
