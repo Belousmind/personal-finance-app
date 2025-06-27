@@ -5,25 +5,8 @@ import { useState } from "react";
 
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ModalDeleteConfirmation, ModalBudget, ModalPot } from "@/components";
-import { m, AnimatePresence, Variants } from "framer-motion";
-
-const menuVariants: Variants = {
-  hidden: { scale: 0, transformOrigin: "top right" },
-  visible: {
-    scale: 1,
-    transition: {
-      duration: 0.15,
-      when: "beforeChildren",
-      staggerChildren: 0.08,
-    },
-  },
-  exit: { scale: 0, transition: { duration: 0.1 } },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, x: 5 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.15 } },
-};
+import { menuVariants, itemVariants } from "@/constants";
+import { m, AnimatePresence } from "framer-motion";
 
 type Props = {
   label: string;
