@@ -1,10 +1,12 @@
 import { MainContent } from "@/components";
-import PotSection from "./components/pot-section";
+import PotList from "./components/pot-list";
+import AddPotButton from "./components/add-pot-button";
 
 export default function Page() {
   return (
     <MainContent text="Pots">
-      <PotSection />
+      <AddPotButton />
+      <PotList />
     </MainContent>
   );
 }
