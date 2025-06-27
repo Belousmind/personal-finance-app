@@ -5,6 +5,25 @@ import { useState } from "react";
 
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ModalDeleteConfirmation, ModalBudget, ModalPot } from "@/components";
+import { m, AnimatePresence, Variants } from "framer-motion";
+
+const menuVariants: Variants = {
+  hidden: { scale: 0, transformOrigin: "top right" },
+  visible: {
+    scale: 1,
+    transition: {
+      duration: 0.15,
+      when: "beforeChildren",
+      staggerChildren: 0.08,
+    },
+  },
+  exit: { scale: 0, transition: { duration: 0.1 } },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, x: 5 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.15 } },
+};
 
 type Props = {
   label: string;
@@ -18,34 +37,47 @@ export default function OptionButton({ label, category }: Props) {
   return (
     <>
       <Menu>
-        <div className={styles["menu-wrapper"]}>
-          <MenuButton className={styles.button}>
-            <OptionsIcon />
-          </MenuButton>
+        {({ open }) => (
+          <div className={styles["menu-wrapper"]}>
+            <MenuButton className={styles.button}>
+              <OptionsIcon />
+            </MenuButton>
 
-          <MenuItems modal={false} className={styles["options-list"]}>
-            <MenuItem>
-              <button
-                className={styles["option-button"]}
-                onClick={() => {
-                  setIsEditModalOpen(true);
-                }}
-              >
-                Edit {label}
-              </button>
-            </MenuItem>
-            <MenuItem>
-              <button
-                className={styles["option-button"]}
-                onClick={() => {
-                  setIsDeleteModalOpen(true);
-                }}
-              >
-                Delete {label}
-              </button>
-            </MenuItem>
-          </MenuItems>
-        </div>
+            <AnimatePresence>
+              {open && (
+                <MenuItems
+                  as={m.div}
+                  static
+                  className={styles["options-list"]}
+                  variants={menuVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  modal={false}
+                >
+                  <MenuItem>
+                    <m.button
+                      className={styles["option-button"]}
+                      variants={itemVariants}
+                      onClick={() => setIsEditModalOpen(true)}
+                    >
+                      Edit {label}
+                    </m.button>
+                  </MenuItem>
+                  <MenuItem>
+                    <m.button
+                      className={styles["option-button"]}
+                      variants={itemVariants}
+                      onClick={() => setIsDeleteModalOpen(true)}
+                    >
+                      Delete {label}
+                    </m.button>
+                  </MenuItem>
+                </MenuItems>
+              )}
+            </AnimatePresence>
+          </div>
+        )}
       </Menu>
       {label === "pot" && (
         <ModalPot
