@@ -4,17 +4,18 @@
 
 **Stack:** Next.js, React, TypeScript, SCSS (CSS Modules), Headless UI, Framer Motion, Zod, React Hook Form, Redux Toolkit
 
-Users able to:
+Основной акцент — на удобстве пользовательского интерфейса, структурированной архитектуре и адаптивности.
 
-- See all of the personal finance app data at-a-glance on the overview page
-- View all transactions on the transactions page with pagination for every ten transactions
-- Search, sort, and filter transactions
-- Create, read, update, delete (CRUD) budgets and saving pots
-- View the latest three transactions for each budget category created
-- View progress towards each pot
-- Add money to and withdraw money from pots
-- View recurring bills and the status of each for the current month
-- Search and sort recurring bills
-- Receive validation messages if required form fields aren't completed
-- View the optimal layout for the interface depending on their device's screen size
+Функциональность:
+- [x] Просмотр всей финансовой информации на главной странице (дашборде)
+- [x] Отображение всех транзакций на отдельной странице с пагинацией (по 10 на страницу)
+- [x] Поиск, сортировка и фильтрация транзакций по различным параметрам
+- [x] Полный CRUD-функционал для бюджетов и целей накопления (реализовано с помощью Redux Toolkit)
+- [x] Отображение трёх последних транзакций для каждой категории бюджета
+- [x] Визуальное отображение прогресса по каждой цели накопления
+- [x] Возможность пополнения и снятия средств из целей накопления
+- [x] Просмотр списка регулярных платежей и их статуса за текущий месяц
+- [x] Поиск и сортировка регулярных платежей
+- [x] Валидация форм с отображением сообщений об ошибках при незаполненных обязательных полях (используется React Hook Form + Zod)
+- [x] Адаптивный интерфейс, который подстраивается под размер экрана устройства пользователя
 
